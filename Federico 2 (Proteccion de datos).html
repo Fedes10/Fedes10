@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perfil profesional de Federico Lora Ortiz">
+    <title>Federico Lora - Perfil Protegido</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #a0a0a0ad;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #001836, #003f6c, #005b99);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 3px solid #01173159;
+        }
+
+        h1, h2 {
+            color: #0b4580;
+        }
+
+        .photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+            background-color: #2d2e42;
+            border: 4px solid #0b4575;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #c1cad3;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid #012a5ec7;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3)
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            border-bottom: 3px solid #0b4580;
+            padding-bottom: 10px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        .date-info {
+            font-style: italic;
+            color: #777;
+            border-radius: 10px; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+            border: 1px solid rgb(138, 138, 138);
+            padding-right: 7px;
+            padding-left: 7px;
+            font-size: 13px;
+        }
+
+        .skills-list, .education-list, .experience-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .skills-list li, .education-list li, .experience-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skills-list li::before, .education-list li::before, .experience-list li::before {
+            content: "✓";
+            color: #004080;
+            position: absolute;
+            left: 0;
+            top: 3px;
+        }
+
+        .skills-list {
+            columns: 2;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #001836, #003f6c, #005b99);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            border-top: 3px solid #01173159;
+        }
+
+        a {
+            color: #004080;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .skills-list {
+                columns: 1;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="Mi Logo Redondo.png" alt="Foto" class="photo">
+            <h1 style="color: #1293e9;">Federico Lora ***</h1>
+            <p>Especialista en Administración de Sistemas y Seguridad Informática</p>
+            <p style="color: rgb(85, 1, 1);">(Versión Limitada por Protección de Datos)</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Información Personal</h2>
+            <div class="contact-info">
+                <div>
+                    <p><strong>Dirección:</strong> ******* España</p>
+                    <p><strong>Teléfono:</strong> <a href="">697******</a></p>
+                    <p><strong>Email:</strong> <a href="mailto:fedetalgat@gmail.com">fedetalgat@gmail.com</a></p>
+                </div>
+                <div>
+                    <p><strong>Fecha de nacimiento:</strong> **/**/2005</p>
+                    <p><strong>Nacionalidad:</strong> Española</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Formación Académica</h2>
+            <ul class="education-list">
+                <li class="education-item" data-status="En curso">
+                    <strong>Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)</strong>
+                    <span class="status-badge" style="color: rgb(170, 125, 1); font-weight: bold;">En curso</span><br>
+                    <a href="https://www.ceslopedevega.com/" target="_blank">CES Lope de Vega</a>, Córdoba, España<br>
+                    <span class="date-info">2023 - Actualidad</span>
+                </li>
+                <li class="education-item" data-status="Finalizado">
+                    <strong>Grado Medio en Sistemas Microinformáticos y Redes (SMR)</strong><br>
+                    <a href="https://www.ceslopedevega.com/" target="_blank">CES Lope de Vega</a>, Córdoba, España<br>
+                    <span class="date-info">2021 - 2023</span>
+                </li>
+                <li class="education-item" data-status="Finalizado">
+                    <strong>ESO (Educación Secundaria Obligatoria)</strong><br>
+                    <a href="https://www.betica-mudarra.org/" target="_blank">Colegio Bética Mudarra</a>, Córdoba, España<br>
+                    <span class="date-info">2016 - 2021</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Experiencia Profesional</h2>
+            <ul class="experience-list">
+                <li class="experience-item" data-status="Prácticas">
+                    <strong>Técnico Informático - Departamento TI</strong><br>
+                    <a href="https://magtel.es/" target="_blank">Magtel</a>, Córdoba, España<br>
+                    <span class="date-info">Prácticas SMR, 2023</span><br>
+                    Resolución de incidencias, soporte técnico, administración de sistemas, reparación y montaje de equipos y formación en Bizagi Modeler Studio.
+                </li>
+                <li class="experience-item" data-status="Prácticas">
+                    <strong>Prácticas en el extranjero Erasmus Plus</strong><br>
+                    <a href="http://emtoservis.lt/" target="_blank">Emtoservis</a>, Vilna, Lituania<br>
+                    <span class="date-info">Junio - Julio 2022</span><br>
+                    Experiencia internacional trabajando en un entorno multicultural en proyectos relacionados con redes y sistemas.
+                </li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Habilidades Técnicas</h2>
+            <ul class="skills-list">
+                <li>Gestión y administración de servidores</li>
+                <li>Seguridad informática y redes locales</li>
+                <li>Implementación y mantenimiento de sistemas operativos</li>
+                <li>Montaje y configuración de equipos informáticos</li>
+                <li>Conocimientos básicos en IA</li>
+                <li>Conocimientos medios en HTML y desarrollo de páginas web</li>
+                <li>Conocimientos básicos en modelado de procesos empresariales con Bizagi</li>
+                <li>Conocimientos avanzados de sistemas en red</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Idiomas</h2>
+            <ul class="skills-list">
+                <li>Español (Nativo)</li>
+                <li>Inglés (Nivel B1 en curso)</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Otros Logros</h2>
+            <ul class="skills-list">
+                <li><a href="https://www.diariocordoba.com/contraportada/2017/04/20/primeros-lego-36659515.html" style="color: rgb(20, 165, 1);" target="_blank">Campeón de Andalucía</a> de la <a href="https://firstlegoleague.soy/" target="_blank">First Lego League</a> (2016)</li>
+                <li>Finalista de España en la <a href="https://firstlegoleague.soy/" target="_blank">First Lego League</a> (2016)</li>
+                <li>Estudios de robótica (4 años en <a href="https://www.b-wit.com/" target="_blank">Bwit</a>)</li>
+                <li>Estudios de programación Arduino (2 años en <a href="https://www.b-wit.com/" target="_blank">Bwit</a>)</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Federico Lora Ortiz - Todos los derechos reservados</p>
+    </footer>
+</body>
+
+</html>
