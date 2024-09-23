@@ -1,6 +1,6 @@
 # Curriculum Vitae de Federico Lora
 
-![Mi Logo Redondo](Mi%20Logo%20Redondo.png)
+<img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
 
 Bienvenido a mi repositorio, donde puedes encontrar mi currículum vitae en formato HTML. Este documento refleja mi trayectoria académica y profesional, así como mis habilidades técnicas.
 
