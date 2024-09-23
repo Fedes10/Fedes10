@@ -39,14 +39,16 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 999px;
             margin: 20px auto;
             padding: 20px;
             background-color: #c1cad3;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border: 3px solid #012a5ec7;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3)
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 1;
         }
 
         .section {
@@ -63,7 +65,6 @@
             flex-wrap: wrap;
             justify-content: space-between;
             padding-bottom: 20px;
-            border-bottom: 1px solid #ccc;
         }
 
         .contact-info p {
@@ -141,6 +142,72 @@
                 text-align: center;
             }
         }
+
+        /* Estilos de los slideshow */
+        .header-content {
+            position: relative; 
+        }
+
+        .slideshow-container {
+            position: absolute; /* Cambia a absolute para que estén dentro del encabezado */
+            top: 37px; /* Ajusta según sea necesario */
+            width: 300px;
+            height: 150px;
+            background-color: #f9f9f9;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            border: 3px solid #012a5ec7;
+        }
+
+        .slideshow-container.left {
+            left: 10%; /* Ajusta según el diseño que quieras */
+        }
+
+        .slideshow-container.right {
+            right: 10%; /* Ajusta según el diseño que quieras */
+        }
+
+        .slideshow-images {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slideshow-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .slideshow-images img.active {
+            left: 0;
+            opacity: 1;
+        }
+
+
+        @media (max-width: 768px) {
+    .slideshow-container {
+        display: none; /* Ocultar los slideshows en vista móvil */
+    }
+}
+
+.desktop-view .slideshow-container {
+    display: block; /* Mostrar los slideshows en vista escritorio */
+}
+
+.desktop-view .slideshow-container.left {
+    left: 10%;
+}
+
+.desktop-view .slideshow-container.right {
+    right: 10%;
+}
+
     </style>
 </head>
 
@@ -150,9 +217,7 @@
             <img src="perfil-foto.jpg" alt="Foto" class="photo">
             <h1 style="color: #1293e9;">Federico Lora</h1>
             <p>Técnico en Administración de Sistemas Informáticos y Redes</p>
-        </div>
     </header>
-
     <div class="container">
         <section class="section">
             <h2>Información Personal</h2>
@@ -262,9 +327,62 @@
             </ul>
         </section>
     </div>
-
     <footer>
         <p>&copy; 2024 Federico Lora - Todos los derechos reservados</p>
     </footer>
+
+    <!-- Slideshow de Proyectos -->
+    <div class="slideshow-container left">
+        <div class="slideshow-images" id="slideshow-projects">
+            <img src="proyecto1.jpg" alt="Proyecto 1" class="active">
+            <img src="proyecto2.jpg" alt="Proyecto 2">
+            <img src="proyecto3.jpg" alt="Proyecto 3">
+        </div>
+    </div>
+
+    <!-- Slideshow de Logros -->
+    <div class="slideshow-container right">
+        <div class="slideshow-images" id="slideshow-achievements">
+            <img src="logro1.jpg" alt="Logro 1" class="active">
+            <img src="logro2.jpg" alt="Logro 2">
+            <img src="logro3.jpg" alt="Logro 3">
+        </div>
+    </div>
+
+    <script>
+        // Función para cambiar las imágenes del slideshow
+        function startSlideshow(containerId) {
+            const container = document.getElementById(containerId);
+            const images = container.getElementsByTagName('img');
+            let index = 0;
+
+            setInterval(() => {
+                images[index].classList.remove('active');
+                index = (index + 1) % images.length;
+                images[index].classList.add('active');
+            }, 4000); // Cambia cada 4 segundos
+        }
+
+        // Iniciar los slideshows
+        startSlideshow('slideshow-projects');
+        startSlideshow('slideshow-achievements');
+    </script>
+
+
+    <button id="toggle-view" style="margin-top: 10px; padding: 10px; border: none; background-color: #004080; color: white; cursor: pointer;">
+        Vista Ordenador
+    </button>
+    <script>
+        document.getElementById('toggle-view').addEventListener('click', function() {
+            document.body.classList.toggle('desktop-view');
+            if (document.body.classList.contains('desktop-view')) {
+                this.innerText = 'Vista Móvil'; // Cambiar texto del botón
+            } else {
+                this.innerText = 'Vista Ordenador'; // Cambiar texto del botón
+            }
+        });
+    </script>
+        
 </body>
+
 </html>
