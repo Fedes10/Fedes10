@@ -188,25 +188,24 @@
             left: 0;
             opacity: 1;
         }
-
-
+        
         @media (max-width: 768px) {
-    .slideshow-container {
-        display: none; /* Ocultar los slideshows en vista móvil */
-    }
-}
+        .slideshow-container {
+            display: none; /* Ocultar los slideshows en vista móvil */
+        }
 
-.desktop-view .slideshow-container {
-    display: block; /* Mostrar los slideshows en vista escritorio */
-}
+        }
+        .desktop-view .slideshow-container {
+            display: block; /* Mostrar los slideshows en vista escritorio */
+        }
 
-.desktop-view .slideshow-container.left {
-    left: 10%;
-}
+        .desktop-view .slideshow-container.left {
+            left: 10%;
+        }
 
-.desktop-view .slideshow-container.right {
-    right: 10%;
-}
+        .desktop-view .slideshow-container.right {
+            right: 10%;
+        }
 
     </style>
 </head>
@@ -367,22 +366,5 @@
         startSlideshow('slideshow-projects');
         startSlideshow('slideshow-achievements');
     </script>
-
-
-    <button id="toggle-view" style="margin-top: 10px; padding: 10px; border: none; background-color: #004080; color: white; cursor: pointer;">
-        Vista Ordenador
-    </button>
-    <script>
-        document.getElementById('toggle-view').addEventListener('click', function() {
-            document.body.classList.toggle('desktop-view');
-            if (document.body.classList.contains('desktop-view')) {
-                this.innerText = 'Vista Móvil'; // Cambiar texto del botón
-            } else {
-                this.innerText = 'Vista Ordenador'; // Cambiar texto del botón
-            }
-        });
-    </script>
-        
 </body>
-
 </html>
