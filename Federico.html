@@ -156,6 +156,7 @@
             background-color: #f9f9f9;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
             border: 3px solid #012a5ec7;
+            transition: background-color 0.5s ease;
         }
 
         .slideshow-container.left {
@@ -333,35 +334,43 @@
     <!-- Slideshow de Proyectos -->
     <div class="slideshow-container left">
         <div class="slideshow-images" id="slideshow-projects">
-            <img src="proyecto1.jpg" alt="Proyecto 1" class="active">
-            <img src="proyecto2.jpg" alt="Proyecto 2">
-            <img src="proyecto3.jpg" alt="Proyecto 3">
+            <img src="Proyectos/arduino.png" alt="Proyecto 1" class="active">
+            <img src="Proyectos/arduino.png" alt="Proyecto 2">
+            <img src="Proyectos/arduino.png" alt="Proyecto 3">
         </div>
     </div>
 
     <!-- Slideshow de Logros -->
     <div class="slideshow-container right">
         <div class="slideshow-images" id="slideshow-achievements">
-            <img src="logro1.jpg" alt="Logro 1" class="active">
-            <img src="logro2.jpg" alt="Logro 2">
-            <img src="logro3.jpg" alt="Logro 3">
+            <img src="Logros/bizagi-titulo1.png" alt="Logro 1" class="active">
+            <img src="Logros/bizagi-titulo2.png" alt="Logro 2">
+            <img src="Logros/first-lego-league-periodico.png" alt="Logro 3">
         </div>
     </div>
 
     <script>
         // Función para cambiar las imágenes del slideshow
         function startSlideshow(containerId) {
-            const container = document.getElementById(containerId);
-            const images = container.getElementsByTagName('img');
-            let index = 0;
+        const container = document.getElementById(containerId);
+        const images = container.getElementsByTagName('img');
+        let index = 0;
 
-            setInterval(() => {
-                images[index].classList.remove('active');
-                index = (index + 1) % images.length;
-                images[index].classList.add('active');
-            }, 4000); // Cambia cada 4 segundos
+        setInterval(() => {
+            images[index].classList.remove('active');
+            index = (index + 1) % images.length;
+            images[index].classList.add('active');
+
+            // Cambiar el color de fondo según la imagen activa
+            if (index === 0) {
+                container.style.backgroundColor = '#001836'; // Color para la primera imagen
+            } else if (index === 1) {
+                container.style.backgroundColor = '#001836'; // Color para la segunda imagen
+            } else {
+                container.style.backgroundColor = '#001836'; // Color para la tercera imagen
+            }
+            }, 3000); // Cambia cada 4 segundos
         }
-
         // Iniciar los slideshows
         startSlideshow('slideshow-projects');
         startSlideshow('slideshow-achievements');
