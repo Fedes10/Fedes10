@@ -2,10 +2,6 @@
 
 <img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
 
-> [!IMPORTANT]
-> Curriculum
----> <a href="https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html">Versión Online</a>
-
 Bienvenido a mi repositorio, donde puedes encontrar mi currículum vitae en formato HTML. Este documento refleja mi trayectoria académica y profesional, así como mis habilidades técnicas.
 
 ## Ver mi Currículum
