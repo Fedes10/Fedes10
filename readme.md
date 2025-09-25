@@ -2,29 +2,36 @@
 
 <img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
 
-Bienvenido a mi repositorio, donde puedes encontrar mi currículum vitae en formato HTML. Este documento refleja mi trayectoria académica y profesional, así como mis habilidades técnicas.
+# 👋 ¡Hola! Soy Fedes10. Bienvenido a mi repositorio
 
-## Ver mi Currículum
+🎓 **Técnico Superior en Administración de Sistemas Informáticos y Redes (ASIR)**  
+Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.
 
-Puedes ver mi currículum en línea haciendo clic en el siguiente enlace:
+## 🛠️ Habilidades Técnicas  
+- Administración de servidores y sistemas  
+- Redes locales y seguridad informática  
+- Instalación y mantenimiento de sistemas operativos  
+- Montaje y reparación de hardware  
+- HTML y desarrollo básico de páginas web  
+- Fundamentos de IA y modelado de procesos empresariales  
 
-[Ver Currículum](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
+## 💼 Experiencia  
+He realizado prácticas profesionales en entornos de TI, trabajando en:  
+- Administración y mantenimiento de servidores  
+- Soporte técnico y resolución de incidencias  
+- Configuración de software y hardware  
 
-## Descripción
+## 🌱 Intereses  
+- Ciberseguridad  
+- Administración de sistemas  
+- Redes y virtualización  
+- Aprendizaje continuo  
 
-Este currículum incluye:
+> _"La excelencia no es un acto, sino un hábito."_  
 
-- Información personal
-- Formación académica
-- Experiencia profesional
-- Habilidades técnicas
-- Idiomas
-- Otros logros
-
-## Contacto
-
-Si deseas ponerte en contacto conmigo, puedes encontrar mis datos en el currículum.
+---
+✨ Aquí encontrarás mis proyectos y experimentos relacionados con algunas de mis webs
 
 ---
 
-Gracias por visitar mi repositorio. Espero que encuentres mi currículum interesante.
+Gracias por visitar mi repositorio
