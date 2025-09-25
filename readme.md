@@ -2,8 +2,6 @@
 
 <img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
 
-# 👋 ¡Hola! Soy Fedes10. Bienvenido a mi repositorio
-
 🎓 **Técnico Superior en Administración de Sistemas Informáticos y Redes (ASIR)**  
 Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.
 
@@ -30,8 +28,6 @@ He realizado prácticas profesionales en entornos de TI, trabajando en:
 > _"La excelencia no es un acto, sino un hábito."_  
 
 ---
-✨ Aquí encontrarás mis proyectos y experimentos relacionados con algunas de mis webs
+✨ Aquí encontrarás mis proyectos y experimentos relacionados con algunas de mis webs. Gracias por visitar mi repositorio
 
----
 
-Gracias por visitar mi repositorio
