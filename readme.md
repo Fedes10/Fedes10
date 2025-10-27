@@ -3,7 +3,8 @@
 <img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
 🎓 **Técnico Superior en Administración de Sistemas Informáticos y Redes (ASIR)**  
 Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.
-
+[**Curriculum**](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
+[![Curriculum](https://img.shields.io/badge/Curriculum-Ver%20PDF-blue)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
 ## 🛠️ Habilidades Técnicas  
 - Administración de servidores y sistemas  
 - Redes locales y seguridad informática  
