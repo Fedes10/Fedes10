@@ -1,6 +1,7 @@
 # Presentación
 
 <img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
+
 ## 🎓 Técnico Superior en Administración de Sistemas Informáticos y Redes (ASIR)
 
 Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.
@@ -20,8 +21,8 @@ Apasionado de la informática, la administración de servidores y la ciberseguri
 He realizado prácticas profesionales en entornos de TI, trabajando en:  
 - Administración y mantenimiento de servidores  
 - Soporte técnico y resolución de incidencias  
-- Configuración de software y hardware  
-
+- Configuración de software y hardware
+- 
 ## 🌱 Intereses  
 - Ciberseguridad  
 - Administración de sistemas  
