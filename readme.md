@@ -6,7 +6,7 @@
 
 Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.
 
-[![WEB Personal / Curriculum](https://img.shields.io/badge/Curriculum-Ver%20CV-blue)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
+[![WEB Personal](https://img.shields.io/badge/WebPersonal-Ver%20CV-blue)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
 
 ---
 ## 🛠️ Habilidades Técnicas  
