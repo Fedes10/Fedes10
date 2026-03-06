@@ -1,7 +1,7 @@
 @echo off
 setlocal
 :: Configura aquí tu URL
-set REPO_URL=https://github.com/Fedes10/Fedes10
+set REPO_URL=https://github.com/Fedes10/Fedes10.git
 
 echo === SUBIDA FORZADA CON CARPETAS VACIAS ===
 
