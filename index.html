@@ -81,10 +81,13 @@ SISTEMA DE IDIOMAS:
         <i class="fas fa-moon theme-icon-moon"></i>
         <span class="theme-knob"></span>
       </button>
-      <!-- Botón cambio de idioma: el texto (ES/EN) lo controla script.js -->
-      <button class="lang-toggle" id="langToggle" title="Change language" aria-label="Change language">
-        <i class="fas fa-globe lang-icon"></i>
-        <span class="lang-text">ES</span>
+      <!-- Botón idioma: muestra el idioma ACTIVO. Por defecto inglés → bandera EN + "EN" -->
+      <!-- script.js actualiza src, alt y texto según localStorage al arrancar -->
+      <button class="lang-toggle" id="langToggle" title="Change language / Cambiar idioma"
+        aria-label="Change language / Cambiar idioma">
+        <img id="langFlag" src="https://raw.githubusercontent.com/Fedes10/Fedes10/refs/heads/main/Imagenes/ingles.png"
+          alt="English" class="lang-flag" />
+        <span class="lang-text">EN</span>
       </button>
       <!-- Botón descargar CV -->
       <a href="Federico_Lora_CV.pdf" class="btn-cv" download>
@@ -130,7 +133,7 @@ SISTEMA DE IDIOMAS:
             class="fas fa-paper-plane"></i></a>
       </div>
       <div class="hero-links reveal-up delay-5">
-        <a href="/cdn-cgi/l/email-protection#fb9d9e9f9e8f9a979c9a8fbb9c969a9297d5989496" title="Email"><i
+        <a href="mailto:fedetalgat@gmail.com" title="Email"><i
             class="fas fa-envelope"></i></a>
         <a href="https://linkedin.com/in/fedes10/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Fedes10" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
@@ -683,6 +686,16 @@ SISTEMA DE IDIOMAS:
             <p data-i18n="logro6-desc">Erasmus Plus — Vilnius, Lithuania (2022)</p>
           </div>
         </a>
+        <!-- Logro Azure — enlace y imagen pendientes de añadir -->
+        <a href="#" target="_blank" class="logro-card reveal-up delay-1">
+          <div class="logro-card-top" style="background-image: url(''); background-color: var(--bg-surface2);">
+            <div class="logro-icon"><i class="fas fa-cloud"></i></div>
+          </div>
+          <div class="logro-card-bottom">
+            <h3 data-i18n="logro7-title">Introduction to Microsoft Azure</h3>
+            <p data-i18n="logro7-desc">Cloud fundamentals — Microsoft Azure</p>
+          </div>
+        </a>
       </div>
 
       <!-- Galería de imágenes de logros -->
@@ -929,13 +942,13 @@ SISTEMA DE IDIOMAS:
             </div>
           </div>
           <div class="chat-card-contacts">
-            <a href="/cdn-cgi/l/email-protection#bbdddedfdecfdad7dcdacffbdcd6dad2d795d8d4d6" class="contact-item"
+            <a href="mailto:fedetalgat@gmail.com" class="contact-item"
               title="Email">
               <div class="contact-icon"><i class="fas fa-envelope"></i></div>
               <div class="contact-info">
                 <span class="contact-label">Email</span>
                 <span class="contact-value"><span class="__cf_email__"
-                    data-cfemail="96f0f3f2f3e2f7faf1f7e2d6f1fbf7fffab8f5f9fb">[email&#160;protected]</span></span>
+                    data-cfemail="eb8d8e8f8e9f8a878c8a9fab8c868a8287c5888486">fedetalgat@gmail.com</span></span>
               </div>
               <i class="fas fa-arrow-right contact-arrow"></i>
             </a>
@@ -990,8 +1003,7 @@ SISTEMA DE IDIOMAS:
       <span class="footer-brand">Federico Lora</span>
       <span class="footer-copy" data-i18n="footer-copy">© 2026 · F10 · All rights reserved</span>
       <div class="footer-links">
-        <a href="/cdn-cgi/l/email-protection#e98f8c8d8c9d88858e889da98e84888085c78a8684"><i
-            class="fas fa-envelope"></i></a>
+        <a href="mailto:fedetalgat@gmail.com"><i class="fas fa-envelope"></i></a>
         <a href="https://linkedin.com/in/fedes10/" target="_blank"><i class="fab fa-linkedin"></i></a>
         <a href="https://github.com/Fedes10" target="_blank"><i class="fab fa-github"></i></a>
       </div>
@@ -1009,7 +1021,7 @@ SISTEMA DE IDIOMAS:
     <i class="fas fa-chevron-up"></i>
   </button>
 
-  <!-- Script principal: se carga al final para que el DOM esté listo -->
+  <!-- Script principal -->
   <script src="script.js"></script>
 
 </body>

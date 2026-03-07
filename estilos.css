@@ -301,19 +301,22 @@ ul {
 
 .theme-icon-sun,
 .theme-icon-moon {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   position: absolute;
-  transition: opacity 0.3s
+  transition: opacity 0.3s, filter 0.3s;
+  z-index: 2;
+  /* por encima del knob */
+  pointer-events: none;
 }
 
 .theme-icon-sun {
   left: 7px;
-  color: #f59e0b
+  color: #f59e0b;
 }
 
 .theme-icon-moon {
   right: 7px;
-  color: #818cf8
+  color: #818cf8;
 }
 
 .theme-knob {
@@ -323,6 +326,7 @@ ul {
   background: linear-gradient(135deg, var(--blue-accent), var(--blue-light));
   border-radius: 50%;
   left: 4px;
+  z-index: 1;
   transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
 }
@@ -331,12 +335,23 @@ ul {
   left: 34px
 }
 
+/* Icono inactivo: tenue. Icono activo: brilla al máximo */
 [data-theme="dark"] .theme-icon-sun {
-  opacity: 0.3
+  opacity: 0.25
+}
+
+[data-theme="dark"] .theme-icon-moon {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #818cf8);
 }
 
 [data-theme="light"] .theme-icon-moon {
-  opacity: 0.3
+  opacity: 0.25
+}
+
+[data-theme="light"] .theme-icon-sun {
+  opacity: 1;
+  filter: drop-shadow(0 0 4px #f59e0b);
 }
 
 /* ===== Cambiar Idioma ===== */
@@ -361,9 +376,12 @@ ul {
   border-color: var(--border-hover);
 }
 
-.lang-icon {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
+.lang-flag {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
   margin-right: 4px;
 }
 
@@ -1747,19 +1765,28 @@ ul {
 
 .lightbox-close {
   position: absolute;
-  top: 25px;
-  right: 35px;
-  color: white;
-  font-size: 40px;
+  top: 1.1rem;
+  right: 1.1rem;
+  width: 42px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1rem;
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.2s, transform 0.2s;
-  z-index: 100001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6px);
+  transition: background 0.25s, transform 0.2s, border-color 0.25s;
+  z-index: 100002;
 }
 
 .lightbox-close:hover {
-  opacity: 1;
-  transform: scale(1.1);
+  background: rgba(29, 99, 212, 0.75);
+  border-color: rgba(59, 130, 246, 0.7);
+  transform: scale(1.1) rotate(90deg);
 }
 
 .lightbox-nav {
