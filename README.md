@@ -6,7 +6,7 @@
 Apasionado de la informática, la administración de servidores y la ciberseguridad. Me encanta aprender y afrontar nuevos retos tecnológicos.  
 Actualmente curso **Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)** en CES Lope de Vega, Córdoba.
 
-[![Ver CV completo](https://img.shields.io/badge/WebPersonal-Ver%20CV-blue)](https://htmlpreview.github.io/?https://github.com/Fedes10/Fedes10/blob/main/Federico.html)
+[![Ver CV completo](https://img.shields.io/badge/WebPersonal-Ver%20CV-blue)](https://fedes10.github.io/Fedes10/)
 
 ---
 

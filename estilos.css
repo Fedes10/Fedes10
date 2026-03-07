@@ -1730,11 +1730,19 @@ ul {
 }
 
 .lightbox-img {
-  max-width: 90%;
-  max-height: 90%;
+  /* Limitar tanto en ancho como en alto para que ninguna foto
+     — horizontal ni vertical — se salga de la pantalla.
+     object-fit: contain garantiza que la proporción se respeta
+     y nunca se desborda. */
+  max-width: min(90vw, 960px);
+  max-height: 82vh;
+  width: auto;
+  height: auto;
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
   object-fit: contain;
+  display: block;
+  margin: auto;
 }
 
 .lightbox-close {
@@ -2019,8 +2027,17 @@ ul {
 }
 
 @keyframes contactGlow {
-  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.1); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
 }
 
 .contact-wrapper {
@@ -2332,9 +2349,19 @@ ul {
 }
 
 @keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-20deg); }
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(20deg);
+  }
+
+  75% {
+    transform: rotate(-20deg);
+  }
 }
 
 /* ===== CONTACTO Y DESCARGA (Legacy - mantener compatibilidad) ===== */
@@ -2371,6 +2398,7 @@ ul {
   width: 26px;
   text-align: center
 }
+
 .chat-container {
   background: var(--bg-surface1);
   border: 1px solid var(--border);
