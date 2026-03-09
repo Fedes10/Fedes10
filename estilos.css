@@ -404,7 +404,19 @@ ul {
   font-weight: 700;
   white-space: nowrap;
   transition: transform var(--transition), box-shadow var(--transition);
-  flex-shrink: 0
+  flex-shrink: 0;
+}
+
+/* Mostrar el texto del botón CV en móviles */
+@media (max-width: 600px) {
+  .btn-cv-text {
+    display: inline !important;
+    font-size: 0.85rem !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: auto !important;
+    max-width: none !important;
+  }
 }
 
 .btn-cv:hover {
