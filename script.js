@@ -474,8 +474,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.triggerDownload = function () {
     // Crear un enlace temporal y hacer clic en él para forzar la descarga
     const link = document.createElement('a');
-    link.href = 'Federico_Lora_CV.pdf';
-    link.download = 'Federico_Lora_CV.pdf';
+    link.href = 'Curriculum Fede Final.pdf';
+    link.download = 'Curriculum Fede Final.pdf';
     link.click();
 
     // Mostrar la animación de impresora
