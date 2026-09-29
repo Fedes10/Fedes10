@@ -1,4 +1,4 @@
-<img src="Mi Logo Redondo.png" alt="Mi Logo" width="150"/>
+<img src="Mi Logo Redondo.webp" alt="Mi Logo" width="150"/>
 
 ## 🎓 Formación Académica
 
