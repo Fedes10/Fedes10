@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // typingEl declarado aquí (no dentro de startTypingEffect) para evitar
   // ReferenceError al llamarse startTypingEffect antes de llegar a su definición
   const typingEl = document.getElementById('typingText');
-  const FLAG_ES = 'https://raw.githubusercontent.com/Fedes10/Fedes10/refs/heads/main/Imagenes/espa%C3%B1ol.png';
-  const FLAG_EN = 'https://raw.githubusercontent.com/Fedes10/Fedes10/refs/heads/main/Imagenes/ingles.png';
+  const FLAG_ES = 'Imagenes/espa%C3%B1ol.png';
+  const FLAG_EN = 'Imagenes/ingles.png';
 
 
 
