@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+# Rutas internas de Cloudflare (el enlace con el que esconde el correo): no son páginas
+Disallow: /cdn-cgi/
+
+Sitemap: https://fedes10.com/sitemap.xml
