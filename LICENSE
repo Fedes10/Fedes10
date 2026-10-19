@@ -1,0 +1,49 @@
+Copyright © 2024-2026 Federico Talgat Lora Ortiz. Todos los derechos reservados.
+
+FEDES10.COM — WEB PERSONAL. TODOS LOS DERECHOS RESERVADOS.
+
+Este repositorio y todo su contenido —código fuente, documentación, textos,
+diseño, imágenes, fotografías, nombres y cualquier otro material— son obra de
+Federico Talgat Lora Ortiz («el titular») y están protegidos por el Real
+Decreto Legislativo 1/1996, que aprueba el texto refundido de la Ley de
+Propiedad Intelectual, y por los tratados internacionales aplicables.
+
+Que el repositorio sea público solo permite VERLO. NO se concede ninguna
+licencia, ni expresa ni implícita. En particular, queda prohibido sin
+autorización previa y por escrito del titular:
+
+  1. copiar, reproducir o descargar este contenido, en todo o en parte;
+  2. modificarlo, traducirlo o crear obras derivadas;
+  3. distribuirlo, publicarlo, comunicarlo públicamente o ponerlo a
+     disposición de terceros, de forma gratuita o cobrando;
+  4. usarlo para entrenar modelos de inteligencia artificial o incorporarlo a
+     conjuntos de datos;
+  5. usar el nombre, la imagen, el logotipo «F10» o el diseño de la web.
+
+COMPONENTES DE TERCEROS
+
+  · Manrope y JetBrains Mono (Fuentes/): SIL Open Font License 1.1. Su texto
+    y sus avisos de copyright están en Fuentes/OFL-1.1.txt.
+  · Font Awesome Free 6.5 (se carga desde cdnjs.cloudflare.com, no está en
+    este repositorio): iconos CC BY 4.0, fuentes SIL OFL 1.1, código MIT.
+  · Los logotipos y nombres de empresas, centros y entidades que aparecen en
+    la web son de sus respectivos titulares y se muestran solo para indicar
+    dónde se trabajó o se estudió.
+
+CONTACTO
+
+fedestalgat@gmail.com
+
+--------------------------------------------------------------------------
+
+ENGLISH SUMMARY — All rights reserved.
+
+This repository and all its contents (source code, documentation, texts,
+design, images, photographs and names) are the work of Federico Talgat Lora
+Ortiz and are protected by Spanish copyright law (Royal Legislative Decree
+1/1996) and applicable international treaties. Being public only allows
+viewing it: no licence is granted, express or implied. Copying, modifying,
+distributing, publishing or using this material — including using it to
+train artificial intelligence models — and using the name, image, «F10» logo
+or design require the prior written permission of the copyright holder.
+Third-party components keep their own licences, listed above.
