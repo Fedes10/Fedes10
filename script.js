@@ -10,11 +10,13 @@ fedes10.com — script.js · © 2024-2026 Federico Talgat Lora Ortiz · Todos lo
 
 // ============================================================
 // IDIOMAS
-//   - Los textos viven SOLO en idiomas.json. Se piden una vez al cargar; antes había una copia
-//     pegada aquí dentro y las dos acabaron diciendo cosas distintas sin que nadie lo notara.
-//   - El HTML trae el inglés escrito: si idiomas.json no llegara, la web se sigue leyendo.
-//   - Idioma: el que eligió el visitante (localStorage 'fl-lang'); si nunca eligió, español
-//     cuando su navegador está en español, e inglés en cualquier otro caso.
+//   - Una página por idioma: https://fedes10.com/ (español) y https://fedes10.com/en/ (inglés).
+//     Las dos llegan ya escritas (las genera Herramientas/GenerarIdiomas.py desde idiomas.json),
+//     así que aquí no se traduce nada: Google y cualquiera sin JavaScript leen su idioma entero.
+//   - El botón de idioma es un ENLACE a la otra página. Al pulsarlo se guarda la elección
+//     (localStorage 'fl-lang') y, si otro día se entra por la dirección del otro idioma, se va
+//     a la elegida. Sin elección guardada no se redirige a nadie (Google lo desaconseja).
+//   - ?lang=es / ?lang=en (los enlaces que ya circulaban) llevan a la página de ese idioma.
 //
 // SEGURIDAD
 //   - Aquí está TODO el JavaScript de la web: el HTML no lleva ni un onclick ni un onerror.
@@ -22,6 +24,32 @@ fedes10.com — script.js · © 2024-2026 Federico Talgat Lora Ortiz · Todos lo
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  const html = document.documentElement;
+  const leer = (clave) => { try { return localStorage.getItem(clave); } catch { return null; } };
+  const guardar = (clave, valor) => { try { localStorage.setItem(clave, valor); } catch { /* modo privado */ } };
+
+
+  // ===== Idioma: ¿esta página o la otra? =====
+  const idiomaPagina = html.lang === 'en' ? 'en' : 'es';
+  const otroIdioma = idiomaPagina === 'en' ? 'es' : 'en';
+  const enlaceIdioma = document.getElementById('langToggle');
+  const urlDelOtro = () => new URL(enlaceIdioma.getAttribute('href') + location.hash, location.href);
+
+  const pedido = new URLSearchParams(location.search).get('lang');
+  const elegido = ['es', 'en'].includes(pedido) ? pedido : leer('fl-lang');
+  if (elegido === otroIdioma) {
+    location.replace(urlDelOtro());
+    return;
+  }
+  if (pedido) history.replaceState(null, '', location.pathname + location.hash);   // fuera el ?lang
+
+  enlaceIdioma.addEventListener('click', e => {
+    e.preventDefault();
+    guardar('fl-lang', otroIdioma);
+    location.assign(urlDelOtro());          // y en la misma sección en la que estaba
+  });
+
 
   // ===== Empezar siempre desde arriba =====
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
@@ -35,11 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Tema claro / oscuro =====
   // Por defecto oscuro (el diseño nace ahí). Solo se guarda cuando el visitante lo cambia.
-  const html = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
-  const leer = (clave) => { try { return localStorage.getItem(clave); } catch { return null; } };
-  const guardar = (clave, valor) => { try { localStorage.setItem(clave, valor); } catch { /* modo privado */ } };
-
   html.setAttribute('data-theme', leer('fl-theme') || 'dark');
   themeToggle.addEventListener('click', () => {
     const siguiente = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -48,102 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ===== Idiomas =====
-  const langToggle = document.getElementById('langToggle');
-  const langText = document.querySelector('.lang-text');
-  const langFlag = document.getElementById('langFlag');
-  const typingEl = document.getElementById('typingText');
-  const BANDERAS = { es: 'Imagenes/espa%C3%B1ol.png', en: 'Imagenes/ingles.png' };
-  const CV = { es: 'Curriculum Fede Final.pdf', en: 'Curriculum Fede Final.pdf' };
-
-  const idiomaDelNavegador = () =>
-    (navigator.languages || [navigator.language || 'en']).some(l => /^es\b/i.test(l)) ? 'es' : 'en';
-  // fedes10.com/?lang=en abre la web en inglés pase lo que pase (para mandar el enlace a quien
-  // no habla español). No se guarda: lo que se guarda es lo que el visitante elige con el botón.
-  const idiomaDeLaUrl = new URLSearchParams(location.search).get('lang');
-  let idioma = ['es', 'en'].includes(idiomaDeLaUrl) ? idiomaDeLaUrl : (leer('fl-lang') || idiomaDelNavegador());
-  if (idioma !== 'es' && idioma !== 'en') idioma = 'en';
-
-  let textos = null;          // idiomas.json, cuando llegue
-  let typingTimer = null;
-
-  function aplicarIdioma(lang) {
-    const dic = textos && textos[lang];
-    if (dic) {
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const v = dic[el.getAttribute('data-i18n')];
-        if (v !== undefined) el.textContent = v;
-      });
-      document.querySelectorAll('[data-i18n-html]').forEach(el => {
-        const v = dic[el.getAttribute('data-i18n-html')];
-        if (v !== undefined) el.innerHTML = v;   // solo texto propio de idiomas.json
-      });
-      // data-i18n-attr="aria-label:clave,title:otra"
-      document.querySelectorAll('[data-i18n-attr]').forEach(el => {
-        el.getAttribute('data-i18n-attr').split(',').forEach(par => {
-          const [attr, clave] = par.split(':').map(s => s.trim());
-          if (attr && dic[clave] !== undefined) el.setAttribute(attr, dic[clave]);
-        });
-      });
-    }
-    html.setAttribute('lang', lang);
-    langText.textContent = lang.toUpperCase();
-    langFlag.src = BANDERAS[lang];
-    document.getElementById('btnCvNav').setAttribute('href', CV[lang]);
-    arrancarTyping(lang);
-  }
-
-  langToggle.addEventListener('click', () => {
-    idioma = idioma === 'en' ? 'es' : 'en';
-    guardar('fl-lang', idioma);
-    // Si se entró con ?lang=…, la dirección acompaña al botón (si no, al recargar volvería atrás)
-    if (idiomaDeLaUrl) {
-      const url = new URL(location.href);
-      url.searchParams.set('lang', idioma);
-      history.replaceState(null, '', url);
-    }
-    aplicarIdioma(idioma);
-  });
-
-  fetch('idiomas.json', { cache: 'no-cache' })
-    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then(json => { textos = json; aplicarIdioma(idioma); })
-    .catch(err => {
-      // Sin el JSON la web sigue en el inglés del HTML; el botón de idioma no cambia nada.
-      console.warn('idiomas.json no ha cargado:', err.message);
-      aplicarIdioma('en');
-    });
-
-
   // ===== Texto que se escribe solo (cabecera) =====
-  const frasesDeRespaldo = [
-    'Flutter apps for Android, web and Windows',
-    'Fast, secure, bilingual websites',
-    'Linux servers with Docker and Cloudflare'
-  ];
-
-  function frases(lang) {
-    const dic = textos && textos[lang];
-    const lista = [];
-    for (let i = 0; dic && dic['typing-' + i] !== undefined; i++) lista.push(dic['typing-' + i]);
-    return lista.length ? lista : frasesDeRespaldo;
-  }
-
-  function arrancarTyping(lang) {
-    if (typingTimer) clearTimeout(typingTimer);
-    typingEl.textContent = '';
-    const lista = frases(lang);
-    const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (sinMovimiento) { typingEl.textContent = lista[0]; return; }
-
+  // Las frases vienen en data-frases, ya en el idioma de la página; la primera ya está escrita.
+  const typingEl = document.getElementById('typingText');
+  let frases = [];
+  try { frases = JSON.parse(typingEl.dataset.frases || '[]'); } catch { /* se queda la primera frase */ }
+  if (frases.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     let p = 0, c = 0, borrando = false;
+    typingEl.textContent = '';
     (function paso() {
-      const frase = lista[p];
+      const frase = frases[p];
       c += borrando ? -1 : 1;
       typingEl.textContent = frase.slice(0, c);
-      if (!borrando && c === frase.length) { borrando = true; typingTimer = setTimeout(paso, 2000); return; }
-      if (borrando && c === 0) { borrando = false; p = (p + 1) % lista.length; }
-      typingTimer = setTimeout(paso, borrando ? 35 : 62);
+      if (!borrando && c === frase.length) { borrando = true; setTimeout(paso, 2000); return; }
+      if (borrando && c === 0) { borrando = false; p = (p + 1) % frases.length; }
+      setTimeout(paso, borrando ? 35 : 62);
     })();
   }
 
@@ -323,9 +266,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Descargar el CV, con la animación de la impresora =====
   document.getElementById('btnDownloadCV').addEventListener('click', () => {
+    // El PDF de este idioma: el mismo al que apunta el botón de la barra
+    const cv = document.getElementById('btnCvNav').getAttribute('href');
     const enlace = document.createElement('a');
-    enlace.href = CV[idioma];
-    enlace.download = CV[idioma];
+    enlace.href = cv;
+    enlace.download = decodeURIComponent(cv.split('/').pop());
     enlace.click();
     document.getElementById('printerAnim').classList.add('show');
   });

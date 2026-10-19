@@ -2567,6 +2567,83 @@ a.proj-link:hover {
   color: var(--blue-accent)
 }
 
+/* Preguntas frecuentes: <details> nativos, sin JavaScript (y el texto, en el HTML para los buscadores) */
+.faq {
+  max-width: 860px;
+  margin: 2.6rem auto 0
+}
+
+.faq-titulo {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1.1rem
+}
+
+.faq-item {
+  background: var(--bg-surface1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.6rem;
+  transition: border-color var(--transition)
+}
+
+.faq-item[open],
+.faq-item:hover {
+  border-color: var(--border-hover)
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.2rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary)
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none
+}
+
+/* el + que gira a × al abrir */
+.faq-item summary::after {
+  content: '+';
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(29, 99, 212, 0.12);
+  color: var(--blue-accent);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  transition: transform var(--transition)
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg)
+}
+
+.faq-item p {
+  padding: 0 1.2rem 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text-secondary)
+}
+
+/* El botón de idioma ahora es un enlace (cada idioma tiene su página) */
+a.lang-toggle {
+  text-decoration: none
+}
+
 /* ===== CONTACTO MEJORADO ===== */
 .section-contact {
   position: relative;

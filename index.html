@@ -8,68 +8,352 @@
 fedes10.com — currículum, portafolio y servicios · © 2024-2026 Federico Talgat Lora Ortiz
 Todos los derechos reservados. Prohibida la copia, distribución o modificación sin autorización.
 
-IDIOMAS:
-  - Los textos viven SOLO en idiomas.json (es / en). script.js lo lee al cargar.
-  - data-i18n="clave"           → cambia el texto
-  - data-i18n-html="clave"      → cambia el texto con <strong>, <em> o <br> dentro
-  - data-i18n-attr="attr:clave" → cambia un atributo (aria-label, title, href, alt, content)
-  - Este HTML lleva escrito el texto en INGLÉS: es el idioma por defecto y lo que leen los
-    buscadores sin JavaScript. Herramientas/ComprobarWeb.py (repo CurriculumWeb) avisa si
-    el HTML y el "en" del JSON dejan de coincidir.
+IDIOMAS — una página por idioma, para que los buscadores lean las dos:
+  - index.html (español, https://fedes10.com/) y en/index.html (inglés, https://fedes10.com/en/)
+    se GENERAN con Herramientas/GenerarIdiomas.py (repo CurriculumWeb) a partir de este mismo
+    fichero y de idiomas.json. No se edita en/index.html a mano: se cambia aquí o en el JSON y se
+    vuelve a generar. ComprobarWeb.py falla si alguien se olvida.
+  - data-i18n="clave"           → el texto
+  - data-i18n-html="clave"      → el texto con <strong>, <em> o <br> dentro
+  - data-i18n-attr="attr:clave" → un atributo (aria-label, title, href, alt, content, src)
 
 SEGURIDAD:
   - Ni un manejador en línea (onclick, onerror…) ni un <script> con código: todo vive en
     script.js. Así la CSP de nginx puede ser solo `script-src 'self'`.
 -->
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="es" data-theme="dark">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="meta-title">Federico Lora · Apps, websites &amp; servers in Córdoba</title>
-  <meta name="description" data-i18n-attr="content:meta-description"
-    content="Flutter developer and systems technician in Córdoba, Spain. Android and web apps, professional websites and secure Docker servers." />
+  <title data-i18n="meta-title">Federico Lora · Desarrollador de apps multiplataforma</title>
+  <meta name="description" data-i18n-attr="content:meta-description" content="Currículum y portafolio de Federico Lora (Fedes10): desarrollador de apps multiplataforma con Flutter y técnico de sistemas en Córdoba. Pide presupuesto." />
   <meta name="author" content="Federico Talgat Lora Ortiz" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
   <meta name="theme-color" content="#0d1630" />
 
-  <!-- La única dirección buena: www.fedes10.com y la copia de GitHub Pages apuntan aquí -->
-  <link rel="canonical" href="https://fedes10.com/" />
-  <link rel="icon" href="Proyectos/F10.png" type="image/png" />
+  <!-- Una dirección por idioma: / (español) y /en/ (inglés); cada una es su propia canónica.
+       www.fedes10.com y la copia de GitHub Pages apuntan aquí -->
+  <link rel="canonical" data-i18n-attr="href:url-canonica" href="https://fedes10.com/" />
+  <link rel="alternate" hreflang="es" href="https://fedes10.com/" />
+  <link rel="alternate" hreflang="en" href="https://fedes10.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://fedes10.com/" />
 
-  <!-- Open Graph y Twitter: lo que se ve al compartir el enlace (WhatsApp, LinkedIn…). En español:
-       es donde más se comparte. Estas etiquetas las leen sin ejecutar JavaScript, así que no cambian con el botón -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fedes10.com/" />
-  <meta property="og:title" content="Federico Lora · Apps, webs y servidores" />
-  <meta property="og:description" content="Desarrollador Flutter y técnico de sistemas en Córdoba. Apps para Android y web, webs profesionales y servidores seguros con Docker." />
-  <meta property="og:image" content="https://fedes10.com/Imagenes/preview-web-url.png" />
+  <link rel="icon" href="favicon.ico" sizes="48x48" />
+  <link rel="icon" href="Imagenes/icono-192.png" type="image/png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="Imagenes/icono-180.png" />
+
+  <!-- Lo que se ve al compartir el enlace (WhatsApp, LinkedIn…), en el idioma de cada página -->
+  <meta property="og:type" content="profile" />
+  <meta property="profile:first_name" content="Federico" />
+  <meta property="profile:last_name" content="Lora" />
+  <meta property="profile:username" content="Fedes10" />
+  <meta property="og:site_name" content="Federico Lora" />
+  <meta property="og:url" data-i18n-attr="content:url-canonica" content="https://fedes10.com/" />
+  <meta property="og:title" data-i18n-attr="content:og-titulo" content="Federico Lora · Desarrollador de apps multiplataforma" />
+  <meta property="og:description" data-i18n-attr="content:og-descripcion" content="Desarrollador de apps multiplataforma con Flutter y técnico de sistemas en Córdoba. Apps, webs y servidores seguros." />
+  <meta property="og:image" data-i18n-attr="content:og-imagen" content="https://fedes10.com/Imagenes/preview-web-url.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Federico Lora · Desarrollador de apps y técnico de sistemas" />
-  <meta property="og:locale" content="es_ES" />
-  <meta property="og:locale:alternate" content="en_GB" />
+  <meta property="og:image:alt" data-i18n-attr="content:og-imagen-alt" content="Federico Lora · Desarrollador de apps multiplataforma y técnico de sistemas" />
+  <meta property="og:locale" data-i18n-attr="content:og-locale" content="es_ES" />
+  <meta property="og:locale:alternate" data-i18n-attr="content:og-locale-alt" content="en_GB" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Federico Lora · Apps, webs y servidores" />
-  <meta name="twitter:description" content="Desarrollador Flutter y técnico de sistemas en Córdoba. Apps para Android y web, webs profesionales y servidores seguros con Docker." />
-  <meta name="twitter:image" content="https://fedes10.com/Imagenes/preview-web-url.png" />
+  <meta name="twitter:title" data-i18n-attr="content:og-titulo" content="Federico Lora · Desarrollador de apps multiplataforma" />
+  <meta name="twitter:description" data-i18n-attr="content:og-descripcion" content="Desarrollador de apps multiplataforma con Flutter y técnico de sistemas en Córdoba. Apps, webs y servidores seguros." />
+  <meta name="twitter:image" data-i18n-attr="content:og-imagen" content="https://fedes10.com/Imagenes/preview-web-url.png" />
 
-  <!-- Datos estructurados: quién es, para buscadores y asistentes de IA. No se ejecuta: es un bloque de datos -->
-  <script type="application/ld+json">
+  <!-- Datos estructurados (perfil, persona, web, servicios y preguntas frecuentes): los escribe
+       GenerarIdiomas.py desde idiomas.json. Son datos: no se ejecutan, y la CSP no los frena -->
+  <script type="application/ld+json" id="datos-estructurados">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Federico Lora",
-    "alternateName": "Federico Talgat Lora Ortiz",
-    "url": "https://fedes10.com/",
-    "image": "https://fedes10.com/Imagenes/FotoFedeCV.webp",
-    "jobTitle": "App developer and systems technician",
-    "worksFor": { "@type": "Organization", "name": "CleverByte Consulting", "url": "https://www.cleverbyte.es/" },
-    "alumniOf": { "@type": "EducationalOrganization", "name": "CES Lope de Vega", "url": "https://ceslopedevega.com/" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Córdoba", "addressCountry": "ES" },
-    "knowsLanguage": ["es", "en"],
-    "knowsAbout": ["Flutter", "Dart", "Android", "Docker", "Linux", "PostgreSQL", "WordPress", "Cloudflare", "Cybersecurity", "Systems administration"],
-    "sameAs": ["https://www.linkedin.com/in/fedes10/", "https://github.com/Fedes10"]
+    "@graph": [
+      {
+        "@type": "ProfilePage",
+        "@id": "https://fedes10.com/#perfil",
+        "url": "https://fedes10.com/",
+        "name": "Federico Lora · Desarrollador de apps multiplataforma",
+        "description": "Currículum y portafolio de Federico Lora (Fedes10): desarrollador de apps multiplataforma con Flutter y técnico de sistemas en Córdoba. Pide presupuesto.",
+        "inLanguage": "es",
+        "isPartOf": {
+          "@id": "https://fedes10.com/#web"
+        },
+        "mainEntity": {
+          "@id": "https://fedes10.com/#fede"
+        },
+        "about": {
+          "@id": "https://fedes10.com/#fede"
+        },
+        "dateModified": "2026-10-20"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://fedes10.com/#fede",
+        "name": "Federico Lora",
+        "givenName": "Federico",
+        "familyName": "Lora Ortiz",
+        "alternateName": [
+          "Federico Talgat Lora Ortiz",
+          "Fede Lora",
+          "Fedes10"
+        ],
+        "url": "https://fedes10.com/",
+        "image": "https://fedes10.com/Imagenes/FotoFedeCV.webp",
+        "jobTitle": "Desarrollador de aplicaciones multiplataforma y técnico de sistemas",
+        "description": "Federico Lora (Fedes10) es desarrollador de aplicaciones multiplataforma con Flutter y técnico de sistemas en CleverByte Consulting, en Córdoba (España). Hace apps, webs y servidores seguros para negocios, asociaciones y particulares.",
+        "email": "mailto:fedestalgat@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Córdoba",
+          "addressRegion": "Andalucía",
+          "addressCountry": "ES"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "CleverByte Consulting",
+          "url": "https://www.cleverbyte.es/"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "CES Lope de Vega",
+          "url": "https://ceslopedevega.com/"
+        },
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "Grado Superior en Administración de Sistemas Informáticos en Red (ASIR)"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "Grado Medio en Sistemas Microinformáticos y Redes (SMR)"
+          }
+        ],
+        "award": [
+          "Finalista Andalucía Skills 2025 — Especialidad 39 — TI Administración de Sistemas en Red, Jaén",
+          "Campeón de Andalucía — First Lego League 2017",
+          "Finalista de España — First Lego League 2017"
+        ],
+        "knowsLanguage": [
+          "es",
+          "en"
+        ],
+        "knowsAbout": [
+          "Desarrollo de aplicaciones multiplataforma",
+          "Flutter",
+          "Dart",
+          "Android",
+          "Python",
+          "PostgreSQL",
+          "Docker",
+          "Linux",
+          "WordPress",
+          "Cloudflare",
+          "Ciberseguridad",
+          "Administración de sistemas"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/fedes10/",
+          "https://github.com/Fedes10"
+        ],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Apps multiplataforma",
+              "description": "Una app para tu negocio, asociación o evento, en Android, en la web y en Windows con el mismo código (Flutter). También se instala en iPhone como app web, y lleva un panel para que publiques tú.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Webs profesionales",
+              "description": "Webs rápidas, adaptadas al móvil, en uno o varios idiomas y preparadas para Google: desde una página de presentación hasta un WordPress completo que gestionas tú.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Servidores y alojamiento",
+              "description": "Tu propio servidor (VPS) con Docker y Cloudflare: sin puertos abiertos, con copias de seguridad cifradas y con tu dominio y tu correo bien configurados.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Migraciones",
+              "description": "Paso tu web o tu blog (WordPress, Blogger…) a un alojamiento propio sin perder entradas, fotos ni posicionamiento.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Seguridad y mantenimiento",
+              "description": "Reviso y protejo lo que ya tienes: actualizaciones, cabeceras de seguridad, copias que de verdad se pueden restaurar y avisos si algo se cae.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Soporte técnico",
+              "description": "Ordenadores, redes e incidencias, presencial en Córdoba o en remoto: instalación, reparación, puesta a punto y asesoramiento.",
+              "provider": {
+                "@id": "https://fedes10.com/#fede"
+              },
+              "areaServed": [
+                {
+                  "@type": "City",
+                  "name": "Córdoba"
+                },
+                {
+                  "@type": "Country",
+                  "name": "España"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://fedes10.com/#web",
+        "url": "https://fedes10.com/",
+        "name": "Federico Lora",
+        "alternateName": [
+          "Fedes10",
+          "fedes10.com"
+        ],
+        "inLanguage": [
+          "es",
+          "en"
+        ],
+        "publisher": {
+          "@id": "https://fedes10.com/#fede"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://fedes10.com/#preguntas",
+        "url": "https://fedes10.com/",
+        "inLanguage": "es",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Qué es una app multiplataforma?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Una aplicación que se programa una vez y funciona en Android, en la web y en Windows. La hago con Flutter, el framework de Google: un solo código, menos coste y las mismas funciones en todos los dispositivos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedes hacer una app que funcione en iPhone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí: como app web instalable (PWA), que se abre desde Safari y se añade a la pantalla de inicio como cualquier otra app. Si además tiene que estar en la App Store, lo valoramos en el presupuesto."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cuánto cuesta y cuánto tarda?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Depende de lo que necesites. Te preparo un presupuesto cerrado y por escrito, con lo que incluye y los plazos, y la primera conversación es gratis."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Trabajas solo en Córdoba?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. En Córdoba puedo ir en persona cuando haga falta, y en remoto trabajo para cualquier sitio de España y de fuera, en español o en inglés."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Te encargas también del servidor, el dominio y el mantenimiento?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. Monto el servidor con Docker y Cloudflare, configuro el dominio y el correo, dejo copias de seguridad cifradas y, si quieres, me quedo con el mantenimiento."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
@@ -91,40 +375,41 @@ SEGURIDAD:
 
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar">
-    <a href="#hero" class="nav-brand" data-i18n-attr="aria-label:nav-inicio" aria-label="Back to the top">
+    <a href="#hero" class="nav-brand" data-i18n-attr="aria-label:nav-inicio" aria-label="Volver al inicio">
       <span class="brand-initials">FL</span>
       <span class="brand-name">Federico Lora</span>
     </a>
 
     <!-- data-section → la sección activa en script.js · data-i18n → su texto en idiomas.json -->
     <ul class="nav-links" id="navLinks">
-      <li><a href="#sobre-mi" data-section="sobre-mi"><span class="nav-num">01</span><span data-i18n="nav-sobre-mi">About</span></a></li>
-      <li><a href="#experiencia" data-section="experiencia"><span class="nav-num">02</span><span data-i18n="nav-experiencia">Experience</span></a></li>
-      <li><a href="#proyectos" data-section="proyectos"><span class="nav-num">03</span><span data-i18n="nav-proyectos">Projects</span></a></li>
-      <li><a href="#servicios" data-section="servicios"><span class="nav-num">04</span><span data-i18n="nav-servicios">Services</span></a></li>
-      <li><a href="#habilidades" data-section="habilidades"><span class="nav-num">05</span><span data-i18n="nav-habilidades">Skills</span></a></li>
-      <li><a href="#formacion" data-section="formacion"><span class="nav-num">06</span><span data-i18n="nav-formacion">Education</span></a></li>
-      <li><a href="#logros" data-section="logros"><span class="nav-num">07</span><span data-i18n="nav-logros">Awards</span></a></li>
-      <li><a href="#contacto" data-section="contacto"><span class="nav-num">08</span><span data-i18n="nav-contacto">Contact</span></a></li>
+      <li><a href="#sobre-mi" data-section="sobre-mi"><span class="nav-num">01</span><span data-i18n="nav-sobre-mi">Sobre mí</span></a></li>
+      <li><a href="#experiencia" data-section="experiencia"><span class="nav-num">02</span><span data-i18n="nav-experiencia">Experiencia</span></a></li>
+      <li><a href="#proyectos" data-section="proyectos"><span class="nav-num">03</span><span data-i18n="nav-proyectos">Proyectos</span></a></li>
+      <li><a href="#servicios" data-section="servicios"><span class="nav-num">04</span><span data-i18n="nav-servicios">Servicios</span></a></li>
+      <li><a href="#habilidades" data-section="habilidades"><span class="nav-num">05</span><span data-i18n="nav-habilidades">Habilidades</span></a></li>
+      <li><a href="#formacion" data-section="formacion"><span class="nav-num">06</span><span data-i18n="nav-formacion">Formación</span></a></li>
+      <li><a href="#logros" data-section="logros"><span class="nav-num">07</span><span data-i18n="nav-logros">Logros</span></a></li>
+      <li><a href="#contacto" data-section="contacto"><span class="nav-num">08</span><span data-i18n="nav-contacto">Contacto</span></a></li>
     </ul>
 
     <div class="nav-actions">
       <button class="theme-toggle" id="themeToggle" type="button" data-i18n-attr="title:nav-tema,aria-label:nav-tema"
-        title="Switch between light and dark theme" aria-label="Switch between light and dark theme">
+        title="Cambiar entre tema claro y oscuro" aria-label="Cambiar entre tema claro y oscuro">
         <i class="fas fa-sun theme-icon-sun" aria-hidden="true"></i>
         <i class="fas fa-moon theme-icon-moon" aria-hidden="true"></i>
         <span class="theme-knob"></span>
       </button>
-      <!-- Enseña el idioma ACTIVO; script.js cambia bandera y texto -->
-      <button class="lang-toggle" id="langToggle" type="button" data-i18n-attr="title:nav-idioma,aria-label:nav-idioma"
-        title="Change language / Cambiar idioma" aria-label="Change language / Cambiar idioma">
-        <img id="langFlag" src="Imagenes/ingles.png" alt="" class="lang-flag" width="18" height="18" />
-        <span class="lang-text">EN</span>
-      </button>
-      <a href="Curriculum Fede Final.pdf" class="btn-cv" id="btnCvNav" download>
-        <i class="fa-regular fa-file" aria-hidden="true"></i><span class="btn-cv-text" data-i18n="nav-btn-cv">Download CV</span>
+      <!-- Enseña el idioma de ESTA página y lleva a la otra (es un enlace: cada idioma tiene su dirección) -->
+      <a class="lang-toggle" id="langToggle" href="en/" hreflang="en"
+        data-i18n-attr="href:otro-idioma-url,hreflang:otro-idioma-hreflang,title:nav-idioma,aria-label:nav-idioma"
+        title="Read in English" aria-label="Read in English">
+        <img id="langFlag" src="Imagenes/espa%C3%B1ol.png" alt="" class="lang-flag" width="18" height="18" data-i18n-attr="src:bandera-actual" />
+        <span class="lang-text" data-i18n="idioma-codigo">ES</span>
       </a>
-      <button class="nav-toggle" id="navToggle" type="button" data-i18n-attr="aria-label:nav-menu" aria-label="Open or close the menu"
+      <a href="Curriculum Fede Final.pdf" class="btn-cv" id="btnCvNav" download data-i18n-attr="href:cv-pdf">
+        <i class="fa-regular fa-file" aria-hidden="true"></i><span class="btn-cv-text" data-i18n="nav-btn-cv">Descargar CV</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" type="button" data-i18n-attr="aria-label:nav-menu" aria-label="Abrir o cerrar el menú"
         aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
@@ -141,29 +426,29 @@ SEGURIDAD:
       <div class="orb orb-3"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge reveal-up" data-i18n="hero-badge">Open to projects and collaborations</div>
+      <div class="hero-badge reveal-up" data-i18n="hero-badge">Abierto a proyectos y colaboraciones</div>
       <h1 class="hero-name reveal-up delay-1">
         <span class="name-first">Federico</span>
         <span class="name-last">Lora</span>
       </h1>
-      <p class="hero-subtitle reveal-up delay-2" data-i18n="hero-subtitle">App developer &amp; systems technician</p>
-      <!-- El texto que se escribe solo sale de las claves typing-0..4 de idiomas.json -->
+      <p class="hero-subtitle reveal-up delay-2" data-i18n="hero-subtitle">Desarrollador de apps multiplataforma y técnico de sistemas</p>
+      <!-- El texto que se escribe solo: GenerarIdiomas.py mete aquí las frases typing-0..4 de idiomas.json -->
       <p class="hero-typing reveal-up delay-2" aria-hidden="true">
-        <span class="typing-text" id="typingText"></span><span class="typing-cursor">|</span>
+        <span class="typing-text" id="typingText" data-frases="[&quot;Apps multiplataforma con Flutter: Android, web y Windows&quot;, &quot;Webs rápidas, seguras y en dos idiomas&quot;, &quot;Servidores Linux con Docker y Cloudflare&quot;, &quot;Técnico de sistemas en CleverByte&quot;, &quot;Estudiante de 2.º de DAM&quot;]">Apps multiplataforma con Flutter: Android, web y Windows</span><span class="typing-cursor">|</span>
       </p>
       <div class="hero-quote-block reveal-up delay-3">
         <span class="quote-mark" aria-hidden="true">“</span>
-        <p class="hero-quote-text" data-i18n="hero-quote">Excellence is not an act, but a habit</p>
+        <p class="hero-quote-text" data-i18n="hero-quote">La excelencia no es un acto, sino un hábito</p>
         <span class="quote-mark quote-right" aria-hidden="true">”</span>
       </div>
       <div class="hero-cta reveal-up delay-4">
-        <a href="#proyectos" class="btn-primary"><span data-i18n="hero-btn-proyectos">See my work</span> <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
-        <a href="#servicios" class="btn-outline"><span data-i18n="hero-btn-presupuesto">Get a quote</span> <i class="fas fa-paper-plane" aria-hidden="true"></i></a>
+        <a href="#proyectos" class="btn-primary"><span data-i18n="hero-btn-proyectos">Ver proyectos</span> <i class="fas fa-arrow-down" aria-hidden="true"></i></a>
+        <a href="#servicios" class="btn-outline"><span data-i18n="hero-btn-presupuesto">Pedir presupuesto</span> <i class="fas fa-paper-plane" aria-hidden="true"></i></a>
       </div>
       <div class="hero-links reveal-up delay-5">
         <a href="mailto:fedestalgat@gmail.com" title="Email" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-        <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a href="https://github.com/Fedes10" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="me noopener" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Fedes10" target="_blank" rel="me noopener" title="GitHub" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
     </div>
     <div class="hero-scroll-hint" aria-hidden="true">
@@ -182,13 +467,13 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">01</div>
-        <span class="section-label" data-i18n="s01-label">About me</span>
-        <h2 class="section-title" data-i18n="s01-title">Who I am</h2>
+        <span class="section-label" data-i18n="s01-label">Sobre mí</span>
+        <h2 class="section-title" data-i18n="s01-title">Quién soy</h2>
       </div>
       <div class="about-grid">
         <div class="about-photo reveal-left">
           <div class="photo-frame">
-            <img src="Imagenes/FotoFedeCV.webp" alt="Federico Lora" class="profile-photo" width="832" height="1264"
+            <img src="Imagenes/FotoFedeCV.webp" alt="Federico Lora, desarrollador de apps multiplataforma y técnico de sistemas" class="profile-photo" width="832" height="1264"
               data-respaldo="photoFallback" data-i18n-attr="alt:foto-alt" />
             <div class="photo-placeholder" id="photoFallback" hidden>
               <i class="fas fa-user-circle" aria-hidden="true"></i>
@@ -196,22 +481,22 @@ SEGURIDAD:
             </div>
           </div>
           <div class="about-info-cards">
-            <div class="info-card"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span data-i18n="about-location">Córdoba, Spain</span></div>
-            <div class="info-card"><i class="fas fa-car" aria-hidden="true"></i><span data-i18n="about-carnet">Driving licence B, own car</span></div>
-            <div class="info-card"><i class="fas fa-language" aria-hidden="true"></i><span data-i18n="about-idioma">English B1 (certified)</span></div>
-            <div class="info-card"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span data-i18n="about-estudios">DAM · 2nd year</span></div>
+            <div class="info-card"><i class="fas fa-map-marker-alt" aria-hidden="true"></i><span data-i18n="about-location">Córdoba, España</span></div>
+            <div class="info-card"><i class="fas fa-car" aria-hidden="true"></i><span data-i18n="about-carnet">Carnet B y vehículo propio</span></div>
+            <div class="info-card"><i class="fas fa-language" aria-hidden="true"></i><span data-i18n="about-idioma">Inglés B1 certificado</span></div>
+            <div class="info-card"><i class="fas fa-graduation-cap" aria-hidden="true"></i><span data-i18n="about-estudios">DAM · 2.º curso</span></div>
           </div>
         </div>
         <div class="about-text reveal-right">
-          <p class="about-lead" data-i18n-html="about-lead">I'm a <strong>Higher Technician in Network Systems Administration (ASIR)</strong> and I work as a <strong>systems technician at CleverByte Consulting</strong> in Córdoba, on a permanent morning contract. In the afternoons I'm finishing my <strong>Higher Degree in Multiplatform Application Development (DAM)</strong>.</p>
-          <p data-i18n-html="about-p2">I do two things that fit together: <strong>building apps and websites</strong> — mostly with <strong>Flutter</strong>, for Android, web and Windows from a single codebase — and <strong>setting up the servers they run on</strong>: Linux, Docker, PostgreSQL and Cloudflare, with no open ports and with backups.</p>
-          <p data-i18n-html="about-p3">Since February 2026 I've taken my own and client projects to production: <strong>La Dele</strong>, the Guadalupe pilgrimage app for Córdoba's Diocesan Youth Delegation; the app of the <strong>World Organisation of Cursillos in Christianity</strong>; the website of the <strong>Génesis cultural association</strong>; and <strong>Faiten</strong>, my biggest personal project.</p>
-          <p data-i18n-html="about-p4">I come from systems — servers, networks, hardware and cybersecurity at Hospital Cruz Roja, Magtel and an Erasmus+ placement in Lithuania — and it shows in how I work: <strong>documented, tested and secure from day one</strong>.<br><br>The phrase that defines me best: <em>“Excellence is not an act, but a habit”</em>.</p>
+          <p class="about-lead" data-i18n-html="about-lead">Soy <strong>Federico Lora</strong>, Técnico Superior en ASIR, y trabajo como <strong>técnico de sistemas en CleverByte Consulting</strong>, en Córdoba, con contrato indefinido de mañana. Por las tardes termino el <strong>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>.</p>
+          <p data-i18n-html="about-p2">Me dedico a dos cosas que se complementan: el <strong>desarrollo de aplicaciones multiplataforma</strong> —sobre todo con <strong>Flutter</strong>, para Android, web y Windows con el mismo código— y <strong>montar los servidores donde viven</strong>: Linux, Docker, PostgreSQL y Cloudflare, sin puertos abiertos y con copias de seguridad.</p>
+          <p data-i18n-html="about-p3">Desde febrero de 2026 he llevado a producción proyectos propios y para clientes: <strong>La Dele</strong>, la app de la peregrinación a Guadalupe de la Delegación de Juventud de Córdoba; la app del <strong>Organismo Mundial de Cursillos de Cristiandad</strong>; la web de la <strong>Asociación Socio-Cultural Génesis</strong>; y <strong>Faiten</strong>, mi proyecto personal más grande.</p>
+          <p data-i18n-html="about-p4">Vengo del mundo de los sistemas —servidores, redes, hardware y ciberseguridad en el Hospital Cruz Roja, Magtel y un Erasmus+ en Lituania— y se nota en cómo trabajo: <strong>documentado, probado y seguro desde el primer día</strong>.<br><br>La frase que mejor me define: <em>«La excelencia no es un acto, sino un hábito»</em>.</p>
           <div class="about-stats">
-            <div class="stat-item"><span class="stat-number">3</span><span class="stat-label" data-i18n="stat-titulaciones">Qualifications</span></div>
-            <div class="stat-item"><span class="stat-number">4</span><span class="stat-label" data-i18n="stat-empresas">Companies</span></div>
-            <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label" data-i18n="stat-proyectos">Projects in 2026</span></div>
-            <div class="stat-item"><span class="stat-number">5</span><span class="stat-label" data-i18n="stat-produccion">Sites and apps live</span></div>
+            <div class="stat-item"><span class="stat-number">3</span><span class="stat-label" data-i18n="stat-titulaciones">Titulaciones</span></div>
+            <div class="stat-item"><span class="stat-number">4</span><span class="stat-label" data-i18n="stat-empresas">Empresas</span></div>
+            <div class="stat-item"><span class="stat-number">10+</span><span class="stat-label" data-i18n="stat-proyectos">Proyectos en 2026</span></div>
+            <div class="stat-item"><span class="stat-number">5</span><span class="stat-label" data-i18n="stat-produccion">Webs y apps en producción</span></div>
           </div>
         </div>
       </div>
@@ -224,8 +509,8 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">02</div>
-        <span class="section-label" data-i18n="s02-label">Experience</span>
-        <h2 class="section-title" data-i18n="s02-title">Professional journey</h2>
+        <span class="section-label" data-i18n="s02-label">Experiencia</span>
+        <h2 class="section-title" data-i18n="s02-title">Trayectoria profesional</h2>
       </div>
 
       <div class="timeline">
@@ -237,7 +522,7 @@ SEGURIDAD:
           </div>
           <div class="timeline-dot tl-dot-current"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
           <a href="https://www.cleverbyte.es/" target="_blank" rel="noopener" class="timeline-card tl-card-current">
-            <div class="tl-current-badge"><i class="fas fa-star" aria-hidden="true"></i> <span data-i18n="tl-badge-current">Current</span></div>
+            <div class="tl-current-badge"><i class="fas fa-star" aria-hidden="true"></i> <span data-i18n="tl-badge-current">Actual</span></div>
             <div class="tl-header">
               <div class="tl-company-block">
                 <div class="tl-logo-wrap">
@@ -245,22 +530,22 @@ SEGURIDAD:
                   <div class="tl-logo-fallback" hidden><i class="fas fa-building" aria-hidden="true"></i></div>
                 </div>
                 <div>
-                  <h3 data-i18n="tl1-role">IT Systems Technician</h3>
+                  <h3 data-i18n="tl1-role">Técnico de sistemas informáticos</h3>
                   <span class="tl-company-name" data-i18n="tl1-company">CleverByte Consulting · Córdoba</span>
                 </div>
               </div>
-              <span class="tl-badge tl-badge-current" data-i18n="tl1-badge">Feb 2026 – present</span>
+              <span class="tl-badge tl-badge-current" data-i18n="tl1-badge">Feb 2026 – actualidad</span>
             </div>
             <ol class="tl-pasos">
-              <li class="tl-paso tl-paso-actual"><span data-i18n-html="tl1-paso1"><strong>Sep 2026 – now</strong> · Permanent contract, mornings (alongside DAM)</span></li>
-              <li class="tl-paso"><span data-i18n-html="tl1-paso2"><strong>Apr – Aug 2026</strong> · 4-month contract as a systems operations technician</span></li>
-              <li class="tl-paso"><span data-i18n-html="tl1-paso3"><strong>Feb 2026</strong> · DAM internship (1 month)</span></li>
+              <li class="tl-paso tl-paso-actual"><span data-i18n-html="tl1-paso1"><strong>Sep 2026 – hoy</strong> · Contrato indefinido, de mañana (lo compagino con DAM)</span></li>
+              <li class="tl-paso"><span data-i18n-html="tl1-paso2"><strong>Abr – Ago 2026</strong> · Contrato de 4 meses como técnico en operaciones de sistemas</span></li>
+              <li class="tl-paso"><span data-i18n-html="tl1-paso3"><strong>Feb 2026</strong> · Prácticas de DAM (1 mes)</span></li>
             </ol>
             <ul class="tl-tasks">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">Deployment and administration of a <strong>private AI platform</strong> on an on-premises GPU server: local models (Ollama), LiteLLM, OpenWebUI and daily backups</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>AI assistants</strong> connected to the Dolibarr ERP (MCP) and to WhatsApp, deployed across several VPSs</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task3">Rollout of the <strong>Dolibarr ERP on Docker</strong> with PostgreSQL, and production database administration</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task4">Sign-up and free-trial forms for <strong>CleverFactu</strong>, and <strong>WordPress</strong> server migrations</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">Despliegue y administración de una <strong>plataforma de IA privada</strong> en un servidor propio con GPU: modelos locales (Ollama), LiteLLM, OpenWebUI y copias diarias</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>Asistentes de IA</strong> conectados al ERP Dolibarr (MCP) y a WhatsApp, repartidos en varios VPS</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task3">Implantación del <strong>ERP Dolibarr en Docker</strong> con PostgreSQL y administración de la base de datos en producción</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task4">Formularios de registro y prueba gratuita de <strong>CleverFactu</strong> y migraciones de servidores <strong>WordPress</strong></span></li>
             </ul>
             <div class="tl-tags"><span>Ollama</span><span>LiteLLM</span><span>MCP</span><span>Docker</span><span>Dolibarr</span><span>PostgreSQL</span><span>WordPress</span><span>Linux</span></div>
           </a>
@@ -277,20 +562,20 @@ SEGURIDAD:
               <div class="tl-company-block">
                 <div class="tl-logo-wrap tl-logo-propio"><span>F10</span></div>
                 <div>
-                  <h3 data-i18n="tl0-role">App, web &amp; server development</h3>
-                  <span class="tl-company-name" data-i18n="tl0-company">Independent projects · for clients and my own</span>
+                  <h3 data-i18n="tl0-role">Desarrollo de apps, webs y servidores</h3>
+                  <span class="tl-company-name" data-i18n="tl0-company">Proyectos independientes · para clientes y propios</span>
                 </div>
               </div>
-              <span class="tl-badge" data-i18n="tl0-badge">2026 – present</span>
+              <span class="tl-badge" data-i18n="tl0-badge">2026 – actualidad</span>
             </div>
-            <p class="tl-description" data-i18n="tl0-desc">Apps, websites and servers end to end: from the quote to production and maintenance.</p>
+            <p class="tl-description" data-i18n="tl0-desc">Apps, webs y servidores de principio a fin: del presupuesto a la puesta en producción y el mantenimiento.</p>
             <ul class="tl-tasks">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task1"><strong>La Dele</strong>: the official app of the 2026 Guadalupe pilgrimage (Flutter, API and admin panel)</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task2"><strong>OMCC</strong>: the Cursillos in Christianity movement's app and server, in development</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task3"><strong>Génesis</strong>: the association's website on its own WordPress server, plus the migration of its blog</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task4"><strong>Faiten</strong>: my personal intelligence app, from idea to production</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task1"><strong>La Dele</strong>: la app oficial de la peregrinación a Guadalupe 2026 (Flutter, API y panel)</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task2"><strong>OMCC</strong>: la app del movimiento de Cursillos de Cristiandad y su servidor, en desarrollo</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task3"><strong>Génesis</strong>: la web de la asociación en un WordPress propio y la migración de su blog</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl0-task4"><strong>Faiten</strong>: mi app de inteligencia personal, de la idea a producción</span></li>
             </ul>
-            <span class="tl-ver-mas"><span data-i18n="tl0-link">See the projects</span> <i class="fas fa-arrow-down" aria-hidden="true"></i></span>
+            <span class="tl-ver-mas"><span data-i18n="tl0-link">Ver los proyectos</span> <i class="fas fa-arrow-down" aria-hidden="true"></i></span>
           </a>
         </div>
 
@@ -308,17 +593,17 @@ SEGURIDAD:
                   <div class="tl-logo-fallback" hidden><i class="fas fa-hospital" aria-hidden="true"></i></div>
                 </div>
                 <div>
-                  <h3 data-i18n="tl2-role">IT Technician — IT Department</h3>
+                  <h3 data-i18n="tl2-role">Técnico informático — Dpto. de Informática</h3>
                   <span class="tl-company-name" data-i18n="tl2-company">Hospital Cruz Roja, Córdoba</span>
                 </div>
               </div>
-              <span class="tl-badge" data-i18n="tl2-badge">ASIR internship · 2025</span>
+              <span class="tl-badge" data-i18n="tl2-badge">Prácticas ASIR · 2025</span>
             </div>
             <ul class="tl-tasks">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task1">Operating system installation and configuration</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task2">Incident resolution in a critical hospital environment</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task3">Computer hardware repair and maintenance</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task4">Technical support and software configuration</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task1">Instalación y configuración de sistemas operativos</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task2">Resolución de incidencias en un entorno hospitalario crítico</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task3">Reparación y mantenimiento de equipos informáticos</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl2-task4">Soporte técnico y configuración de software</span></li>
             </ul>
             <div class="tl-tags"><span>OS</span><span>Support</span><span>Maintenance</span><span>Networking</span></div>
           </a>
@@ -338,17 +623,17 @@ SEGURIDAD:
                   <div class="tl-logo-fallback" hidden><i class="fas fa-building" aria-hidden="true"></i></div>
                 </div>
                 <div>
-                  <h3 data-i18n="tl3-role">IT Technician — IT Department</h3>
+                  <h3 data-i18n="tl3-role">Técnico informático — Dpto. TI</h3>
                   <span class="tl-company-name" data-i18n="tl3-company">Magtel, Córdoba</span>
                 </div>
               </div>
-              <span class="tl-badge" data-i18n="tl3-badge">SMR internship · 2023</span>
+              <span class="tl-badge" data-i18n="tl3-badge">Prácticas SMR · 2023</span>
             </div>
             <ul class="tl-tasks">
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task1">Incident resolution and end-user technical support</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task2">System administration and maintenance</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task3">Computer assembly and hardware repair</span></li>
-              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task4">Training in process modelling with Bizagi Modeler Studio</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task1">Resolución de incidencias y soporte técnico a usuarios</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task2">Administración y mantenimiento de sistemas</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task3">Reparación y montaje de equipos informáticos</span></li>
+              <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n="tl3-task4">Formación en modelado de procesos con Bizagi Modeler Studio</span></li>
             </ul>
             <div class="tl-tags"><span>Tech Support</span><span>Systems</span><span>Bizagi</span><span>Hardware</span></div>
           </a>
@@ -368,13 +653,13 @@ SEGURIDAD:
                   <div class="tl-logo-fallback" hidden><i class="fas fa-globe-europe" aria-hidden="true"></i></div>
                 </div>
                 <div>
-                  <h3 data-i18n="tl4-role">Erasmus+ internship — IT Technician</h3>
-                  <span class="tl-company-name" data-i18n="tl4-company">Emtoservis, Vilnius, Lithuania</span>
+                  <h3 data-i18n="tl4-role">Prácticas Erasmus+ — Técnico IT</h3>
+                  <span class="tl-company-name" data-i18n="tl4-company">Emtoservis, Vilna, Lituania</span>
                 </div>
               </div>
               <span class="tl-badge tl-badge-special" data-i18n="tl4-badge">Jun – Jul 2022</span>
             </div>
-            <p class="tl-description" data-i18n="tl4-desc">Took part in the European Erasmus+ programme as an IT technician in a multicultural work environment. It strengthened my technical skills, my adaptability and my English.</p>
+            <p class="tl-description" data-i18n="tl4-desc">Participación en el programa europeo Erasmus+ como técnico informático en un entorno multicultural. Reforzó mis habilidades técnicas, mi capacidad de adaptación y mi nivel de inglés.</p>
             <div class="tl-tags"><span>Erasmus+</span><span>International</span><span>English</span><span>Adaptability</span></div>
           </a>
         </div>
@@ -389,18 +674,18 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">03</div>
-        <span class="section-label" data-i18n="s03-label">Projects</span>
-        <h2 class="section-title" data-i18n="s03-title">My workshop · Lab</h2>
-        <p class="section-intro" data-i18n="proj-intro">Real projects: for clients, at work and on my own. Most of them are live — you can open them.</p>
+        <span class="section-label" data-i18n="s03-label">Proyectos</span>
+        <h2 class="section-title" data-i18n="s03-title">Mi taller · Laboratorio</h2>
+        <p class="section-intro" data-i18n="proj-intro">Proyectos reales: para clientes, en el trabajo y por mi cuenta. La mayoría están en producción y los puedes abrir.</p>
       </div>
 
       <!-- Filtros: cada tarjeta dice a qué grupos pertenece en data-cat -->
-      <div class="proj-filtros reveal-up" role="group" data-i18n-attr="aria-label:filtro-grupo" aria-label="Filter projects">
-        <button type="button" class="proj-filtro activo" data-filtro="todos" aria-pressed="true" data-i18n="filtro-todos">All</button>
-        <button type="button" class="proj-filtro" data-filtro="cliente" aria-pressed="false" data-i18n="filtro-clientes">Clients</button>
+      <div class="proj-filtros reveal-up" role="group" data-i18n-attr="aria-label:filtro-grupo" aria-label="Filtrar proyectos">
+        <button type="button" class="proj-filtro activo" data-filtro="todos" aria-pressed="true" data-i18n="filtro-todos">Todos</button>
+        <button type="button" class="proj-filtro" data-filtro="cliente" aria-pressed="false" data-i18n="filtro-clientes">Clientes</button>
         <button type="button" class="proj-filtro" data-filtro="app" aria-pressed="false" data-i18n="filtro-apps">Apps</button>
-        <button type="button" class="proj-filtro" data-filtro="web" aria-pressed="false" data-i18n="filtro-webs">Websites</button>
-        <button type="button" class="proj-filtro" data-filtro="servidor" aria-pressed="false" data-i18n="filtro-servidores">Servers</button>
+        <button type="button" class="proj-filtro" data-filtro="web" aria-pressed="false" data-i18n="filtro-webs">Webs</button>
+        <button type="button" class="proj-filtro" data-filtro="servidor" aria-pressed="false" data-i18n="filtro-servidores">Servidores</button>
       </div>
 
       <div class="proj-grid">
@@ -409,16 +694,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up" id="p-faiten" data-cat="app servidor">
           <div class="proj-media">
             <img src="Proyectos/faiten.webp" alt="Faiten" width="918" height="574" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">Live</span></div>
+            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">En producción</span></div>
           </div>
           <div class="proj-content">
-            <span class="proj-fecha" data-i18n="p-faiten-fecha">Aug 2026 – now</span>
+            <span class="proj-fecha" data-i18n="p-faiten-fecha">Ago 2026 – hoy</span>
             <h3 class="proj-titulo">Faiten</h3>
-            <p class="proj-sub" data-i18n="p-faiten-sub">Personal intelligence app</p>
-            <p class="proj-desc" data-i18n="p-faiten-desc">A personal intelligence layer for your phone: it connects the sources of someone's digital life, understands what happens in them and tells them what deserves their attention. Flutter app for Android and web, its own control panel and a Discord bot, with automatic deployment to my VPS and rollback if anything fails.</p>
+            <p class="proj-sub" data-i18n="p-faiten-sub">App de inteligencia personal</p>
+            <p class="proj-desc" data-i18n="p-faiten-desc">Una capa de inteligencia personal para el móvil: conecta las fuentes de la vida digital de una persona, entiende lo que pasa en ellas y le dice qué merece su atención. App en Flutter para Android y web, panel de control propio y bot de Discord, con despliegue automático a mi VPS y vuelta atrás si algo falla.</p>
             <ul class="proj-tags"><li>Flutter</li><li>Android</li><li>PostgreSQL</li><li>Docker</li><li>Python</li><li>React</li><li>TypeScript</li><li>Astro</li><li>GitHub Actions</li></ul>
             <div class="proj-links">
-              <a href="https://faiten.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
+              <a href="https://faiten.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
             </div>
           </div>
         </article>
@@ -427,16 +712,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up delay-1" id="p-dele" data-cat="cliente app">
           <div class="proj-media proj-media-claro">
             <img src="Proyectos/la-dele.webp" alt="La Dele" width="690" height="431" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Client</span><span class="badge badge-vivo" data-i18n="estado-produccion">Live</span></div>
+            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Cliente</span><span class="badge badge-vivo" data-i18n="estado-produccion">En producción</span></div>
           </div>
           <div class="proj-content">
             <span class="proj-fecha" data-i18n="p-dele-fecha">Sep – Oct 2026</span>
             <h3 class="proj-titulo">La Dele</h3>
-            <p class="proj-sub" data-i18n="p-dele-sub">Official app · Guadalupe 2026</p>
-            <p class="proj-desc" data-i18n="p-dele-desc">The app for the Córdoba Diocesan Youth Delegation's pilgrimage to Guadalupe: countdown, day-by-day plan, catechesis, 139 songs and 26 prayers, on mobile and on the web. FastAPI backend with an admin panel and PostgreSQL.</p>
+            <p class="proj-sub" data-i18n="p-dele-sub">App oficial · Guadalupe 2026</p>
+            <p class="proj-desc" data-i18n="p-dele-desc">La app de la peregrinación a Guadalupe de la Delegación Diocesana de Juventud de Córdoba: cuenta atrás, día a día, catequesis, 139 cantos y 26 oraciones, en el móvil y en la web. API en FastAPI con panel de administración y PostgreSQL.</p>
             <ul class="proj-tags"><li>Flutter</li><li>PWA</li><li>Android</li><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li><li>Cloudflare</li></ul>
             <div class="proj-links">
-              <a href="https://dele.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
+              <a href="https://dele.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
             </div>
           </div>
         </article>
@@ -446,16 +731,16 @@ SEGURIDAD:
           <div class="proj-media proj-media-icono proj-media-omcc" aria-hidden="true">
             <i class="fas fa-earth-europe"></i>
             <span class="proj-media-texto">OMCC</span>
-            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Client</span><span class="badge badge-obra" data-i18n="estado-desarrollo">In development</span></div>
+            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Cliente</span><span class="badge badge-obra" data-i18n="estado-desarrollo">En desarrollo</span></div>
           </div>
           <div class="proj-content">
-            <span class="proj-fecha" data-i18n="p-omcc-fecha">Sep 2026 – now</span>
-            <h3 class="proj-titulo" data-i18n="p-omcc-titulo">Cursillos in Christianity</h3>
-            <p class="proj-sub" data-i18n="p-omcc-sub">International app · Spanish &amp; English</p>
-            <p class="proj-desc" data-i18n="p-omcc-desc">The app of the World Organisation of Cursillos in Christianity (OMCC): installable on mobile, in Spanish and English, with a panel so the movement can publish on its own. Includes setting up and securing its server.</p>
+            <span class="proj-fecha" data-i18n="p-omcc-fecha">Sep 2026 – hoy</span>
+            <h3 class="proj-titulo" data-i18n="p-omcc-titulo">Cursillos de Cristiandad</h3>
+            <p class="proj-sub" data-i18n="p-omcc-sub">App internacional · español e inglés</p>
+            <p class="proj-desc" data-i18n="p-omcc-desc">La aplicación del Organismo Mundial de Cursillos de Cristiandad (OMCC): instalable en el móvil, en español e inglés y con un panel para que el propio movimiento publique. Incluye preparar y proteger su servidor.</p>
             <ul class="proj-tags"><li>Flutter</li><li>Python</li><li>PostgreSQL</li><li>Docker</li><li>VPS</li></ul>
             <div class="proj-links">
-              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Private code</span></span>
+              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Código privado</span></span>
             </div>
           </div>
         </article>
@@ -464,16 +749,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up" id="p-genesis" data-cat="cliente web servidor">
           <div class="proj-media proj-media-claro">
             <img src="Proyectos/genesis.webp" alt="Génesis" width="960" height="600" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Client</span><span class="badge badge-vivo" data-i18n="estado-produccion">Live</span></div>
+            <div class="proj-badges"><span class="badge badge-cliente" data-i18n="tipo-cliente">Cliente</span><span class="badge badge-vivo" data-i18n="estado-produccion">En producción</span></div>
           </div>
           <div class="proj-content">
-            <span class="proj-fecha" data-i18n="p-genesis-fecha">Sep 2026 – now</span>
-            <h3 class="proj-titulo" data-i18n="p-genesis-titulo">Génesis Association</h3>
-            <p class="proj-sub" data-i18n="p-genesis-sub">Custom WordPress website</p>
-            <p class="proj-desc" data-i18n="p-genesis-desc">The website of a cultural association in Córdoba with a custom-made WordPress theme (dark mode, board, recipes and photo album), on hardened Docker with encrypted daily backups. In progress: migrating its 261-post Blogger blog.</p>
+            <span class="proj-fecha" data-i18n="p-genesis-fecha">Sep 2026 – hoy</span>
+            <h3 class="proj-titulo" data-i18n="p-genesis-titulo">Asociación Génesis</h3>
+            <p class="proj-sub" data-i18n="p-genesis-sub">Web en WordPress a medida</p>
+            <p class="proj-desc" data-i18n="p-genesis-desc">La web de una asociación cultural de Córdoba con un tema de WordPress hecho a medida (modo oscuro, junta directiva, recetas y álbum), en Docker endurecido y con copias diarias cifradas. En curso: migrar su blog de Blogger, con 261 entradas.</p>
             <ul class="proj-tags"><li>WordPress</li><li>PHP</li><li>MariaDB</li><li>Docker</li><li>Cloudflare</li></ul>
             <div class="proj-links">
-              <a href="https://genesis.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
+              <a href="https://genesis.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
             </div>
           </div>
         </article>
@@ -482,16 +767,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up delay-1" id="p-regreso" data-cat="web servidor">
           <div class="proj-media">
             <img src="Proyectos/el-regreso.webp" alt="El Regreso" width="960" height="600" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">Live</span></div>
+            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">En producción</span></div>
           </div>
           <div class="proj-content">
-            <span class="proj-fecha" data-i18n="p-regreso-fecha">Aug – Sep 2026</span>
+            <span class="proj-fecha" data-i18n="p-regreso-fecha">Ago – Sep 2026</span>
             <h3 class="proj-titulo">El Regreso</h3>
-            <p class="proj-sub" data-i18n="p-regreso-sub">Modded Minecraft server</p>
-            <p class="proj-desc" data-i18n="p-regreso-desc">A private Minecraft 1.21 server with 44 mods on my VPS: public website with live status, admin panel with push notifications, a custom C# launcher and recipe changes via datapacks, so nobody has to update anything.</p>
+            <p class="proj-sub" data-i18n="p-regreso-sub">Servidor de Minecraft con mods</p>
+            <p class="proj-desc" data-i18n="p-regreso-desc">Servidor privado de Minecraft 1.21 con 44 mods en mi VPS: web pública con el estado en vivo, panel de administración con avisos push, lanzador propio en C# y cambios de recetas por datapack, sin que nadie tenga que actualizar nada.</p>
             <ul class="proj-tags"><li>Linux</li><li>Docker</li><li>Caddy</li><li>Cloudflare</li><li>NeoForge</li><li>C#</li></ul>
             <div class="proj-links">
-              <a href="https://mc.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
+              <a href="https://mc.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
             </div>
           </div>
         </article>
@@ -506,11 +791,11 @@ SEGURIDAD:
           <div class="proj-content">
             <span class="proj-fecha" data-i18n="p-dam-fecha">Oct 2026</span>
             <h3 class="proj-titulo">DAM Fede</h3>
-            <p class="proj-sub" data-i18n="p-dam-sub">Windows desktop app</p>
-            <p class="proj-desc" data-i18n="p-dam-desc">It organises my school year: assignments, timetable, grades and calendar. It imports the Moodle calendar and checks what has been submitted, ships with its own installer and updates, and has a floating widget showing the current class.</p>
+            <p class="proj-sub" data-i18n="p-dam-sub">App de escritorio para Windows</p>
+            <p class="proj-desc" data-i18n="p-dam-desc">Organiza mi curso: entregas, horario, notas y calendario. Importa el calendario de Moodle y comprueba lo entregado, trae su propio instalador con actualizaciones y un widget flotante con la clase de ahora.</p>
             <ul class="proj-tags"><li>Flutter</li><li>Windows</li><li>Moodle</li><li>iCalendar</li></ul>
             <div class="proj-links">
-              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Private code</span></span>
+              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Código privado</span></span>
             </div>
           </div>
         </article>
@@ -519,16 +804,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up" id="p-remoto" data-cat="app servidor">
           <div class="proj-media">
             <img src="Proyectos/remoto-f10.webp" alt="Remoto F10" width="960" height="600" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-obra" data-i18n="estado-pruebas">In testing</span></div>
+            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-obra" data-i18n="estado-pruebas">En pruebas</span></div>
           </div>
           <div class="proj-content">
             <span class="proj-fecha" data-i18n="p-remoto-fecha">Sep 2026</span>
             <h3 class="proj-titulo">Remoto F10</h3>
-            <p class="proj-sub" data-i18n="p-remoto-sub">My own remote desktop</p>
-            <p class="proj-desc" data-i18n="p-remoto-desc">My replacement for AnyDesk and TeamViewer: a private WireGuard network, RustDesk for everyday use and Sunshine + Moonlight for gaming and video, with a Flutter app that installs everything.</p>
+            <p class="proj-sub" data-i18n="p-remoto-sub">Mi propio escritorio remoto</p>
+            <p class="proj-desc" data-i18n="p-remoto-desc">Mi sustituto de AnyDesk y TeamViewer: una red privada con WireGuard, RustDesk para el día a día y Sunshine + Moonlight para juegos y vídeo, con una app en Flutter que lo instala todo.</p>
             <ul class="proj-tags"><li>WireGuard</li><li>Headscale</li><li>RustDesk</li><li>Flutter</li><li>Docker</li></ul>
             <div class="proj-links">
-              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Private code</span></span>
+              <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Código privado</span></span>
             </div>
           </div>
         </article>
@@ -537,16 +822,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up delay-1" id="p-fedes10" data-cat="web servidor">
           <div class="proj-media proj-media-icono proj-media-fedes10" aria-hidden="true">
             <span class="proj-media-texto">fedes10<b>.com</b></span>
-            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">Live</span></div>
+            <div class="proj-badges"><span class="badge badge-personal" data-i18n="tipo-personal">Personal</span><span class="badge badge-vivo" data-i18n="estado-produccion">En producción</span></div>
           </div>
           <div class="proj-content">
-            <span class="proj-fecha" data-i18n="p-fedes10-fecha">2024 – now</span>
+            <span class="proj-fecha" data-i18n="p-fedes10-fecha">2024 – hoy</span>
             <h3 class="proj-titulo">fedes10.com</h3>
-            <p class="proj-sub" data-i18n="p-fedes10-sub">This website and its server</p>
-            <p class="proj-desc" data-i18n="p-fedes10-desc">Pure HTML, CSS and JavaScript, in two languages with light and dark mode. Served by a rootless, read-only nginx behind a Cloudflare Tunnel: zero open ports and a strict Content Security Policy.</p>
+            <p class="proj-sub" data-i18n="p-fedes10-sub">Esta web y su servidor</p>
+            <p class="proj-desc" data-i18n="p-fedes10-desc">HTML, CSS y JavaScript puros, en dos idiomas y con modo claro y oscuro. La sirve un nginx sin root y de solo lectura detrás de un túnel de Cloudflare: cero puertos abiertos y una política de seguridad de contenido estricta.</p>
             <ul class="proj-tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>nginx</li><li>Cloudflare</li></ul>
             <div class="proj-links">
-              <a href="https://github.com/Fedes10/Fedes10" target="_blank" rel="noopener" class="proj-link"><i class="fab fa-github" aria-hidden="true"></i><span data-i18n="proj-ver-codigo">View code</span></a>
+              <a href="https://github.com/Fedes10/Fedes10" target="_blank" rel="noopener" class="proj-link"><i class="fab fa-github" aria-hidden="true"></i><span data-i18n="proj-ver-codigo">Ver código</span></a>
             </div>
           </div>
         </article>
@@ -555,16 +840,16 @@ SEGURIDAD:
         <article class="proj-card reveal-up delay-2" id="p-clever" data-cat="web servidor">
           <div class="proj-media proj-media-claro">
             <img src="Proyectos/WebCleverFactu.webp" alt="CleverFactu" width="1482" height="908" loading="lazy" />
-            <div class="proj-badges"><span class="badge badge-trabajo" data-i18n="tipo-trabajo">Work</span></div>
+            <div class="proj-badges"><span class="badge badge-trabajo" data-i18n="tipo-trabajo">Trabajo</span></div>
           </div>
           <div class="proj-content">
             <span class="proj-fecha" data-i18n="p-clever-fecha">Feb 2026</span>
-            <h3 class="proj-titulo" data-i18n="p-clever-titulo">CleverFactu &amp; Dolibarr</h3>
-            <p class="proj-sub" data-i18n="p-clever-sub">Projects at CleverByte</p>
-            <p class="proj-desc" data-i18n="p-clever-desc">The sign-up and free-trial forms for CleverFactu's new website, the Dolibarr ERP on Docker with PostgreSQL —with a tool to switch its modules on and off— and WordPress server migrations.</p>
+            <h3 class="proj-titulo" data-i18n="p-clever-titulo">CleverFactu y Dolibarr</h3>
+            <p class="proj-sub" data-i18n="p-clever-sub">Proyectos en CleverByte</p>
+            <p class="proj-desc" data-i18n="p-clever-desc">Los formularios de registro y de prueba gratuita de la nueva web de CleverFactu, el ERP Dolibarr en Docker con PostgreSQL —con una herramienta para activar y desactivar sus módulos— y migraciones de servidores WordPress.</p>
             <ul class="proj-tags"><li>Dolibarr</li><li>Docker</li><li>PostgreSQL</li><li>HTML</li><li>CSS</li><li>JavaScript</li><li>WordPress</li></ul>
             <div class="proj-links">
-              <a href="https://www.cleverbyte.es/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
+              <a href="https://www.cleverbyte.es/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
             </div>
           </div>
         </article>
@@ -573,20 +858,20 @@ SEGURIDAD:
 
       <!-- Más del laboratorio: lo pequeño, en una lista -->
       <div class="lab reveal-up">
-        <h3 class="lab-titulo"><i class="fas fa-flask" aria-hidden="true"></i> <span data-i18n="lab-titulo">More from the lab</span></h3>
+        <h3 class="lab-titulo"><i class="fas fa-flask" aria-hidden="true"></i> <span data-i18n="lab-titulo">Más del laboratorio</span></h3>
         <ul class="lab-lista">
-          <li><span class="lab-fecha">Oct 2026</span><span class="lab-texto" data-i18n-html="lab-fs22"><strong>Fede Pack</strong> · a Farming Simulator 22 mod generated with Python, with my own 3D models (Blender) and Lua scripts</span></li>
-          <li><span class="lab-fecha">Sep 2026</span><span class="lab-texto" data-i18n-html="lab-sai"><strong>Web SAI PC</strong> · a local dashboard to keep an eye on my PC's UPS, with a Python server</span></li>
-          <li><span class="lab-fecha">Sep 2026</span><span class="lab-texto" data-i18n-html="lab-cifrado"><strong>Image encryption</strong> · a Python tool</span><a class="lab-link" href="https://github.com/Fedes10/Cifrado-Imagenes-Fede" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-          <li><span class="lab-fecha">Mar 2026</span><span class="lab-texto" data-i18n-html="lab-java"><strong>Java notes</strong> · a study-notes website for DAM</span><a class="lab-link" href="https://github.com/Fedes10/ApuntesJava-DAM" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-          <li><span class="lab-fecha">Jan – Feb 2026</span><span class="lab-texto" data-i18n-html="lab-hakuna"><strong>Community websites</strong> · Hakuna (groups by city) and Rezar en gerundio</span><a class="lab-link" href="https://github.com/Fedes10/HakunaGroupsLinks" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
-          <li><span class="lab-fecha">2025</span><span class="lab-texto" data-i18n-html="lab-albero"><strong>Turnos Caseta El Albero</strong> · the shift rota for a booth at the Córdoba Fair</span><a class="lab-link" href="https://github.com/Fedes10/Turnos-Caseta-Albero" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><span class="lab-fecha">Oct 2026</span><span class="lab-texto" data-i18n-html="lab-fs22"><strong>Fede Pack</strong> · mod de Farming Simulator 22 generado con Python, con modelos 3D propios (Blender) y scripts en Lua</span></li>
+          <li><span class="lab-fecha">Sep 2026</span><span class="lab-texto" data-i18n-html="lab-sai"><strong>Web SAI PC</strong> · panel local para vigilar el SAI de mi PC, con un servidor en Python</span></li>
+          <li><span class="lab-fecha">Sep 2026</span><span class="lab-texto" data-i18n-html="lab-cifrado"><strong>Cifrado de imágenes</strong> · herramienta en Python</span><a class="lab-link" href="https://github.com/Fedes10/Cifrado-Imagenes-Fede" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><span class="lab-fecha">Mar 2026</span><span class="lab-texto" data-i18n-html="lab-java"><strong>Apuntes de Java</strong> · web de apuntes para DAM</span><a class="lab-link" href="https://github.com/Fedes10/ApuntesJava-DAM" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><span class="lab-fecha">Jan – Feb 2026</span><span class="lab-texto" data-i18n-html="lab-hakuna"><strong>Webs para comunidades</strong> · Hakuna (grupos por ciudad) y Rezar en gerundio</span><a class="lab-link" href="https://github.com/Fedes10/HakunaGroupsLinks" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
+          <li><span class="lab-fecha">2025</span><span class="lab-texto" data-i18n-html="lab-albero"><strong>Turnos Caseta El Albero</strong> · los turnos de una caseta de la Feria de Córdoba</span><a class="lab-link" href="https://github.com/Fedes10/Turnos-Caseta-Albero" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a></li>
         </ul>
       </div>
 
       <!-- Galería de imágenes de proyectos -->
       <div class="img-slideshow-section reveal-up galeria-proyectos">
-        <h3 class="slideshow-title"><i class="fas fa-images" aria-hidden="true"></i> <span data-i18n="gallery-projects">Projects gallery</span></h3>
+        <h3 class="slideshow-title"><i class="fas fa-images" aria-hidden="true"></i> <span data-i18n="gallery-projects">Galería de proyectos</span></h3>
         <div class="img-slideshow">
           <div class="imgss-track" id="trackProjects">
             <img src="Proyectos/el-regreso.webp" alt="El Regreso" class="imgss-slide" loading="lazy">
@@ -616,8 +901,8 @@ SEGURIDAD:
             <img src="Proyectos/dj1.jpg" alt="DJ 1" class="imgss-slide" loading="lazy">
             <img src="Proyectos/dj2.jpg" alt="DJ 2" class="imgss-slide" loading="lazy">
           </div>
-          <button type="button" class="imgss-btn imgss-prev" data-i18n-attr="aria-label:galeria-anterior" aria-label="Previous image"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-          <button type="button" class="imgss-btn imgss-next" data-i18n-attr="aria-label:galeria-siguiente" aria-label="Next image"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+          <button type="button" class="imgss-btn imgss-prev" data-i18n-attr="aria-label:galeria-anterior" aria-label="Imagen anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <button type="button" class="imgss-btn imgss-next" data-i18n-attr="aria-label:galeria-siguiente" aria-label="Imagen siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
           <div class="imgss-dots" id="dotsProjects"></div>
         </div>
       </div>
@@ -631,62 +916,87 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">04</div>
-        <span class="section-label" data-i18n="s04-label">Services</span>
-        <h2 class="section-title" data-i18n="s04-title">What I can do for you</h2>
-        <p class="section-intro" data-i18n="serv-intro">I work with businesses, associations and individuals, in Córdoba and remotely. A fixed, written quote — no surprises.</p>
+        <span class="section-label" data-i18n="s04-label">Servicios</span>
+        <h2 class="section-title" data-i18n="s04-title">Lo que puedo hacer por ti</h2>
+        <p class="section-intro" data-i18n="serv-intro">Desarrollo de aplicaciones multiplataforma, páginas web y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto. Presupuesto cerrado y por escrito, sin sorpresas.</p>
       </div>
 
       <div class="serv-grid">
         <article class="serv-card reveal-up">
           <div class="serv-icono"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv1-t">Mobile &amp; web apps</h3>
-          <p data-i18n="serv1-d">An app for your business, association or event, on Android and on the web from a single codebase (Flutter). It also installs on iPhone as a web app, and comes with a panel so you can publish yourself.</p>
+          <h3 data-i18n="serv1-t">Apps multiplataforma</h3>
+          <p data-i18n="serv1-d">Una app para tu negocio, asociación o evento, en Android, en la web y en Windows con el mismo código (Flutter). También se instala en iPhone como app web, y lleva un panel para que publiques tú.</p>
         </article>
         <article class="serv-card reveal-up delay-1">
           <div class="serv-icono"><i class="fas fa-globe" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv2-t">Professional websites</h3>
-          <p data-i18n="serv2-d">Fast, mobile-friendly websites, in one or more languages and ready for Google: from a one-page site to a full WordPress you manage yourself.</p>
+          <h3 data-i18n="serv2-t">Webs profesionales</h3>
+          <p data-i18n="serv2-d">Webs rápidas, adaptadas al móvil, en uno o varios idiomas y preparadas para Google: desde una página de presentación hasta un WordPress completo que gestionas tú.</p>
         </article>
         <article class="serv-card reveal-up delay-2">
           <div class="serv-icono"><i class="fas fa-server" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv3-t">Servers &amp; hosting</h3>
-          <p data-i18n="serv3-d">Your own server (VPS) with Docker and Cloudflare: no open ports, encrypted backups, and your domain and email properly set up.</p>
+          <h3 data-i18n="serv3-t">Servidores y alojamiento</h3>
+          <p data-i18n="serv3-d">Tu propio servidor (VPS) con Docker y Cloudflare: sin puertos abiertos, con copias de seguridad cifradas y con tu dominio y tu correo bien configurados.</p>
         </article>
         <article class="serv-card reveal-up">
           <div class="serv-icono"><i class="fas fa-right-left" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv4-t">Migrations</h3>
-          <p data-i18n="serv4-d">I move your website or blog (WordPress, Blogger…) to your own hosting without losing posts, photos or search rankings.</p>
+          <h3 data-i18n="serv4-t">Migraciones</h3>
+          <p data-i18n="serv4-d">Paso tu web o tu blog (WordPress, Blogger…) a un alojamiento propio sin perder entradas, fotos ni posicionamiento.</p>
         </article>
         <article class="serv-card reveal-up delay-1">
           <div class="serv-icono"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv5-t">Security &amp; maintenance</h3>
-          <p data-i18n="serv5-d">I review and protect what you already have: updates, security headers, backups that can actually be restored, and alerts if something goes down.</p>
+          <h3 data-i18n="serv5-t">Seguridad y mantenimiento</h3>
+          <p data-i18n="serv5-d">Reviso y protejo lo que ya tienes: actualizaciones, cabeceras de seguridad, copias que de verdad se pueden restaurar y avisos si algo se cae.</p>
         </article>
         <article class="serv-card reveal-up delay-2">
           <div class="serv-icono"><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i></div>
-          <h3 data-i18n="serv6-t">Tech support</h3>
-          <p data-i18n="serv6-d">Computers, networks and incidents, on-site in Córdoba or remotely: installation, repair, tune-ups and advice.</p>
+          <h3 data-i18n="serv6-t">Soporte técnico</h3>
+          <p data-i18n="serv6-d">Ordenadores, redes e incidencias, presencial en Córdoba o en remoto: instalación, reparación, puesta a punto y asesoramiento.</p>
         </article>
       </div>
 
       <div class="serv-proceso reveal-up">
-        <h3 class="serv-proceso-titulo" data-i18n="serv-proceso-titulo">How I work</h3>
+        <h3 class="serv-proceso-titulo" data-i18n="serv-proceso-titulo">Cómo trabajo</h3>
         <ol class="proceso-pasos">
-          <li><span class="paso-num">1</span><strong data-i18n="paso1-t">We talk</strong><p data-i18n="paso1-d">You tell me what you need. The first conversation is free.</p></li>
-          <li><span class="paso-num">2</span><strong data-i18n="paso2-t">Quote</strong><p data-i18n="paso2-d">Fixed and in writing, with what's included and the deadlines.</p></li>
-          <li><span class="paso-num">3</span><strong data-i18n="paso3-t">Build</strong><p data-i18n="paso3-d">You see the progress and test it before anything goes live.</p></li>
-          <li><span class="paso-num">4</span><strong data-i18n="paso4-t">Launch &amp; support</strong><p data-i18n="paso4-d">I show you how it works and I'm still there if you need me.</p></li>
+          <li><span class="paso-num">1</span><strong data-i18n="paso1-t">Hablamos</strong><p data-i18n="paso1-d">Me cuentas qué necesitas. La primera conversación es gratis.</p></li>
+          <li><span class="paso-num">2</span><strong data-i18n="paso2-t">Presupuesto</strong><p data-i18n="paso2-d">Cerrado y por escrito, con lo que incluye y los plazos.</p></li>
+          <li><span class="paso-num">3</span><strong data-i18n="paso3-t">Desarrollo</strong><p data-i18n="paso3-d">Ves los avances y lo pruebas antes de publicar nada.</p></li>
+          <li><span class="paso-num">4</span><strong data-i18n="paso4-t">Entrega y soporte</strong><p data-i18n="paso4-d">Te explico cómo funciona y sigo ahí si me necesitas.</p></li>
         </ol>
+      </div>
+
+      <!-- Preguntas frecuentes: las mismas van como FAQPage en los datos estructurados -->
+      <div class="faq reveal-up">
+        <h3 class="faq-titulo" data-i18n="faq-titulo">Preguntas frecuentes</h3>
+        <details class="faq-item">
+          <summary data-i18n="faq1-p">¿Qué es una app multiplataforma?</summary>
+          <p data-i18n="faq1-r">Una aplicación que se programa una vez y funciona en Android, en la web y en Windows. La hago con Flutter, el framework de Google: un solo código, menos coste y las mismas funciones en todos los dispositivos.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq2-p">¿Puedes hacer una app que funcione en iPhone?</summary>
+          <p data-i18n="faq2-r">Sí: como app web instalable (PWA), que se abre desde Safari y se añade a la pantalla de inicio como cualquier otra app. Si además tiene que estar en la App Store, lo valoramos en el presupuesto.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq3-p">¿Cuánto cuesta y cuánto tarda?</summary>
+          <p data-i18n="faq3-r">Depende de lo que necesites. Te preparo un presupuesto cerrado y por escrito, con lo que incluye y los plazos, y la primera conversación es gratis.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq4-p">¿Trabajas solo en Córdoba?</summary>
+          <p data-i18n="faq4-r">No. En Córdoba puedo ir en persona cuando haga falta, y en remoto trabajo para cualquier sitio de España y de fuera, en español o en inglés.</p>
+        </details>
+        <details class="faq-item">
+          <summary data-i18n="faq5-p">¿Te encargas también del servidor, el dominio y el mantenimiento?</summary>
+          <p data-i18n="faq5-r">Sí. Monto el servidor con Docker y Cloudflare, configuro el dominio y el correo, dejo copias de seguridad cifradas y, si quieres, me quedo con el mantenimiento.</p>
+        </details>
       </div>
 
       <div class="serv-cta reveal-up">
         <div class="serv-cta-texto">
-          <h3 data-i18n="serv-cta-titulo">Got a project in mind?</h3>
-          <p data-i18n="serv-cta-texto">Tell me about it and I'll prepare a no-obligation quote.</p>
+          <h3 data-i18n="serv-cta-titulo">¿Tienes un proyecto en mente?</h3>
+          <p data-i18n="serv-cta-texto">Cuéntamelo y te preparo un presupuesto sin compromiso.</p>
         </div>
         <div class="serv-cta-acciones">
-          <a class="btn-primary" href="mailto:fedestalgat@gmail.com?subject=Quote%20request%20from%20fedes10.com" data-i18n-attr="href:serv-cta-mailto"><i class="fas fa-paper-plane" aria-hidden="true"></i> <span data-i18n="serv-cta-btn">Get a quote</span></a>
-          <a class="serv-cta-link" href="https://linkedin.com/in/fedes10/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> <span data-i18n="serv-cta-link">or message me on LinkedIn</span></a>
+          <a class="btn-primary" href="mailto:fedestalgat@gmail.com?subject=Presupuesto%20desde%20fedes10.com" data-i18n-attr="href:serv-cta-mailto"><i class="fas fa-paper-plane" aria-hidden="true"></i> <span data-i18n="serv-cta-btn">Pedir presupuesto</span></a>
+          <a class="serv-cta-link" href="https://linkedin.com/in/fedes10/" target="_blank" rel="noopener"><i class="fab fa-linkedin" aria-hidden="true"></i> <span data-i18n="serv-cta-link">o escríbeme por LinkedIn</span></a>
         </div>
       </div>
     </div>
@@ -698,33 +1008,33 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">05</div>
-        <span class="section-label" data-i18n="s05-label">Skills</span>
-        <h2 class="section-title" data-i18n="s05-title">Tech stack</h2>
+        <span class="section-label" data-i18n="s05-label">Habilidades</span>
+        <h2 class="section-title" data-i18n="s05-title">Stack técnico</h2>
       </div>
 
       <!-- Una sola vista para todas las pantallas: la rejilla se adapta sola -->
       <div class="skills-grid">
 
         <article class="skill-group skill-group-destacado reveal-up">
-          <header class="skill-group-head"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i><h3 data-i18n="skills-cat-apps">Cross-platform apps</h3><span class="skill-especialidad" data-i18n="skills-especialidad">Specialty</span></header>
+          <header class="skill-group-head"><i class="fas fa-mobile-screen-button" aria-hidden="true"></i><h3 data-i18n="skills-cat-apps">Apps multiplataforma</h3><span class="skill-especialidad" data-i18n="skills-especialidad">Especialidad</span></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Flutter / Dart</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-android">Android (APKs &amp; widgets)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-android">Android (APK y widgets)</li>
             <li class="skill-pill skill-high">Flutter Web / PWA</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-windows">Windows desktop apps</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-windows">Apps de escritorio Windows</li>
             <li class="skill-pill skill-med">Kotlin</li>
             <li class="skill-pill skill-med">SQLite / Drift</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-ui">UI design</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-ui">Diseño de interfaces</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up delay-1">
-          <header class="skill-group-head"><i class="fas fa-code" aria-hidden="true"></i><h3 data-i18n="skills-cat-web">Web &amp; backend</h3></header>
+          <header class="skill-group-head"><i class="fas fa-code" aria-hidden="true"></i><h3 data-i18n="skills-cat-web">Web y backend</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high">HTML / CSS</li>
             <li class="skill-pill skill-high">JavaScript</li>
             <li class="skill-pill skill-high">Python</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-api">REST APIs</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-api">APIs REST</li>
             <li class="skill-pill skill-high">WordPress</li>
             <li class="skill-pill skill-high">PHP</li>
             <li class="skill-pill skill-high">Java</li>
@@ -737,7 +1047,7 @@ SEGURIDAD:
         </article>
 
         <article class="skill-group reveal-up delay-2">
-          <header class="skill-group-head"><i class="fas fa-database" aria-hidden="true"></i><h3 data-i18n="skills-cat-db">Databases</h3></header>
+          <header class="skill-group-head"><i class="fas fa-database" aria-hidden="true"></i><h3 data-i18n="skills-cat-db">Bases de datos</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high">PostgreSQL</li>
             <li class="skill-pill skill-high">MySQL / MariaDB</li>
@@ -746,84 +1056,84 @@ SEGURIDAD:
         </article>
 
         <article class="skill-group reveal-up">
-          <header class="skill-group-head"><i class="fas fa-cloud" aria-hidden="true"></i><h3 data-i18n="skills-cat-devops">DevOps &amp; servers</h3></header>
+          <header class="skill-group-head"><i class="fas fa-cloud" aria-hidden="true"></i><h3 data-i18n="skills-cat-devops">DevOps y servidores</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Docker / Compose</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-linux">Linux (Ubuntu &amp; Debian)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-linux">Linux (Ubuntu y Debian)</li>
             <li class="skill-pill skill-high">VPS (OVH)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-cloudflare">Cloudflare (Tunnels, Access, DNS)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-cloudflare">Cloudflare (túneles, Access, DNS)</li>
             <li class="skill-pill skill-high">nginx / Caddy</li>
             <li class="skill-pill skill-high">Git / GitHub</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-bash">Bash, systemd &amp; cron</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-bash">Bash, systemd y cron</li>
             <li class="skill-pill skill-med">GitHub Actions</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-backups">Encrypted backups &amp; restores</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-backups">Copias cifradas y restauración</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up delay-1">
-          <header class="skill-group-head"><i class="fas fa-shield-halved" aria-hidden="true"></i><h3 data-i18n="skills-cat-cyber">Cybersecurity</h3></header>
+          <header class="skill-group-head"><i class="fas fa-shield-halved" aria-hidden="true"></i><h3 data-i18n="skills-cat-cyber">Ciberseguridad</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-sec">Information security</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Hardening (SSH, ufw, fail2ban, AIDE)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-csp">CSP &amp; security headers</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-pentest">Pentesting (Nmap, Metasploit, brute force)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-netmon">Network monitoring</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-sec">Seguridad informática</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Bastionado (SSH, ufw, fail2ban, AIDE)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-csp">CSP y cabeceras de seguridad</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-pentest">Pentesting (Nmap, Metasploit, fuerza bruta)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-netmon">Monitorización de redes</li>
             <li class="skill-pill skill-med">Kali Linux</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-fw">Firewalls &amp; policies</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-trivy">Vulnerability scanning (Trivy)</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-fw">Firewalls y políticas</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-trivy">Análisis de vulnerabilidades (Trivy)</li>
             <li class="skill-pill skill-med">pfSense</li>
             <li class="skill-pill skill-base">Sophos</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up delay-2">
-          <header class="skill-group-head"><i class="fas fa-network-wired" aria-hidden="true"></i><h3 data-i18n="skills-cat-sistemas">Systems &amp; networks</h3></header>
+          <header class="skill-group-head"><i class="fas fa-network-wired" aria-hidden="true"></i><h3 data-i18n="skills-cat-sistemas">Sistemas y redes</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-sysadmin">Server administration</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-lan">Local networks (LAN/WLAN)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-sysadmin">Administración de servidores</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-lan">Redes locales (LAN/WLAN)</li>
             <li class="skill-pill skill-high">Windows Server / Linux</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-virt">Virtualization</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-virt">Virtualización</li>
             <li class="skill-pill skill-high">Synology / XPEnology</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-ad">Active Directory</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-swinstall">Software installation</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-osinstall">OS installation</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-swinstall">Instalación de software</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-osinstall">Instalación de SO</li>
             <li class="skill-pill skill-med">Webmin</li>
             <li class="skill-pill skill-med">CMD / Batch</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up">
-          <header class="skill-group-head"><i class="fas fa-brain" aria-hidden="true"></i><h3 data-i18n="skills-cat-ia">Artificial intelligence</h3></header>
+          <header class="skill-group-head"><i class="fas fa-brain" aria-hidden="true"></i><h3 data-i18n="skills-cat-ia">Inteligencia artificial</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-agentes">Development with AI agents (Claude Code)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-aiuse">Advanced AI usage</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-prompting">Advanced prompting</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-local-llm">Local models (Ollama, LiteLLM)</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-aiauto">AI automation</li>
-            <li class="skill-pill skill-med" data-i18n="skills-pill-mcp">AI integration (MCP)</li>
-            <li class="skill-pill skill-base" data-i18n="skills-pill-ml">ML fundamentals</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-agentes">Desarrollo con agentes de IA (Claude Code)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-aiuse">Uso avanzado de IA</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-prompting">Prompting avanzado</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-local-llm">Modelos locales (Ollama, LiteLLM)</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-aiauto">Automatización con IA</li>
+            <li class="skill-pill skill-med" data-i18n="skills-pill-mcp">Integración de IA (MCP)</li>
+            <li class="skill-pill skill-base" data-i18n="skills-pill-ml">Fundamentos de ML</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up delay-1">
           <header class="skill-group-head"><i class="fas fa-microchip" aria-hidden="true"></i><h3 data-i18n="skills-cat-hardware">Hardware</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-mont">Assembly &amp; configuration</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-diag">Diagnostics &amp; repair</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-maint">Maintenance</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isoinstall">ISO installation</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isocreate">ISO creation</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-repair">Component repair</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-upgrade">Hardware upgrades</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-mont">Montaje y configuración</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-diag">Diagnóstico y reparación</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-maint">Mantenimiento</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isoinstall">Instalación de ISOs</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isocreate">Creación de ISOs</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-repair">Reparación de componentes</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-upgrade">Actualización de equipos</li>
           </ul>
         </article>
 
         <article class="skill-group reveal-up delay-2">
-          <header class="skill-group-head"><i class="fas fa-briefcase" aria-hidden="true"></i><h3 data-i18n="skills-cat-erp">ERP &amp; management</h3></header>
+          <header class="skill-group-head"><i class="fas fa-briefcase" aria-hidden="true"></i><h3 data-i18n="skills-cat-erp">ERP y gestión</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Dolibarr ERP</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-support">Technical support (on-site &amp; remote)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-incidents">Incident resolution</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-support">Soporte técnico (presencial y remoto)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-incidents">Resolución de incidencias</li>
             <li class="skill-pill skill-med">Bizagi Modeler</li>
             <li class="skill-pill skill-med">Odoo</li>
             <li class="skill-pill skill-med">GNU Health</li>
@@ -834,9 +1144,9 @@ SEGURIDAD:
       </div>
 
       <div class="skills-legend reveal-up">
-        <span class="legend-item"><span class="legend-dot skill-high"></span> <span data-i18n="legend-high">Advanced</span></span>
-        <span class="legend-item"><span class="legend-dot skill-med"></span> <span data-i18n="legend-med">Intermediate</span></span>
-        <span class="legend-item"><span class="legend-dot skill-base"></span> <span data-i18n="legend-base">Basic</span></span>
+        <span class="legend-item"><span class="legend-dot skill-high"></span> <span data-i18n="legend-high">Avanzado</span></span>
+        <span class="legend-item"><span class="legend-dot skill-med"></span> <span data-i18n="legend-med">Medio</span></span>
+        <span class="legend-item"><span class="legend-dot skill-base"></span> <span data-i18n="legend-base">Básico</span></span>
       </div>
     </div>
   </section>
@@ -847,17 +1157,17 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">06</div>
-        <span class="section-label" data-i18n="s06-label">Education</span>
-        <h2 class="section-title" data-i18n="s06-title">Academic background</h2>
+        <span class="section-label" data-i18n="s06-label">Formación</span>
+        <h2 class="section-title" data-i18n="s06-title">Formación académica</h2>
       </div>
       <div class="education-grid">
 
         <a href="https://ceslopedevega.com/" target="_blank" rel="noopener" class="edu-card edu-card-current reveal-up delay-1">
           <div class="edu-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></div>
-          <div class="edu-badge" data-i18n="edu1-badge">Ongoing</div>
+          <div class="edu-badge" data-i18n="edu1-badge">En curso</div>
           <span class="nav-num">04</span>
           <h3>DAM</h3>
-          <p class="edu-full" data-i18n="edu1-full">Higher Degree in Multiplatform Application Development</p>
+          <p class="edu-full" data-i18n="edu1-full">Grado Superior en Desarrollo de Aplicaciones Multiplataforma</p>
           <p class="edu-center">CES Lope de Vega, Córdoba</p>
           <span class="edu-year">2025 – 2027</span>
         </a>
@@ -866,7 +1176,7 @@ SEGURIDAD:
           <div class="edu-icon"><i class="fas fa-network-wired" aria-hidden="true"></i></div>
           <span class="nav-num">03</span>
           <h3>ASIR</h3>
-          <p class="edu-full" data-i18n="edu2-full">Higher Degree in Network Computer Systems Administration</p>
+          <p class="edu-full" data-i18n="edu2-full">Grado Superior en Administración de Sistemas Informáticos en Red</p>
           <p class="edu-center">CES Lope de Vega, Córdoba</p>
           <span class="edu-year">2023 – 2025</span>
         </a>
@@ -875,7 +1185,7 @@ SEGURIDAD:
           <div class="edu-icon"><i class="fas fa-desktop" aria-hidden="true"></i></div>
           <span class="nav-num">02</span>
           <h3>SMR</h3>
-          <p class="edu-full" data-i18n="edu3-full">Intermediate Degree in Microcomputer Systems and Networks</p>
+          <p class="edu-full" data-i18n="edu3-full">Grado Medio en Sistemas Microinformáticos y Redes</p>
           <p class="edu-center">CES Lope de Vega, Córdoba</p>
           <span class="edu-year">2021 – 2023</span>
         </a>
@@ -884,7 +1194,7 @@ SEGURIDAD:
           <div class="edu-icon"><i class="fas fa-school" aria-hidden="true"></i></div>
           <span class="nav-num">01</span>
           <h3>ESO</h3>
-          <p class="edu-full" data-i18n="edu4-full">Secondary Education</p>
+          <p class="edu-full" data-i18n="edu4-full">Educación Secundaria Obligatoria</p>
           <p class="edu-center">Colegio Bética Mudarra, Córdoba</p>
           <span class="edu-year">2016 – 2021</span>
         </a>
@@ -899,8 +1209,8 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">07</div>
-        <span class="section-label" data-i18n="s07-label">Awards</span>
-        <h2 class="section-title" data-i18n="s07-title">Awards &amp; achievements</h2>
+        <span class="section-label" data-i18n="s07-label">Logros</span>
+        <h2 class="section-title" data-i18n="s07-title">Reconocimientos y logros</h2>
       </div>
       <div class="logros-grid">
         <a href="https://www.linkedin.com/posts/fedes10_esta-semana-del-24-al-28-de-noviembre-he-activity-7400260286781472768-Qf_0"
@@ -909,8 +1219,8 @@ SEGURIDAD:
             <div class="logro-icon logro-icon-special"><i class="fas fa-award" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro1-title">Andalucía Skills 2025 Finalist</h3>
-            <p data-i18n="logro1-desc">Skill 39 — IT Network Systems Administration, Jaén</p>
+            <h3 data-i18n="logro1-title">Finalista Andalucía Skills 2025</h3>
+            <p data-i18n="logro1-desc">Especialidad 39 — TI Administración de Sistemas en Red, Jaén</p>
           </div>
         </a>
         <a href="https://www.diariocordoba.com/contraportada/2017/04/20/primeros-lego-36659515.html" target="_blank" rel="noopener"
@@ -919,7 +1229,7 @@ SEGURIDAD:
             <div class="logro-icon"><i class="fas fa-trophy" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro2-title">Andalusia Champion</h3>
+            <h3 data-i18n="logro2-title">Campeón de Andalucía</h3>
             <p data-i18n="logro2-desc">First Lego League 2017</p>
           </div>
         </a>
@@ -929,7 +1239,7 @@ SEGURIDAD:
             <div class="logro-icon"><i class="fas fa-medal" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro3-title">Spain Finalist</h3>
+            <h3 data-i18n="logro3-title">Finalista de España</h3>
             <p data-i18n="logro3-desc">First Lego League 2017</p>
           </div>
         </a>
@@ -938,8 +1248,8 @@ SEGURIDAD:
             <div class="logro-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro4-title">Robotics</h3>
-            <p data-i18n="logro4-desc">4 years of studies at Bwit</p>
+            <h3 data-i18n="logro4-title">Robótica</h3>
+            <p data-i18n="logro4-desc">4 años de estudios en Bwit</p>
           </div>
         </a>
         <a href="https://www.b-wit.com/" target="_blank" rel="noopener" class="logro-card reveal-up delay-2">
@@ -948,7 +1258,7 @@ SEGURIDAD:
           </div>
           <div class="logro-card-bottom">
             <h3 data-i18n="logro5-title">Arduino</h3>
-            <p data-i18n="logro5-desc">2 years of programming at Bwit</p>
+            <p data-i18n="logro5-desc">2 años de programación en Bwit</p>
           </div>
         </a>
         <a href="https://erasmus-plus.ec.europa.eu/es" target="_blank" rel="noopener" class="logro-card reveal-up delay-3">
@@ -956,8 +1266,8 @@ SEGURIDAD:
             <div class="logro-icon"><i class="fas fa-plane" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro6-title">International experience</h3>
-            <p data-i18n="logro6-desc">Erasmus+ — Vilnius, Lithuania (2022)</p>
+            <h3 data-i18n="logro6-title">Experiencia internacional</h3>
+            <p data-i18n="logro6-desc">Erasmus+ — Vilna, Lituania (2022)</p>
           </div>
         </a>
         <a href="https://learn.microsoft.com/es-es/users/fedelora-6361/achievements/k6e4yjeb?ref=https%3A%2F%2Fwww.linkedin.com%2F"
@@ -966,8 +1276,8 @@ SEGURIDAD:
             <div class="logro-icon"><i class="fas fa-cloud" aria-hidden="true"></i></div>
           </div>
           <div class="logro-card-bottom">
-            <h3 data-i18n="logro7-title">Introduction to Microsoft Azure</h3>
-            <p data-i18n="logro7-desc">Cloud fundamentals — Microsoft Azure</p>
+            <h3 data-i18n="logro7-title">Introducción a Microsoft Azure</h3>
+            <p data-i18n="logro7-desc">Fundamentos de la nube — Microsoft Azure</p>
           </div>
         </a>
         <a href="https://www.bizagi.com/es" target="_blank" rel="noopener" class="logro-card reveal-up delay-2">
@@ -976,14 +1286,14 @@ SEGURIDAD:
           </div>
           <div class="logro-card-bottom">
             <h3 data-i18n="logro8-title">Bizagi</h3>
-            <p data-i18n="logro8-desc">BPM process modelling</p>
+            <p data-i18n="logro8-desc">Modelado de procesos BPM</p>
           </div>
         </a>
       </div>
 
       <!-- Galería de imágenes de logros -->
       <div class="img-slideshow-section reveal-up">
-        <h3 class="slideshow-title"><i class="fas fa-images" aria-hidden="true"></i> <span data-i18n="gallery-logros">Achievements gallery</span></h3>
+        <h3 class="slideshow-title"><i class="fas fa-images" aria-hidden="true"></i> <span data-i18n="gallery-logros">Galería de logros</span></h3>
         <div class="img-slideshow">
           <div class="imgss-track" id="trackLogros">
             <img src="Logros/Andalucia%20Skill%20Collage.webp" alt="Andalucía Skills" class="imgss-slide" loading="lazy">
@@ -1009,8 +1319,8 @@ SEGURIDAD:
             <img src="Logros/introduccion-azure.webp" alt="Microsoft Azure" class="imgss-slide" loading="lazy">
             <img src="Logros/magtel2.jpg" alt="Magtel 2" class="imgss-slide" loading="lazy">
           </div>
-          <button type="button" class="imgss-btn imgss-prev" data-i18n-attr="aria-label:galeria-anterior" aria-label="Previous image"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
-          <button type="button" class="imgss-btn imgss-next" data-i18n-attr="aria-label:galeria-siguiente" aria-label="Next image"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+          <button type="button" class="imgss-btn imgss-prev" data-i18n-attr="aria-label:galeria-anterior" aria-label="Imagen anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <button type="button" class="imgss-btn imgss-next" data-i18n-attr="aria-label:galeria-siguiente" aria-label="Imagen siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
           <div class="imgss-dots" id="dotsLogros"></div>
         </div>
       </div>
@@ -1025,8 +1335,8 @@ SEGURIDAD:
     <div class="container">
       <div class="section-header reveal-up">
         <div class="section-num" aria-hidden="true">08</div>
-        <span class="section-label" data-i18n="s08-label">Contact</span>
-        <h2 class="section-title" data-i18n="s08-title">Let's talk</h2>
+        <span class="section-label" data-i18n="s08-label">Contacto</span>
+        <h2 class="section-title" data-i18n="s08-title">Hablemos</h2>
       </div>
 
       <div class="contact-wrapper reveal-up">
@@ -1038,16 +1348,16 @@ SEGURIDAD:
             </div>
             <div class="chat-header-info">
               <h3>Federico Lora</h3>
-              <p data-i18n="contact-role">App developer · Systems technician</p>
+              <p data-i18n="contact-role">Desarrollador de apps multiplataforma · Técnico de sistemas</p>
             </div>
             <div class="chat-header-decoration" aria-hidden="true"><i class="fas fa-code"></i></div>
           </div>
           <div class="chat-card-body">
             <div class="chat-message received">
               <div class="message-bubble">
-                <p data-i18n="contact-msg1">Got a project in mind, or looking for someone to join your team?</p>
-                <p data-i18n="contact-msg2">Drop me an email or a message on LinkedIn and let's talk.</p>
-                <span class="message-time" data-i18n="contact-reply">I'll get back to you as soon as possible</span>
+                <p data-i18n="contact-msg1">¿Tienes un proyecto en mente o buscas a alguien para tu equipo?</p>
+                <p data-i18n="contact-msg2">Escríbeme por correo o por LinkedIn y lo hablamos.</p>
+                <span class="message-time" data-i18n="contact-reply">Respondo con la mayor brevedad posible</span>
               </div>
             </div>
           </div>
@@ -1060,7 +1370,7 @@ SEGURIDAD:
               </div>
               <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
             </a>
-            <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="noopener" class="contact-item" title="LinkedIn">
+            <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="me noopener" class="contact-item" title="LinkedIn">
               <div class="contact-icon linkedin"><i class="fab fa-linkedin-in" aria-hidden="true"></i></div>
               <div class="contact-info">
                 <span class="contact-label">LinkedIn</span>
@@ -1068,7 +1378,7 @@ SEGURIDAD:
               </div>
               <i class="fas fa-arrow-right contact-arrow" aria-hidden="true"></i>
             </a>
-            <a href="https://github.com/Fedes10" target="_blank" rel="noopener" class="contact-item" title="GitHub">
+            <a href="https://github.com/Fedes10" target="_blank" rel="me noopener" class="contact-item" title="GitHub">
               <div class="contact-icon github"><i class="fab fa-github" aria-hidden="true"></i></div>
               <div class="contact-info">
                 <span class="contact-label">GitHub</span>
@@ -1084,11 +1394,11 @@ SEGURIDAD:
           <div class="cta-card">
             <div class="cta-icon-wrap"><i class="fa-regular fa-file" aria-hidden="true"></i></div>
             <div class="cta-content">
-              <h4 data-i18n="cta-title">Download résumé</h4>
-              <p data-i18n="cta-subtitle">Full PDF version</p>
+              <h4 data-i18n="cta-title">Descargar currículum</h4>
+              <p data-i18n="cta-subtitle">Versión completa en PDF</p>
             </div>
             <button type="button" class="cta-button" id="btnDownloadCV">
-              <span data-i18n="cta-btn">Download</span>
+              <span data-i18n="cta-btn">Descargar</span>
               <i class="fas fa-download" aria-hidden="true"></i>
             </button>
           </div>
@@ -1096,7 +1406,7 @@ SEGURIDAD:
             <div class="printer-body"><i class="fas fa-print" aria-hidden="true"></i></div>
             <div class="printer-paper" id="printerPaper">
               <i class="fas fa-check-circle paper-check" aria-hidden="true"></i>
-              <span data-i18n="printer-msg">CV downloaded!</span>
+              <span data-i18n="printer-msg">¡CV descargado!</span>
             </div>
           </div>
         </div>
@@ -1111,22 +1421,22 @@ SEGURIDAD:
   <footer class="footer">
     <div class="footer-inner">
       <span class="footer-brand">Federico Lora</span>
-      <span class="footer-copy" data-i18n="footer-copy">© 2024–2026 Federico Talgat Lora Ortiz · All rights reserved</span>
+      <span class="footer-copy" data-i18n="footer-copy">© 2024–2026 Federico Talgat Lora Ortiz · Todos los derechos reservados</span>
       <div class="footer-links">
         <a href="mailto:fedestalgat@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-        <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
-        <a href="https://github.com/Fedes10" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+        <a href="https://linkedin.com/in/fedes10/" target="_blank" rel="me noopener" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        <a href="https://github.com/Fedes10" target="_blank" rel="me noopener" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
       </div>
     </div>
   </footer>
 
   <!-- Lightbox para ampliar las imágenes de las galerías -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
-    <button type="button" class="lightbox-close" id="lightboxClose" data-i18n-attr="aria-label:lightbox-cerrar" aria-label="Close"><i class="fas fa-times" aria-hidden="true"></i></button>
-    <img src="Proyectos/F10.png" alt="Enlarged image" id="lightboxImg" class="lightbox-img" data-i18n-attr="alt:lightbox-alt" />
+    <button type="button" class="lightbox-close" id="lightboxClose" data-i18n-attr="aria-label:lightbox-cerrar" aria-label="Cerrar"><i class="fas fa-times" aria-hidden="true"></i></button>
+    <img src="Proyectos/F10.png" alt="Imagen ampliada" id="lightboxImg" class="lightbox-img" data-i18n-attr="alt:lightbox-alt" />
   </div>
 
-  <button type="button" class="scroll-top" id="scrollTop" data-i18n-attr="aria-label:scroll-top-label" aria-label="Back to top">
+  <button type="button" class="scroll-top" id="scrollTop" data-i18n-attr="aria-label:scroll-top-label" aria-label="Volver arriba">
     <i class="fas fa-chevron-up" aria-hidden="true"></i>
   </button>
 
