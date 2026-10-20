@@ -21,7 +21,7 @@
 
 - 💼 **Técnico de sistemas en CleverByte Consulting**, en Córdoba: prácticas en febrero de 2026, contrato en abril y **contrato indefinido desde septiembre**, de mañana.
 - 🎓 Terminando el **Grado Superior en DAM** (2.º curso) por las tardes, en CES Lope de Vega. Ya tengo **ASIR** y **SMR**.
-- 🚀 **Apps, webs y servidores para clientes**: La Dele, el Organismo Mundial de Cursillos de Cristiandad y la Asociación Génesis.
+- 🚀 **Apps, webs y servidores para clientes**: la app de la peregrinación a Guadalupe 2026, la del Organismo Mundial de Cursillos de Cristiandad y la web de la Asociación Génesis.
 
 ## 🛠️ Con qué trabajo
 
@@ -39,7 +39,7 @@
 | Proyecto | Qué es | Dónde |
 |---|---|---|
 | **Faiten** | Una capa de inteligencia personal para el móvil (Flutter, PostgreSQL, Docker) | [faiten.fedes10.com](https://faiten.fedes10.com) |
-| **La Dele** | La app de la peregrinación a Guadalupe 2026 | [dele.fedes10.com](https://dele.fedes10.com) |
+| **App de Guadalupe** | La app de la peregrinación a Guadalupe 2026, en el móvil y en la web (Flutter, FastAPI) | — |
 | **Asociación Génesis** | Web en WordPress hecha a medida, en servidor propio | [genesis.fedes10.com](https://genesis.fedes10.com) |
 | **El Regreso** | Servidor de Minecraft con mods, web de estado y lanzador propio | [mc.fedes10.com](https://mc.fedes10.com) |
 | **fedes10.com** | Este repositorio: mi web, en español y en inglés | [fedes10.com](https://fedes10.com) |
@@ -49,5 +49,5 @@ La experiencia completa, los servicios y el contacto, en **[fedes10.com](https:/
 ---
 
 <p align="center">
-  <sub>© 2024–2026 Federico Talgat Lora Ortiz · Todos los derechos reservados · <a href="LICENSE">LICENSE</a></sub>
+  <sub>© 2024–2026 Federico Lora · Todos los derechos reservados · <a href="LICENSE">LICENSE</a></sub>
 </p>

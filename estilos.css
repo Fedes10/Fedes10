@@ -13,7 +13,7 @@
 ╰━━━┻━━┫╭━┻━╮╭┻╯╰┻━╮┣╯╰┻━╯
 ╱╱╱╱╱╱╱┃┃╱╭━╯┃╱╱╱╭━╯┃
 ╱╱╱╱╱╱╱╰╯╱╰━━╯╱╱╱╰━━╯
-© 2024-2026 Federico Talgat Lora Ortiz · Prohibida la copia, distribución o modificación sin autorización
+© 2024-2026 Federico Lora · Prohibida la copia, distribución o modificación sin autorización
 */
 
 /* ===== LETRAS PROPIAS =====
@@ -1420,13 +1420,30 @@ ul {
   color: var(--blue-accent)
 }
 
-/* ===== FORMACIÓN ===== */
+/* ===== FORMACIÓN =====
+   Cuatro a lo ancho, dos y dos en tableta, una en el móvil: nunca tres y una suelta.
+   Es flex y no grid, como las otras rejillas de cajas: así una fila incompleta sale CENTRADA
+   (con grid se queda pegada a la izquierda). El ancho de cada caja sale de --cols y --gap. */
 .education-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
-  gap: 1.4rem;
+  --cols: 4;
+  --gap: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
   max-width: 1000px;
   margin: 0 auto
+}
+
+.education-grid > .edu-card {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  min-width: 0
+}
+
+@media (max-width: 1026px) {
+  .education-grid {
+    --cols: 2
+  }
 }
 
 .edu-card {
@@ -1531,13 +1548,35 @@ ul {
 
 /* ===== HABILIDADES =====
    Una sola rejilla para todas las pantallas (antes: una tabla para escritorio y una copia
-   entera de las píldoras para el móvil, que había que mantener por duplicado). */
+   entera de las píldoras para el móvil, que había que mantener por duplicado).
+   Flex con columnas fijas por tramo (3 → 2 → 1, los mismos cortes que daba el grid de 330 px):
+   las cajas de la última fila, si no la llenan, quedan CENTRADAS. */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
-  gap: 1.1rem;
+  --cols: 3;
+  --gap: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
   max-width: 1120px;
   margin: 0 auto 1.8rem
+}
+
+.skills-grid > .skill-group {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  min-width: 0
+}
+
+@media (max-width: 1072px) {
+  .skills-grid {
+    --cols: 2
+  }
+}
+
+@media (max-width: 724px) {
+  .skills-grid {
+    --cols: 1
+  }
 }
 
 .skill-group {
@@ -1554,8 +1593,11 @@ ul {
 }
 
 /* La especialidad: Flutter y las apps multiplataforma, a todo el ancho y en primer plano */
+.skills-grid > .skill-group-destacado {
+  flex-basis: 100%
+}
+
 .skill-group-destacado {
-  grid-column: 1 / -1;
   border-color: var(--border-hover);
   background:
     linear-gradient(135deg, rgba(29, 99, 212, 0.10), rgba(8, 145, 178, 0.06)),
@@ -1798,7 +1840,7 @@ ul {
 }
 
 /* Fondos de las tarjetas de logros (antes, atributos style="" en el HTML) */
-.logro-fondo-skills { background-image: url('Logros/Andalucia%20Skill%20Collage.webp') }
+.logro-fondo-skills { background-image: url('Logros/andalucia-skills-collage.webp') }
 .logro-fondo-fll { background-image: url('Logros/first-lego-league-periodico.webp') }
 .logro-fondo-fll-espana { background-image: url('Logros/first-lego-league-espa%C3%B1a-finalista.webp') }
 .logro-fondo-robotica { background-image: url('Logros/lego-mindstorms-ev3.webp') }
@@ -2057,12 +2099,34 @@ ul {
   color: #fff
 }
 
+/* 3 → 2 → 1 columnas (los cortes del grid de 320 px que había). Flex para que la última fila,
+   y las que dejan los filtros (4, 5 o 7 tarjetas), salgan CENTRADAS. */
 .proj-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  gap: 1.4rem;
+  --cols: 3;
+  --gap: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
   max-width: 1140px;
   margin: 0 auto
+}
+
+.proj-grid > .proj-card {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
+  min-width: 0
+}
+
+@media (max-width: 1052px) {
+  .proj-grid {
+    --cols: 2
+  }
+}
+
+@media (max-width: 709px) {
+  .proj-grid {
+    --cols: 1
+  }
 }
 
 .proj-card {
@@ -3579,7 +3643,7 @@ a.lang-toggle {
   }
 
   .education-grid {
-    grid-template-columns: 1fr
+    --cols: 1
   }
 
   .img-slideshow {

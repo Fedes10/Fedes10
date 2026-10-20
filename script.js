@@ -5,7 +5,7 @@
 ┃╭━━┫┃━┫╭╮┃┃━┫━━┫┃┃┃┃┃┃┃
 ┃┃╱╱┃┃━┫╰╯┃┃━╋━━┣╯╰┫╰━╯┃
 ╰╯╱╱╰━━┻━━┻━━┻━━┻━━┻━━━╯
-fedes10.com — script.js · © 2024-2026 Federico Talgat Lora Ortiz · Todos los derechos reservados
+fedes10.com — script.js · © 2024-2026 Federico Lora · Todos los derechos reservados
 */
 
 // ============================================================
