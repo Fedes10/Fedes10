@@ -39,7 +39,7 @@
 | Proyecto | Qué es | Dónde |
 |---|---|---|
 | **Faiten** | Una capa de inteligencia personal para el móvil (Flutter, PostgreSQL, Docker) | [faiten.fedes10.com](https://faiten.fedes10.com) |
-| **La Dele** | La app oficial de la peregrinación a Guadalupe 2026 | [dele.fedes10.com](https://dele.fedes10.com) |
+| **La Dele** | La app de la peregrinación a Guadalupe 2026 | [dele.fedes10.com](https://dele.fedes10.com) |
 | **Asociación Génesis** | Web en WordPress hecha a medida, en servidor propio | [genesis.fedes10.com](https://genesis.fedes10.com) |
 | **El Regreso** | Servidor de Minecraft con mods, web de estado y lanzador propio | [mc.fedes10.com](https://mc.fedes10.com) |
 | **fedes10.com** | Este repositorio: mi web, en español y en inglés | [fedes10.com](https://fedes10.com) |

@@ -17,7 +17,7 @@ La web es una sola página por idioma: [en español](https://fedes10.com/) y [en
 ## Proyectos en producción
 
 - [Faiten](https://faiten.fedes10.com/): una capa de inteligencia personal para el móvil. App en Flutter para Android y web, con panel de control propio y despliegue automático.
-- [La Dele](https://dele.fedes10.com/): la app oficial de la peregrinación a Guadalupe 2026 de la Delegación Diocesana de Juventud de Córdoba.
+- [La Dele](https://dele.fedes10.com/): la app de la peregrinación a Guadalupe 2026.
 - [Asociación Génesis](https://genesis.fedes10.com/): la web de una asociación cultural de Córdoba, en un WordPress hecho a medida y en servidor propio.
 - [El Regreso](https://mc.fedes10.com/): un servidor privado de Minecraft con mods, con web de estado en vivo y lanzador propio.
 
