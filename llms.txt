@@ -1,0 +1,26 @@
+# Federico Lora — fedes10.com
+
+> Federico Lora (Federico Talgat Lora Ortiz, «Fedes10»), de Córdoba (España). Desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows) y técnico de sistemas en CleverByte Consulting. Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
+
+La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 20/10/2026. Federico Lora también aparece en internet como **Fedes10**, Fede Lora y Federico Talgat Lora Ortiz.
+
+## Secciones
+
+- [Sobre mí](https://fedes10.com/#sobre-mi): quién es, qué hace y cómo trabaja.
+- [Experiencia](https://fedes10.com/#experiencia): CleverByte Consulting, Córdoba (desde febrero de 2026: prácticas de DAM, contrato de 4 meses de abril a agosto y contrato indefinido de mañana desde septiembre); Hospital Cruz Roja de Córdoba (prácticas de ASIR, 2025); Magtel (prácticas de SMR, 2023); Emtoservis, Vilna, Lituania (Erasmus+, 2022).
+- [Proyectos](https://fedes10.com/#proyectos): Faiten, La Dele, Cursillos de Cristiandad (OMCC), Asociación Génesis, El Regreso, DAM Fede, Remoto F10, fedes10.com, CleverFactu y Dolibarr.
+- [Servicios](https://fedes10.com/#servicios): desarrollo de apps multiplataforma (Android, web y Windows con Flutter; en iPhone como app web), webs profesionales, servidores y alojamiento (VPS con Docker y Cloudflare), migraciones de webs y blogs, seguridad y mantenimiento, y soporte técnico. Presupuesto cerrado y por escrito; preguntas frecuentes al final de la sección.
+- [Habilidades](https://fedes10.com/#habilidades): Flutter y Dart (especialidad), Android, Python, JavaScript, PHP, WordPress, PostgreSQL, MariaDB, Docker, Linux, nginx, Cloudflare, ciberseguridad, hardware, ERP (Dolibarr, Odoo) e inteligencia artificial.
+- [Formación](https://fedes10.com/#formacion): DAM (2025–2027, en curso), ASIR (2023–2025) y SMR (2021–2023) en CES Lope de Vega, Córdoba.
+- [Contacto](https://fedes10.com/#contacto): fedestalgat@gmail.com · https://linkedin.com/in/fedes10/ · https://github.com/Fedes10
+
+## Proyectos en producción
+
+- [Faiten](https://faiten.fedes10.com/): una capa de inteligencia personal para el móvil. App en Flutter para Android y web, con panel de control propio y despliegue automático.
+- [La Dele](https://dele.fedes10.com/): la app de la peregrinación a Guadalupe 2026.
+- [Asociación Génesis](https://genesis.fedes10.com/): la web de una asociación cultural de Córdoba, en un WordPress hecho a medida y en servidor propio.
+- [El Regreso](https://mc.fedes10.com/): un servidor privado de Minecraft con mods, con web de estado en vivo y lanzador propio.
+
+## English
+
+> Federico Lora (Fedes10) is a cross-platform app developer (Flutter: Android, web and Windows) and systems technician at CleverByte Consulting in Córdoba, Spain. He holds a Higher Technician degree in Network Systems Administration (ASIR) and is in the second year of Multiplatform Application Development (DAM). He offers cross-platform app development, websites and secure servers for businesses, associations and individuals. English version: https://fedes10.com/en/
