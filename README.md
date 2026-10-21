@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Mi Logo Redondo.webp" alt="Federico Lora" width="140"/>
+  <img src="Imagenes/logo-redondo.webp" alt="Federico Lora" width="140"/>
 </p>
 
 <h1 align="center">Federico Lora · Fedes10</h1>
