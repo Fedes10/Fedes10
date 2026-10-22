@@ -158,12 +158,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ===== Galerías de imágenes =====
+  // Al llegar a la última, la siguiente es una COPIA de la primera puesta al final: se desliza hasta ella como a
+  // cualquier otra y, al acabar, se salta sin animación a la primera de verdad, que es idéntica. Así la vuelta no
+  // se nota. Antes rebobinaba pasando por todas las fotos hacia atrás (Fede, 22/10/2026: «queda feo»).
   function iniciarGaleria(trackId, dotsId) {
     const track = document.getElementById(trackId);
     const dots = document.getElementById(dotsId);
     if (!track || !dots) return;
     const fotos = Array.from(track.querySelectorAll('.imgss-slide'));
-    let actual = 0, temporizador;
+    const n = fotos.length;
+    const copia = fotos[0].cloneNode(true);
+    copia.classList.add('imgss-copia');
+    copia.alt = '';
+    copia.setAttribute('aria-hidden', 'true');
+    track.appendChild(copia);
+    let actual = 0, pos = 0, temporizador;
 
     fotos.forEach((_, i) => {
       const d = document.createElement('button');
@@ -174,13 +183,24 @@ document.addEventListener('DOMContentLoaded', () => {
       dots.appendChild(d);
     });
 
+    // Mover el carril a una posición, con su animación o de golpe
+    function mover(p, animar) {
+      track.style.transition = animar ? '' : 'none';
+      pos = p;
+      track.style.transform = `translateX(-${p * 100}%)`;
+      if (!animar) void track.offsetWidth;      // que el salto se aplique antes de volver a animar
+    }
+
     function ir(i) {
-      actual = (i + fotos.length) % fotos.length;
-      track.style.transform = `translateX(-${actual * 100}%)`;
+      if (pos === n) mover(0, false);           // estaba en la copia: primero, a la primera de verdad
+      if (i < 0) { mover(n, false); i = n - 1; } // hacia atrás desde la primera: se sale de la copia
+      if (i >= n) { mover(n, true); actual = 0; } else { mover(i, true); actual = i; }
       dots.querySelectorAll('.imgss-dot').forEach((d, j) => d.classList.toggle('active', j === actual));
       // Las fotos van con loading="lazy": se cargan la que toca y la siguiente
       [actual, actual + 1].forEach(j => { if (fotos[j]) fotos[j].loading = 'eager'; });
+      if (actual === n - 1) copia.loading = 'eager';
     }
+    track.addEventListener('transitionend', () => { if (pos === n) mover(0, false); });
 
     const caja = track.closest('.img-slideshow');
     caja.querySelector('.imgss-prev').addEventListener('click', () => { ir(actual - 1); reiniciar(); });
@@ -199,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) temporizador = setInterval(() => ir(actual + 1), 4500);
     }
     function reiniciar() { arrancar(); }
-    ir(0);
+    mover(0, false);
     arrancar();
   }
   iniciarGaleria('trackLogros', 'dotsLogros');
@@ -228,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
   lightbox.appendChild(nav);
 
   ['trackLogros', 'trackProjects'].forEach(id => {
-    const fotos = Array.from(document.querySelectorAll(`#${id} .imgss-slide`));
+    const fotos = Array.from(document.querySelectorAll(`#${id} .imgss-slide:not(.imgss-copia)`));
     fotos.forEach((img, i) => img.addEventListener('click', () => {
       fotosActivas = fotos;          // solo las de ESA galería
       mostrar(i);
