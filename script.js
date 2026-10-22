@@ -72,25 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ===== Texto que se escribe solo (cabecera) =====
-  // Las frases vienen en data-frases, ya en el idioma de la página; la primera ya está escrita.
-  const typingEl = document.getElementById('typingText');
-  let frases = [];
-  try { frases = JSON.parse(typingEl.dataset.frases || '[]'); } catch { /* se queda la primera frase */ }
-  if (frases.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let p = 0, c = 0, borrando = false;
-    typingEl.textContent = '';
-    (function paso() {
-      const frase = frases[p];
-      c += borrando ? -1 : 1;
-      typingEl.textContent = frase.slice(0, c);
-      if (!borrando && c === frase.length) { borrando = true; setTimeout(paso, 2000); return; }
-      if (borrando && c === 0) { borrando = false; p = (p + 1) % frases.length; }
-      setTimeout(paso, borrando ? 35 : 62);
-    })();
-  }
-
-
   // ===== Imágenes con recambio (antes era un onerror en el HTML) =====
   // data-respaldo="siguiente" → enseña el elemento de al lado · data-respaldo="<id>" → enseña ese
   document.querySelectorAll('img[data-respaldo]').forEach(img => {
