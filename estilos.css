@@ -633,31 +633,6 @@ ul {
   letter-spacing: 0.01em
 }
 
-.hero-typing {
-  font-size: clamp(0.82rem, 1.7vw, 1rem);
-  color: var(--text-muted);
-  margin-bottom: 1.6rem;
-  font-weight: 400;
-  min-height: 1.5rem
-}
-
-.typing-cursor {
-  animation: blink 1s infinite;
-  color: var(--cyan-accent)
-}
-
-@keyframes blink {
-
-  0%,
-  100% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: 0
-  }
-}
-
 .hero-quote-block {
   display: flex;
   align-items: center;
@@ -3942,5 +3917,777 @@ a.lang-toggle {
   .reveal-right {
     opacity: 1;
     transform: none
+  }
+}
+
+/* =====================================================================
+   VERSIÓN COMERCIAL (22/10/2026): la cabecera dice QUÉ haces por el
+   cliente, con el nombre encima; a la derecha, trabajos de verdad. El
+   menú lleva «Pedir presupuesto» delante y el CV pasa a secundario.
+   ===================================================================== */
+
+/* ── El menú: presupuesto delante, CV detrás ── */
+.btn-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(135deg, var(--blue-accent), var(--blue-light));
+  color: #fff;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform var(--transition), box-shadow var(--transition)
+}
+
+.btn-nav-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 16px rgba(29, 99, 212, 0.35)
+}
+
+.btn-nav-cta:active,
+.btn-primary:active,
+.btn-outline:active {
+  transform: translateY(1px) scale(0.98)
+}
+
+.btn-cv.btn-cv-secundario {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--border);
+  font-weight: 600
+}
+
+.btn-cv.btn-cv-secundario:hover {
+  color: var(--blue-accent);
+  border-color: var(--border-hover);
+  box-shadow: none
+}
+
+/* ── La cabecera ── */
+.hero.hero-comercial {
+  padding: 7rem 1.5rem 5rem
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: 3.5rem;
+  align-items: center
+}
+
+.hero-texto {
+  text-align: left
+}
+
+.hero-comercial .hero-badge {
+  margin-bottom: 1.6rem
+}
+
+.hero-titulo {
+  font-family: var(--font-display);
+  margin-bottom: 1.3rem
+}
+
+.hero-nombre {
+  display: block;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--blue-accent);
+  margin-bottom: 0.7rem
+}
+
+.hero-promesa {
+  display: block;
+  font-size: clamp(2.2rem, 4.1vw, 3.7rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--text-primary);
+  text-wrap: balance
+}
+
+.hero-promesa em {
+  display: block;
+  width: fit-content;
+  font-style: normal;
+  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text
+}
+
+.hero-lead {
+  max-width: 54ch;
+  font-size: clamp(1rem, 1.45vw, 1.13rem);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 0.9rem;
+  text-wrap: pretty
+}
+
+.hero-lead strong {
+  color: var(--text-primary);
+  font-weight: 700
+}
+
+.hero-comercial .hero-cta {
+  justify-content: flex-start;
+  margin-bottom: 2.2rem
+}
+
+.hero-comercial .btn-primary {
+  padding: 0.9rem 1.9rem;
+  font-size: 0.98rem;
+  box-shadow: 0 8px 24px rgba(29, 99, 212, 0.28)
+}
+
+.hero-comercial .btn-outline {
+  padding: 0.9rem 1.7rem;
+  font-size: 0.98rem
+}
+
+.hero-pruebas {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.4rem;
+  max-width: 600px;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border)
+}
+
+.hero-pruebas li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--text-secondary)
+}
+
+.hero-comercial .hero-badge {
+  text-transform: none;
+  font-size: 0.8rem;
+  letter-spacing: 0
+}
+
+.hero-pruebas i {
+  color: var(--cyan-accent);
+  font-size: 1.15rem;
+  line-height: 1.35rem
+}
+
+.prueba-num {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums
+}
+
+/* ── El escaparate: tres trabajos de verdad, superpuestos ── */
+.hero-escaparate {
+  position: relative;
+  height: 470px
+}
+
+.escaparate-pieza {
+  position: absolute;
+  margin: 0;
+  width: 78%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-hover);
+  background: var(--bg-surface2);
+  box-shadow: 0 24px 60px rgba(8, 24, 64, 0.35), 0 2px 0 rgba(255, 255, 255, 0.06) inset;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1)
+}
+
+.escaparate-pieza img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block
+}
+
+.escaparate-1 {
+  top: 0;
+  right: 0;
+  z-index: 3;
+  transform: rotate(2.5deg)
+}
+
+.escaparate-2 {
+  top: 34%;
+  left: 0;
+  z-index: 2;
+  transform: rotate(-4deg)
+}
+
+.escaparate-3 {
+  bottom: 0;
+  right: 6%;
+  width: 56%;
+  z-index: 1;
+  transform: rotate(5deg);
+  opacity: 0.9
+}
+
+.hero-escaparate:hover .escaparate-1 {
+  transform: rotate(1deg) translateY(-6px)
+}
+
+.hero-escaparate:hover .escaparate-2 {
+  transform: rotate(-2deg) translateX(-6px)
+}
+
+.escaparate-sello {
+  position: absolute;
+  left: 8%;
+  top: 6%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.95rem;
+  border-radius: 99px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-hover);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  box-shadow: var(--shadow-card)
+}
+
+.sello-punto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.18)
+}
+
+/* ── «Cómo trabajo», ya como sección propia: el proceso sin hueco de más arriba ── */
+#como-trabajo .serv-proceso {
+  margin-top: 0
+}
+
+/* ── Pantallas medianas: una columna, el escaparate debajo y más bajo ── */
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.8rem
+  }
+
+  .hero-escaparate {
+    height: 360px;
+    max-width: 620px;
+    width: 100%;
+    margin: 0 auto
+  }
+}
+
+/* Con el botón de presupuesto, el del CV sobra en la barra del móvil: sigue en «Contacto» */
+@media (max-width: 760px) {
+  .btn-cv.btn-cv-secundario {
+    display: none
+  }
+}
+
+@media (max-width: 600px) {
+  .hero.hero-comercial {
+    padding: 6rem 1.15rem 4rem
+  }
+
+  .hero-comercial .hero-cta {
+    flex-direction: column;
+    align-items: stretch
+  }
+
+  .hero-comercial .btn-primary,
+  .hero-comercial .btn-outline {
+    justify-content: center
+  }
+
+  .hero-pruebas {
+    grid-template-columns: 1fr;
+    gap: 0.7rem
+  }
+
+  .hero-pruebas li {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.6rem
+  }
+
+  .hero-escaparate {
+    height: 250px
+  }
+
+  .escaparate-sello {
+    left: 2%;
+    top: 2%
+  }
+
+  .btn-nav-cta {
+    padding: 0.42rem 0.75rem;
+    font-size: 0.8rem
+  }
+}
+
+@media (max-width: 380px) {
+  .btn-nav-cta {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.74rem
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escaparate-pieza {
+    transition: none
+  }
+}
+
+/* ── 2.ª ronda: el precio al pie de cada servicio, y Cursillos (privado) en el escaparate ── */
+.serv-grid .serv-card {
+  display: flex;
+  flex-direction: column
+}
+
+.serv-card p.serv-precio {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  margin-bottom: 0;
+  border-top: 1px dashed var(--border);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--text-muted)
+}
+
+.serv-card > p:not(.serv-precio) {
+  margin-bottom: 1rem
+}
+
+.serv-precio strong {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  color: var(--blue-accent);
+  font-variant-numeric: tabular-nums
+}
+
+.serv-nota {
+  max-width: 760px;
+  margin: 1.4rem auto 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted)
+}
+
+.escaparate-pieza.proj-media-icono {
+  justify-content: center;
+  gap: 0.35rem;
+  font-size: 1.9rem
+}
+
+/* Cursillos va DELANTE, pequeña y abajo a la derecha: detrás de Faiten no se veía más que el candado */
+.hero-escaparate .escaparate-pieza.escaparate-3 {
+  top: auto;
+  bottom: -1%;
+  right: -2%;
+  width: 46%;
+  z-index: 4;
+  transform: rotate(4deg)
+}
+
+.escaparate-pieza .proj-media-texto {
+  font-size: 1.5rem
+}
+
+.escaparate-privado {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.7rem;
+  border-radius: 99px;
+  background: rgba(10, 17, 36, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff
+}
+
+.escaparate-privado i {
+  font-size: 0.7rem
+}
+
+.hero-escaparate .escaparate-3 {
+  opacity: 1
+}
+
+.hero-escaparate:hover .escaparate-pieza.escaparate-3 {
+  transform: rotate(2deg) translateY(-6px)
+}
+
+/* En el móvil la tarjeta de Cursillos mide la mitad: todo más pequeño y en una línea, y sin la flecha de
+   «baja», que con la cabecera en una columna se montaba encima del escaparate */
+@media (max-width: 1024px) {
+  .hero-comercial .hero-scroll-hint {
+    display: none
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-escaparate .escaparate-pieza.escaparate-3 {
+    width: 54%
+  }
+
+  .escaparate-pieza.proj-media-icono {
+    font-size: 1.15rem;
+    gap: 0.2rem
+  }
+
+  .escaparate-pieza .proj-media-texto {
+    font-size: 1.05rem
+  }
+
+  .escaparate-privado {
+    font-size: 0.58rem;
+    padding: 0.15rem 0.5rem;
+    gap: 0.3rem;
+    white-space: nowrap
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-comercial .hero-badge {
+    font-size: 0.74rem;
+    padding: 0.4rem 0.85rem
+  }
+}
+
+/* =====================================================================
+   «POR QUÉ CONMIGO» (22/10/2026): lo que no se ve, de un vistazo. Una
+   comparación lado a lado, una cita corta con su foto y los tres pasos.
+   ===================================================================== */
+.comparativa {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.4rem;
+  max-width: 980px;
+  margin: 0 auto
+}
+
+.comp-col {
+  padding: 1.6rem 1.6rem 1.4rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border)
+}
+
+.comp-col h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem
+}
+
+.comp-col ul {
+  display: grid;
+  gap: 0.75rem
+}
+
+.comp-col li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.45
+}
+
+.comp-col li i {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  margin-top: 0.08rem
+}
+
+.comp-otros {
+  background: var(--bg-surface1);
+  color: var(--text-muted)
+}
+
+.comp-otros h3 {
+  color: var(--text-secondary)
+}
+
+.comp-otros h3 i {
+  color: #f59e0b
+}
+
+.comp-otros li i {
+  background: rgba(239, 68, 68, 0.14);
+  color: #ef4444
+}
+
+.comp-yo {
+  background: linear-gradient(160deg, rgba(29, 99, 212, 0.16), rgba(8, 145, 178, 0.10));
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-glow)
+}
+
+.comp-yo h3 i {
+  color: var(--blue-accent)
+}
+
+.comp-yo li i {
+  background: rgba(34, 197, 94, 0.16);
+  color: #22c55e
+}
+
+.metodo-cita {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 760px;
+  margin: 2.6rem auto 0
+}
+
+.cita-foto {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  border: 2px solid var(--border-hover)
+}
+
+.metodo-cita blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 1.6vw, 1.2rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--text-primary);
+  text-wrap: pretty
+}
+
+.metodo-cita blockquote strong {
+  color: var(--blue-accent)
+}
+
+.metodo-cita figcaption {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted)
+}
+
+.metodo-flujo {
+  max-width: 980px;
+  margin: 2.6rem auto 0;
+  padding: 1.6rem 1.6rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-surface1)
+}
+
+.metodo-flujo-titulo {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.3rem;
+  text-align: center
+}
+
+.flujo-pasos {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+  position: relative
+}
+
+/* La línea que une los tres números */
+.flujo-pasos::before {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 16.66%;
+  right: 16.66%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue-accent), var(--cyan-accent));
+  opacity: 0.35
+}
+
+.flujo-pasos li {
+  position: relative;
+  text-align: center
+}
+
+.flujo-num {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent));
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 6px 18px rgba(29, 99, 212, 0.3)
+}
+
+.flujo-pasos strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem
+}
+
+.flujo-pasos p {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 30ch;
+  margin: 0 auto
+}
+
+@media (max-width: 760px) {
+  .comparativa {
+    grid-template-columns: 1fr
+  }
+
+  .flujo-pasos {
+    grid-template-columns: 1fr;
+    gap: 1.3rem
+  }
+
+  .flujo-pasos::before {
+    display: none
+  }
+
+  .metodo-cita {
+    align-items: flex-start
+  }
+
+  .cita-foto {
+    width: 56px;
+    height: 56px
+  }
+}
+
+/* Ronda 10: las herramientas de cada paso y la franja de las normas */
+.flujo-herr {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 0.7rem
+}
+
+.flujo-herr li {
+  padding: 0.18rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--blue-soft);
+  background: rgba(29, 99, 212, 0.08)
+}
+
+[data-theme="light"] .flujo-herr li {
+  color: var(--blue-accent)
+}
+
+.metodo-normas {
+  max-width: 980px;
+  margin: 1.4rem auto 0
+}
+
+.metodo-normas-titulo {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 1rem
+}
+
+.metodo-normas ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem
+}
+
+.metodo-normas li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface1);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--text-secondary)
+}
+
+.metodo-normas li i {
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+  color: var(--cyan-accent)
+}
+
+.metodo-normas li strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  margin-bottom: 0.1rem
+}
+
+@media (max-width: 900px) {
+  .metodo-normas ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+}
+
+@media (max-width: 560px) {
+  .metodo-normas ul {
+    grid-template-columns: 1fr
+  }
+}
+
+/* Cada fila de la comparación, a la misma altura en las dos columnas: así cada «✗» queda frente a su «✓» */
+@media (min-width: 761px) {
+  .comp-col li {
+    min-height: 2.8rem
   }
 }
