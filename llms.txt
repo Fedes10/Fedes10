@@ -1,4 +1,4 @@
-# Federico Lora — fedes10.com
+# Federico Lora · fedes10.com
 
 > Federico Lora («Fedes10»), de Córdoba (España). Desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows) y técnico de sistemas en CleverByte Consulting. Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
 
