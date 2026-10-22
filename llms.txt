@@ -1,6 +1,6 @@
 # Federico Lora · fedes10.com
 
-> Federico Lora («Fedes10»), de Córdoba (España). Desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows) y técnico de sistemas en CleverByte Consulting. Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
+> Federico Lora («Fedes10»), de Córdoba (España). Desarrollador full stack en CleverByte Consulting y desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows). Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
 
 La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 20/10/2026. Federico Lora también aparece en internet como **Fedes10** y Fede Lora.
 
@@ -23,4 +23,4 @@ La web es una sola página por idioma: [en español](https://fedes10.com/) y [en
 
 ## English
 
-> Federico Lora (Fedes10) is a cross-platform app developer (Flutter: Android, web and Windows) and systems technician at CleverByte Consulting in Córdoba, Spain. He holds a Higher Technician degree in Network Systems Administration (ASIR) and is in the second year of Multiplatform Application Development (DAM). He offers cross-platform app development, websites and secure servers for businesses, associations and individuals. English version: https://fedes10.com/en/
+> Federico Lora (Fedes10) is a full-stack developer at CleverByte Consulting in Córdoba, Spain, and a cross-platform app developer (Flutter: Android, web and Windows). He holds a Higher Technician degree in Network Systems Administration (ASIR) and is in the second year of Multiplatform Application Development (DAM). He offers cross-platform app development, websites and secure servers for businesses, associations and individuals. English version: https://fedes10.com/en/

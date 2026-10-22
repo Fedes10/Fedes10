@@ -5,8 +5,8 @@
 <h1 align="center">Federico Lora · Fedes10</h1>
 
 <p align="center">
-  <b>Desarrollador de apps (Flutter) y técnico de sistemas · Córdoba, España</b><br>
-  App developer (Flutter) &amp; systems technician · Córdoba, Spain
+  <b>Desarrollador full stack y de apps (Flutter) · Córdoba, España</b><br>
+  Full-stack &amp; app developer (Flutter) · Córdoba, Spain
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 ## 👋 Ahora mismo
 
-- 💼 **Técnico de sistemas en CleverByte Consulting**, en Córdoba: prácticas en febrero de 2026, contrato en abril y **contrato indefinido desde septiembre**, de mañana.
+- 💼 **Desarrollador full stack en CleverByte Consulting**, en Córdoba: prácticas en febrero de 2026, contrato en abril y **contrato indefinido desde septiembre**, de mañana.
 - 🎓 Terminando el **Grado Superior en DAM** (2.º curso) por las tardes, en CES Lope de Vega. Ya tengo **ASIR** y **SMR**.
 - 🚀 **Apps, webs y servidores para clientes**: la app de la peregrinación a Guadalupe 2026, la del Organismo Mundial de Cursillos de Cristiandad y la web de la Asociación Génesis.
 
