@@ -5057,3 +5057,19 @@ body {
   margin-right: 0.3rem;
   color: var(--cyan-accent)
 }
+
+/* El escaparate de la cabecera en móviles y tabletas (22/10/2026): tenía una altura fija (250 / 360 px) y las tarjetas,
+   que miden un % del ancho, crecían con la pantalla y se salían por abajo, con el pie «… ya funcionando» encima de la de
+   Faiten (Fede, en su móvil). Ahora la caja guarda la proporción de las tarjetas (5:4), así que caben a cualquier ancho. */
+@media (max-width: 1024px) {
+  .hero-escaparate {
+    height: auto;
+    aspect-ratio: 5 / 4;
+    max-width: 560px;
+    margin-bottom: 3.4rem
+  }
+
+  .escaparate-pie {
+    bottom: -2.9rem
+  }
+}
