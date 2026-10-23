@@ -86,7 +86,7 @@ SEGURIDAD:
         "about": {
           "@id": "https://fedes10.com/#fede"
         },
-        "dateModified": "2026-10-22T00:00:00+00:00"
+        "dateModified": "2026-10-23T00:00:00+00:00"
       },
       {
         "@type": "Person",
@@ -359,7 +359,7 @@ SEGURIDAD:
   <!-- Letras propias (sin pedir nada a Google): Manrope para todo y JetBrains Mono para los detalles -->
   <link rel="preload" href="../Fuentes/Manrope-Variable.woff" as="font" type="font/woff" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="../estilos.css?v=6b2a774553" />
+  <link rel="stylesheet" href="../estilos.css?v=faaaf27203" />
 </head>
 
 <body>
@@ -406,7 +406,7 @@ SEGURIDAD:
         <span class="lang-text" data-i18n="idioma-codigo">EN</span>
       </a>
       <a href="#contacto" class="btn-nav-cta"><span data-i18n="nav-btn-presupuesto">Get a quote</span></a>
-      <a href="../CV-Federico-Lora.pdf?v=20261022-2" class="btn-cv btn-cv-secundario" id="btnCvNav" download data-i18n-attr="href:cv-pdf,title:nav-btn-cv" title="Download CV">
+      <a href="../CV-Federico-Lora.pdf?v=20261023" class="btn-cv btn-cv-secundario" id="btnCvNav" download data-i18n-attr="href:cv-pdf,title:nav-btn-cv" title="Download CV">
         <i class="fa-regular fa-file" aria-hidden="true"></i><span class="btn-cv-text" data-i18n="nav-btn-cv-corto">CV</span>
       </a>
       <button class="nav-toggle" id="navToggle" type="button" data-i18n-attr="aria-label:nav-menu" aria-label="Open or close the menu"
@@ -510,14 +510,6 @@ SEGURIDAD:
         </div>
       </figure>
 
-      <div class="metodo-flujo reveal-up">
-        <h3 class="metodo-flujo-titulo" data-i18n="met-flujo-titulo">How every change reaches your site</h3>
-        <ol class="flujo-pasos">
-          <li><span class="flujo-num">1</span><strong data-i18n="flujo1-t">On my machine</strong><p data-i18n="flujo1-d">I build and test it on my computer, in a setup identical to the server.</p><ul class="flujo-herr"><li>Docker</li><li>Pruebas</li><li>Revisión de código</li></ul></li>
-          <li><span class="flujo-num">2</span><strong data-i18n="flujo2-t">On GitHub</strong><p data-i18n="flujo2-d">Every change is saved separately and reviewed. It also goes through automatic tests and a security check.</p><ul class="flujo-herr"><li>Git</li><li>GitHub Actions</li><li>Escáner de seguridad</li></ul></li>
-          <li><span class="flujo-num">3</span><strong data-i18n="flujo3-t">On your server</strong><p data-i18n="flujo3-d">It only goes live if everything passes. Every version is kept in case you need to go back.</p><ul class="flujo-herr"><li>Versiones numeradas</li><li>Cloudflare</li><li>Copias cifradas</li></ul></li>
-        </ol>
-      </div>
       <div class="metodo-normas reveal-up">
         <h3 class="metodo-normas-titulo" data-i18n="normas-titulo">The rules I apply to every project</h3>
         <ul>
@@ -709,7 +701,7 @@ SEGURIDAD:
             <span class="proj-fecha" data-i18n="p-regreso-fecha">Aug – Sep 2026</span>
             <h3 class="proj-titulo">El Regreso</h3>
             <p class="proj-sub" data-i18n="p-regreso-sub">Modded Minecraft server</p>
-            <p class="proj-desc" data-i18n="p-regreso-desc">A private Minecraft 1.21 server with 44 mods on my VPS: public website with live status, admin panel with push notifications, a custom C# launcher and recipe changes via datapacks, so nobody has to update anything.</p>
+            <p class="proj-desc" data-i18n="p-regreso-desc">A private Minecraft 1.21 server with 44 mods: public website with live status, admin panel with push notifications, a custom C# launcher and recipe changes via datapacks, so nobody has to update anything.</p>
             <ul class="proj-tags"><li>Linux</li><li>Docker</li><li>Caddy</li><li>Cloudflare</li><li>NeoForge</li><li>C#</li></ul>
             <div class="proj-links">
               <a href="https://mc.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Visit site</span></a>
@@ -745,8 +737,8 @@ SEGURIDAD:
             <span class="proj-fecha" data-i18n="p-remoto-fecha">Sep 2026</span>
             <h3 class="proj-titulo">Remoto F10</h3>
             <p class="proj-sub" data-i18n="p-remoto-sub">My own remote desktop</p>
-            <p class="proj-desc" data-i18n="p-remoto-desc">My replacement for AnyDesk and TeamViewer: a private WireGuard network, RustDesk for everyday use and Sunshine + Moonlight for gaming and video, with a Flutter app that installs everything.</p>
-            <ul class="proj-tags"><li>WireGuard</li><li>Headscale</li><li>RustDesk</li><li>Flutter</li><li>Docker</li></ul>
+            <p class="proj-desc" data-i18n="p-remoto-desc">My replacement for AnyDesk and TeamViewer: my own private WireGuard network, remote desktop for everyday use and low-latency streaming for gaming and video, with a Flutter app that installs everything.</p>
+            <ul class="proj-tags"><li>WireGuard</li><li>VPN</li><li>Flutter</li><li>Docker</li></ul>
             <div class="proj-links">
               <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Private code</span></span>
             </div>
@@ -902,7 +894,7 @@ SEGURIDAD:
           </div>
         </div>
         <div class="about-text reveal-right">
-          <p class="about-lead" data-i18n-html="about-lead">I'm <strong>Federico Lora</strong>, a Higher Technician in Network Systems Administration (ASIR), and I work as a <strong>full-stack developer at CleverByte Consulting</strong> in Córdoba, on a permanent morning contract. In the afternoons I'm finishing my <strong>Higher Degree in Multiplatform Application Development (DAM)</strong>.</p>
+          <p class="about-lead" data-i18n-html="about-lead">I'm <strong>Federico Lora</strong>, a Higher Technician in Network Systems Administration (ASIR), and I work as a <strong>full-stack developer at CleverByte Consulting</strong> in Córdoba. In the afternoons I'm finishing my <strong>Higher Degree in Multiplatform Application Development (DAM)</strong>.</p>
           <p data-i18n-html="about-p2">I do two things that fit together. On one side, <strong>cross-platform app development</strong>, mostly with <strong>Flutter</strong>, for Android, web and Windows from a single codebase. On the other, <strong>setting up the servers they run on</strong>, with Linux, Docker, PostgreSQL and Cloudflare, no open ports and backups in place.</p>
           <p data-i18n-html="about-p3">Since February 2026 I've taken my own and client projects to production, such as the <strong>Guadalupe app</strong> for the 2026 pilgrimage, the app for the <strong>World Organism of Cursillos in Christianity</strong>, the website of the <strong>Génesis Socio-Cultural Association</strong> and <strong>Faiten</strong>, my biggest personal project.</p>
           <p data-i18n-html="about-p4">I come from the systems world. I've worked with servers, networks, hardware and cybersecurity at Hospital Cruz Roja, at Magtel and on an Erasmus+ placement in Lithuania, and it shows in how I work, <strong>documented, tested and secure from day one</strong>.<br><br>The phrase that defines me best is <em>“Excellence is not an act, but a habit”</em>.</p>
@@ -958,14 +950,9 @@ SEGURIDAD:
                   </div>
                   <span class="tl-badge tl-badge-current" data-i18n="tl1-badge">Feb 2026 – present</span>
                 </div>
-                <ol class="tl-pasos">
-                  <li class="tl-paso tl-paso-actual"><span data-i18n-html="tl1-paso1"><strong>Sep 2026 – now</strong> · Permanent contract, mornings (alongside DAM)</span></li>
-                  <li class="tl-paso"><span data-i18n-html="tl1-paso2"><strong>Apr – Aug 2026</strong> · 4-month contract</span></li>
-                  <li class="tl-paso"><span data-i18n-html="tl1-paso3"><strong>Feb 2026</strong> · DAM internship (1 month)</span></li>
-                </ol>
                 <ul class="tl-tasks">
-                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">A <strong>private AI platform</strong> on an on-premises GPU server, with local models and daily backups</span></li>
-                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>AI assistants</strong> connected to the Dolibarr ERP (MCP) and to WhatsApp, deployed across several VPSs</span></li>
+                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">A <strong>private AI platform</strong> with local models and daily backups</span></li>
+                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>AI assistants</strong> connected to the Dolibarr ERP (MCP) and to WhatsApp</span></li>
                   <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task3">Rollout of the <strong>Dolibarr ERP on Docker</strong> with PostgreSQL, and production database administration</span></li>
                   <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task4">Sign-up and free-trial forms for <strong>CleverFactu</strong>, and <strong>WordPress</strong> server migrations</span></li>
                 </ul>
@@ -1125,7 +1112,6 @@ SEGURIDAD:
             <li class="skill-pill skill-high">WordPress</li>
             <li class="skill-pill skill-high">PHP</li>
             <li class="skill-pill skill-high">Java</li>
-            <li class="skill-pill skill-high">JSON</li>
             <li class="skill-pill skill-med">FastAPI</li>
             <li class="skill-pill skill-med">TypeScript</li>
             <li class="skill-pill skill-med">React</li>
@@ -1147,7 +1133,7 @@ SEGURIDAD:
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Docker / Compose</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-linux">Linux (Ubuntu &amp; Debian)</li>
-            <li class="skill-pill skill-high">VPS (OVH)</li>
+            <li class="skill-pill skill-high">VPS</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-cloudflare">Cloudflare (Tunnels, Access, DNS)</li>
             <li class="skill-pill skill-high">nginx / Caddy</li>
             <li class="skill-pill skill-high">Git / GitHub</li>
@@ -1160,8 +1146,7 @@ SEGURIDAD:
         <article class="skill-group reveal-up delay-1">
           <header class="skill-group-head"><i class="fas fa-shield-halved" aria-hidden="true"></i><h3 data-i18n="skills-cat-cyber">Cybersecurity</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-sec">Information security</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Hardening (SSH, ufw, fail2ban, AIDE)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Hardening (SSH, ufw, fail2ban, IDS)</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-csp">CSP &amp; security headers</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-pentest">Pentesting (Nmap, Metasploit, brute force)</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-netmon">Network monitoring</li>
@@ -1182,10 +1167,7 @@ SEGURIDAD:
             <li class="skill-pill skill-high" data-i18n="skills-pill-virt">Virtualization</li>
             <li class="skill-pill skill-high">Synology / XPEnology</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-ad">Active Directory</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-swinstall">Software installation</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-osinstall">OS installation</li>
             <li class="skill-pill skill-med">Webmin</li>
-            <li class="skill-pill skill-med">CMD / Batch</li>
           </ul>
         </article>
 
@@ -1193,7 +1175,6 @@ SEGURIDAD:
           <header class="skill-group-head"><i class="fas fa-brain" aria-hidden="true"></i><h3 data-i18n="skills-cat-ia">Artificial intelligence</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high" data-i18n="skills-pill-agentes">Development with AI agents (Claude Code)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-aiuse">Advanced AI usage</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-prompting">Advanced prompting</li>
             <li class="skill-pill skill-med" data-i18n="skills-pill-local-llm">Local models (Ollama, LiteLLM)</li>
             <li class="skill-pill skill-med" data-i18n="skills-pill-aiauto">AI automation</li>
@@ -1208,10 +1189,7 @@ SEGURIDAD:
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-mont">Assembly &amp; configuration</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-diag">Diagnostics &amp; repair</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-maint">Maintenance</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isoinstall">ISO installation</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isocreate">ISO creation</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-repair">Component repair</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-upgrade">Hardware upgrades</li>
           </ul>
         </article>
 
@@ -1220,7 +1198,6 @@ SEGURIDAD:
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Dolibarr ERP</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-support">Technical support (on-site &amp; remote)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-incidents">Incident resolution</li>
             <li class="skill-pill skill-med">Bizagi Modeler</li>
             <li class="skill-pill skill-med">Odoo</li>
             <li class="skill-pill skill-med">GNU Health</li>
