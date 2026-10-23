@@ -86,7 +86,7 @@ SEGURIDAD:
         "about": {
           "@id": "https://fedes10.com/#fede"
         },
-        "dateModified": "2026-10-22T00:00:00+00:00"
+        "dateModified": "2026-10-23T00:00:00+00:00"
       },
       {
         "@type": "Person",
@@ -359,7 +359,7 @@ SEGURIDAD:
   <!-- Letras propias (sin pedir nada a Google): Manrope para todo y JetBrains Mono para los detalles -->
   <link rel="preload" href="Fuentes/Manrope-Variable.woff" as="font" type="font/woff" crossorigin />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="estilos.css?v=6b2a774553" />
+  <link rel="stylesheet" href="estilos.css?v=faaaf27203" />
 </head>
 
 <body>
@@ -406,7 +406,7 @@ SEGURIDAD:
         <span class="lang-text" data-i18n="idioma-codigo">ES</span>
       </a>
       <a href="#contacto" class="btn-nav-cta"><span data-i18n="nav-btn-presupuesto">Pedir presupuesto</span></a>
-      <a href="CV-Federico-Lora.pdf?v=20261022-2" class="btn-cv btn-cv-secundario" id="btnCvNav" download data-i18n-attr="href:cv-pdf,title:nav-btn-cv" title="Descargar CV">
+      <a href="CV-Federico-Lora.pdf?v=20261023" class="btn-cv btn-cv-secundario" id="btnCvNav" download data-i18n-attr="href:cv-pdf,title:nav-btn-cv" title="Descargar CV">
         <i class="fa-regular fa-file" aria-hidden="true"></i><span class="btn-cv-text" data-i18n="nav-btn-cv-corto">CV</span>
       </a>
       <button class="nav-toggle" id="navToggle" type="button" data-i18n-attr="aria-label:nav-menu" aria-label="Abrir o cerrar el menú"
@@ -510,14 +510,6 @@ SEGURIDAD:
         </div>
       </figure>
 
-      <div class="metodo-flujo reveal-up">
-        <h3 class="metodo-flujo-titulo" data-i18n="met-flujo-titulo">Así llega cada cambio a tu web</h3>
-        <ol class="flujo-pasos">
-          <li><span class="flujo-num">1</span><strong data-i18n="flujo1-t">En mi equipo</strong><p data-i18n="flujo1-d">Lo programo y lo pruebo en mi ordenador, en un entorno igual que el del servidor.</p><ul class="flujo-herr"><li>Docker</li><li>Pruebas</li><li>Revisión de código</li></ul></li>
-          <li><span class="flujo-num">2</span><strong data-i18n="flujo2-t">En GitHub</strong><p data-i18n="flujo2-d">Cada cambio se guarda por separado y se revisa. Además pasa pruebas y un control de seguridad automáticos.</p><ul class="flujo-herr"><li>Git</li><li>GitHub Actions</li><li>Escáner de seguridad</li></ul></li>
-          <li><span class="flujo-num">3</span><strong data-i18n="flujo3-t">En tu servidor</strong><p data-i18n="flujo3-d">Solo se publica si todo sale bien. Cada versión queda guardada por si hay que volver atrás.</p><ul class="flujo-herr"><li>Versiones numeradas</li><li>Cloudflare</li><li>Copias cifradas</li></ul></li>
-        </ol>
-      </div>
       <div class="metodo-normas reveal-up">
         <h3 class="metodo-normas-titulo" data-i18n="normas-titulo">Las normas que aplico en cada proyecto</h3>
         <ul>
@@ -709,7 +701,7 @@ SEGURIDAD:
             <span class="proj-fecha" data-i18n="p-regreso-fecha">Ago – Sep 2026</span>
             <h3 class="proj-titulo">El Regreso</h3>
             <p class="proj-sub" data-i18n="p-regreso-sub">Servidor de Minecraft con mods</p>
-            <p class="proj-desc" data-i18n="p-regreso-desc">Servidor privado de Minecraft 1.21 con 44 mods en mi VPS: web pública con el estado en vivo, panel de administración con avisos push, lanzador propio en C# y cambios de recetas por datapack, sin que nadie tenga que actualizar nada.</p>
+            <p class="proj-desc" data-i18n="p-regreso-desc">Servidor privado de Minecraft 1.21 con 44 mods: web pública con el estado en vivo, panel de administración con avisos push, lanzador propio en C# y cambios de recetas por datapack, sin que nadie tenga que actualizar nada.</p>
             <ul class="proj-tags"><li>Linux</li><li>Docker</li><li>Caddy</li><li>Cloudflare</li><li>NeoForge</li><li>C#</li></ul>
             <div class="proj-links">
               <a href="https://mc.fedes10.com/" target="_blank" rel="noopener" class="proj-link"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i><span data-i18n="proj-ver-web">Ver web</span></a>
@@ -745,8 +737,8 @@ SEGURIDAD:
             <span class="proj-fecha" data-i18n="p-remoto-fecha">Sep 2026</span>
             <h3 class="proj-titulo">Remoto F10</h3>
             <p class="proj-sub" data-i18n="p-remoto-sub">Mi propio escritorio remoto</p>
-            <p class="proj-desc" data-i18n="p-remoto-desc">Mi sustituto de AnyDesk y TeamViewer: una red privada con WireGuard, RustDesk para el día a día y Sunshine + Moonlight para juegos y vídeo, con una app en Flutter que lo instala todo.</p>
-            <ul class="proj-tags"><li>WireGuard</li><li>Headscale</li><li>RustDesk</li><li>Flutter</li><li>Docker</li></ul>
+            <p class="proj-desc" data-i18n="p-remoto-desc">Mi sustituto de AnyDesk y TeamViewer: una red privada propia con WireGuard, escritorio remoto para el día a día y streaming de baja latencia para juegos y vídeo, con una app en Flutter que lo instala todo.</p>
+            <ul class="proj-tags"><li>WireGuard</li><li>VPN</li><li>Flutter</li><li>Docker</li></ul>
             <div class="proj-links">
               <span class="proj-link proj-link-off"><i class="fas fa-lock" aria-hidden="true"></i><span data-i18n="proj-privado">Código privado</span></span>
             </div>
@@ -902,7 +894,7 @@ SEGURIDAD:
           </div>
         </div>
         <div class="about-text reveal-right">
-          <p class="about-lead" data-i18n-html="about-lead">Soy <strong>Federico Lora</strong>, Técnico Superior en ASIR, y trabajo como <strong>desarrollador full stack en CleverByte Consulting</strong>, en Córdoba, con contrato indefinido de mañana. Por las tardes termino el <strong>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>.</p>
+          <p class="about-lead" data-i18n-html="about-lead">Soy <strong>Federico Lora</strong>, Técnico Superior en ASIR, y trabajo como <strong>desarrollador full stack en CleverByte Consulting</strong>, en Córdoba. Por las tardes termino el <strong>Grado Superior en Desarrollo de Aplicaciones Multiplataforma (DAM)</strong>.</p>
           <p data-i18n-html="about-p2">Me dedico a dos cosas que se complementan. Por un lado, el <strong>desarrollo de aplicaciones multiplataforma</strong>, sobre todo con <strong>Flutter</strong>, para Android, web y Windows con el mismo código. Por otro, <strong>montar los servidores donde viven</strong>, con Linux, Docker, PostgreSQL y Cloudflare, sin puertos abiertos y con copias de seguridad.</p>
           <p data-i18n-html="about-p3">Desde febrero de 2026 he llevado a producción proyectos propios y para clientes, como la <strong>app de Guadalupe</strong> para la peregrinación de 2026, la app del <strong>Organismo Mundial de Cursillos de Cristiandad</strong>, la web de la <strong>Asociación Socio-Cultural Génesis</strong> y <strong>Faiten</strong>, mi proyecto personal más grande.</p>
           <p data-i18n-html="about-p4">Vengo del mundo de los sistemas. He trabajado con servidores, redes, hardware y ciberseguridad en el Hospital Cruz Roja, en Magtel y en un Erasmus+ en Lituania, y se nota en cómo trabajo, <strong>documentado, probado y seguro desde el primer día</strong>.<br><br>La frase que mejor me define es <em>«La excelencia no es un acto, sino un hábito»</em>.</p>
@@ -958,14 +950,9 @@ SEGURIDAD:
                   </div>
                   <span class="tl-badge tl-badge-current" data-i18n="tl1-badge">Feb 2026 – actualidad</span>
                 </div>
-                <ol class="tl-pasos">
-                  <li class="tl-paso tl-paso-actual"><span data-i18n-html="tl1-paso1"><strong>Sep 2026 – hoy</strong> · Contrato indefinido, de mañana (lo compagino con DAM)</span></li>
-                  <li class="tl-paso"><span data-i18n-html="tl1-paso2"><strong>Abr – Ago 2026</strong> · Contrato de 4 meses</span></li>
-                  <li class="tl-paso"><span data-i18n-html="tl1-paso3"><strong>Feb 2026</strong> · Prácticas de DAM (1 mes)</span></li>
-                </ol>
                 <ul class="tl-tasks">
-                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">Una <strong>plataforma de IA privada</strong> en un servidor propio con GPU, con modelos locales y copias diarias</span></li>
-                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>Asistentes de IA</strong> conectados al ERP Dolibarr (MCP) y a WhatsApp, repartidos en varios VPS</span></li>
+                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task1">Una <strong>plataforma de IA privada</strong> con modelos locales y copias diarias</span></li>
+                  <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task2"><strong>Asistentes de IA</strong> conectados al ERP Dolibarr (MCP) y a WhatsApp</span></li>
                   <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task3">Implantación del <strong>ERP Dolibarr en Docker</strong> con PostgreSQL y administración de la base de datos en producción</span></li>
                   <li><i class="fas fa-check-circle" aria-hidden="true"></i><span data-i18n-html="tl1-task4">Formularios de registro y prueba gratuita de <strong>CleverFactu</strong> y migraciones de servidores <strong>WordPress</strong></span></li>
                 </ul>
@@ -1125,7 +1112,6 @@ SEGURIDAD:
             <li class="skill-pill skill-high">WordPress</li>
             <li class="skill-pill skill-high">PHP</li>
             <li class="skill-pill skill-high">Java</li>
-            <li class="skill-pill skill-high">JSON</li>
             <li class="skill-pill skill-med">FastAPI</li>
             <li class="skill-pill skill-med">TypeScript</li>
             <li class="skill-pill skill-med">React</li>
@@ -1147,7 +1133,7 @@ SEGURIDAD:
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Docker / Compose</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-linux">Linux (Ubuntu y Debian)</li>
-            <li class="skill-pill skill-high">VPS (OVH)</li>
+            <li class="skill-pill skill-high">VPS</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-cloudflare">Cloudflare (túneles, Access, DNS)</li>
             <li class="skill-pill skill-high">nginx / Caddy</li>
             <li class="skill-pill skill-high">Git / GitHub</li>
@@ -1160,8 +1146,7 @@ SEGURIDAD:
         <article class="skill-group reveal-up delay-1">
           <header class="skill-group-head"><i class="fas fa-shield-halved" aria-hidden="true"></i><h3 data-i18n="skills-cat-cyber">Ciberseguridad</h3></header>
           <ul class="skill-pills">
-            <li class="skill-pill skill-high" data-i18n="skills-pill-sec">Seguridad informática</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Bastionado (SSH, ufw, fail2ban, AIDE)</li>
+            <li class="skill-pill skill-high" data-i18n="skills-pill-hardening">Bastionado (SSH, ufw, fail2ban, IDS)</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-csp">CSP y cabeceras de seguridad</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-pentest">Pentesting (Nmap, Metasploit, fuerza bruta)</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-netmon">Monitorización de redes</li>
@@ -1182,10 +1167,7 @@ SEGURIDAD:
             <li class="skill-pill skill-high" data-i18n="skills-pill-virt">Virtualización</li>
             <li class="skill-pill skill-high">Synology / XPEnology</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-ad">Active Directory</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-swinstall">Instalación de software</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-osinstall">Instalación de SO</li>
             <li class="skill-pill skill-med">Webmin</li>
-            <li class="skill-pill skill-med">CMD / Batch</li>
           </ul>
         </article>
 
@@ -1193,7 +1175,6 @@ SEGURIDAD:
           <header class="skill-group-head"><i class="fas fa-brain" aria-hidden="true"></i><h3 data-i18n="skills-cat-ia">Inteligencia artificial</h3></header>
           <ul class="skill-pills">
             <li class="skill-pill skill-high" data-i18n="skills-pill-agentes">Desarrollo con agentes de IA (Claude Code)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-aiuse">Uso avanzado de IA</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-prompting">Prompting avanzado</li>
             <li class="skill-pill skill-med" data-i18n="skills-pill-local-llm">Modelos locales (Ollama, LiteLLM)</li>
             <li class="skill-pill skill-med" data-i18n="skills-pill-aiauto">Automatización con IA</li>
@@ -1208,10 +1189,7 @@ SEGURIDAD:
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-mont">Montaje y configuración</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-diag">Diagnóstico y reparación</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-maint">Mantenimiento</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isoinstall">Instalación de ISOs</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-hw-isocreate">Creación de ISOs</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-repair">Reparación de componentes</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-hw-upgrade">Actualización de equipos</li>
           </ul>
         </article>
 
@@ -1220,7 +1198,6 @@ SEGURIDAD:
           <ul class="skill-pills">
             <li class="skill-pill skill-high">Dolibarr ERP</li>
             <li class="skill-pill skill-high" data-i18n="skills-pill-support">Soporte técnico (presencial y remoto)</li>
-            <li class="skill-pill skill-high" data-i18n="skills-pill-incidents">Resolución de incidencias</li>
             <li class="skill-pill skill-med">Bizagi Modeler</li>
             <li class="skill-pill skill-med">Odoo</li>
             <li class="skill-pill skill-med">GNU Health</li>

@@ -4480,92 +4480,9 @@ a.lang-toggle {
   color: var(--text-muted)
 }
 
-.metodo-flujo {
-  max-width: 980px;
-  margin: 2.6rem auto 0;
-  padding: 1.6rem 1.6rem 1.5rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--bg-surface1)
-}
-
-.metodo-flujo-titulo {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 1.3rem;
-  text-align: center
-}
-
-.flujo-pasos {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
-  position: relative
-}
-
-/* La línea que une los tres números */
-.flujo-pasos::before {
-  content: '';
-  position: absolute;
-  top: 19px;
-  left: 16.66%;
-  right: 16.66%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue-accent), var(--cyan-accent));
-  opacity: 0.35
-}
-
-.flujo-pasos li {
-  position: relative;
-  text-align: center
-}
-
-.flujo-num {
-  position: relative;
-  display: inline-grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent));
-  color: #fff;
-  font-family: var(--font-display);
-  font-weight: 800;
-  margin-bottom: 0.6rem;
-  box-shadow: 0 6px 18px rgba(29, 99, 212, 0.3)
-}
-
-.flujo-pasos strong {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 0.98rem;
-  color: var(--text-primary);
-  margin-bottom: 0.2rem
-}
-
-.flujo-pasos p {
-  font-size: 0.86rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  max-width: 30ch;
-  margin: 0 auto
-}
-
 @media (max-width: 760px) {
   .comparativa {
     grid-template-columns: 1fr
-  }
-
-  .flujo-pasos {
-    grid-template-columns: 1fr;
-    gap: 1.3rem
-  }
-
-  .flujo-pasos::before {
-    display: none
   }
 
   .metodo-cita {
@@ -4578,33 +4495,10 @@ a.lang-toggle {
   }
 }
 
-/* Ronda 10: las herramientas de cada paso y la franja de las normas */
-.flujo-herr {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.35rem;
-  margin-top: 0.7rem
-}
-
-.flujo-herr li {
-  padding: 0.18rem 0.6rem;
-  border-radius: 99px;
-  border: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--blue-soft);
-  background: rgba(29, 99, 212, 0.08)
-}
-
-[data-theme="light"] .flujo-herr li {
-  color: var(--blue-accent)
-}
-
+/* Ronda 10: la franja de las normas */
 .metodo-normas {
   max-width: 980px;
-  margin: 1.4rem auto 0
+  margin: 2.6rem auto 0
 }
 
 .metodo-normas-titulo {
