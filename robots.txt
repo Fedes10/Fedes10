@@ -3,4 +3,8 @@ Allow: /
 # Rutas internas de Cloudflare (el enlace con el que esconde el correo): no son páginas
 Disallow: /cdn-cgi/
 
+# La foto de Fede no se usa de miniatura en los buscadores (D-26): para eso está la portada F10
+User-agent: Googlebot-Image
+Disallow: /Imagenes/FotoFedeCV.webp
+
 Sitemap: https://fedes10.com/sitemap.xml
