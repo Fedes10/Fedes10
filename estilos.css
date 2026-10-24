@@ -4967,3 +4967,23 @@ body {
     bottom: -2.9rem
   }
 }
+
+/* El enlace a los términos de uso y la privacidad (D-28): centrado, debajo de los derechos reservados.
+   Es el ÚNICO sitio de la web que lleva a terminos.html. */
+.footer-legal {
+  max-width: 1180px;
+  margin: 0.9rem auto 0;
+  text-align: center;
+  font-size: 0.78rem
+}
+
+.footer-legal a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition)
+}
+
+.footer-legal a:hover {
+  color: var(--blue-accent)
+}
