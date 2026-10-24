@@ -281,3 +281,99 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('%c Federico Lora · fedes10.com · © 2024-2026 ', 'background:#1447a0;color:#fff;padding:6px 18px;border-radius:4px;font-family:monospace;');
 
 });
+
+
+// ============================================================
+// LOS «USOS» (D-28 y D-29 de la GUIA de CurriculumWeb)
+// Qué apartados se ven, qué se pulsa (el CV, las redes, los proyectos, pedir presupuesto)
+// y cuánto rato está abierta la página. Cada uno es una petición vacía a /api/uso/…,
+// que nginx contesta con un 204 y apunta en el registro de visitas, con la IP.
+// Sin cookies ni nada guardado en el navegador: el número de la vista vive solo
+// mientras la página está abierta y sirve para juntar los usos de esa misma visita.
+// ============================================================
+(() => {
+  const vista = Math.random().toString(16).slice(2, 10);
+  const yaEnviado = new Set();
+  const limpio = (t) => String(t).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'sin-nombre';
+
+  const uso = (tipo, nombre, unaVez = true) => {
+    const clave = `${tipo}/${limpio(nombre)}`;
+    if (unaVez && yaEnviado.has(clave)) return;
+    yaEnviado.add(clave);
+    try {
+      fetch(`/api/uso/${clave}?v=${vista}`, { keepalive: true, cache: 'no-store', credentials: 'omit' })
+        .catch(() => {});
+    } catch (e) { /* nunca rompe la página */ }
+  };
+
+  const zona = (el) => {
+    if (el.closest('footer')) return 'pie';
+    if (el.closest('nav, .navbar, #navbar')) return 'barra';
+    const s = el.closest('section[id], header[id]');
+    return s ? s.id : 'pagina';
+  };
+
+  const nombreDelClic = (el) => {
+    const id = el.id || '';
+    if (id === 'btnDownloadCV') return 'cv-boton-descargar';
+    if (id === 'btnCvNav') return 'cv-barra';
+    if (id === 'themeToggle') return 'tema';
+    if (id === 'langToggle') return 'idioma';
+    if (id === 'navToggle') return 'menu-movil';
+    if (el.tagName === 'SUMMARY') {
+      const todas = [...document.querySelectorAll('details')];
+      return `faq-${todas.indexOf(el.closest('details')) + 1}`;
+    }
+    const href = el.getAttribute('href') || '';
+    if (/\.pdf(\?|$)/i.test(href)) return `cv-${zona(el)}`;
+    if (href.startsWith('mailto:')) return `correo-${zona(el)}`;
+    if (/linkedin\.com/i.test(href)) return `linkedin-${zona(el)}`;
+    if (/github\.com/i.test(href)) return el.classList.contains('proj-link') ? 'proyecto-github' : `github-${zona(el)}`;
+    if (el.classList.contains('proj-link')) {
+      const tarjeta = el.closest('article[id]');
+      return `proyecto-${tarjeta ? tarjeta.id.replace(/^p-/, '') : 'sin-id'}`;
+    }
+    if (href === '#contacto' && !el.closest('nav, .navbar, #navbar ul')) return `presupuesto-${zona(el)}`;
+    if (el.classList.contains('btn-nav-cta')) return 'presupuesto-barra';
+    if (/terminos\.html|terms\.html/.test(href)) return 'terminos';
+    if (href.startsWith('#')) return `menu-${href.slice(1) || 'inicio'}`;
+    if (/^https?:/i.test(href)) {
+      try { return `enlace-${new URL(href).hostname.replace(/^www\./, '')}`; } catch (e) { return 'enlace'; }
+    }
+    return null;
+  };
+
+  const empezar = () => {
+    // Apartados vistos: cuando cruzan la franja del centro de la pantalla (vale también para los muy altos)
+    if ('IntersectionObserver' in window) {
+      const vigia = new IntersectionObserver((entradas) => {
+        entradas.forEach((e) => {
+          if (e.isIntersecting) { uso('seccion', e.target.id); vigia.unobserve(e.target); }
+        });
+      }, { rootMargin: '-45% 0px -45% 0px' });
+      document.querySelectorAll('section[id], header[id]').forEach((s) => vigia.observe(s));
+    }
+
+    // Lo que se pulsa (cada clic cuenta, también si se repite)
+    document.addEventListener('click', (ev) => {
+      const el = ev.target.closest('a, button, summary');
+      if (!el) return;
+      const nombre = nombreDelClic(el);
+      if (nombre) uso('clic', nombre, false);
+    }, true);
+
+    // Cuánto rato está abierta y a la vista: a los 15 s, 1, 3 y 10 minutos
+    let segundos = 0;
+    const marcas = [[15, '15s'], [60, '1min'], [180, '3min'], [600, '10min']];
+    const reloj = setInterval(() => {
+      if (document.visibilityState !== 'visible') return;
+      segundos += 5;
+      marcas.forEach(([s, nombre]) => { if (segundos >= s) uso('tiempo', nombre); });
+      if (segundos >= 600) clearInterval(reloj);
+    }, 5000);
+  };
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', empezar);
+  else empezar();
+})();
