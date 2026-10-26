@@ -8,7 +8,7 @@ La web es una sola página por idioma: [en español](https://fedes10.com/) y [en
 
 - [Sobre mí](https://fedes10.com/#sobre-mi): quién es, qué hace y cómo trabaja.
 - [Experiencia](https://fedes10.com/#experiencia): CleverByte Consulting, Córdoba, desarrollador full stack (desde febrero de 2026); Hospital Cruz Roja de Córdoba (prácticas de ASIR, 2025); Magtel (prácticas de SMR, 2023); Emtoservis, Vilna, Lituania (Erasmus+, 2022).
-- [Proyectos](https://fedes10.com/#proyectos): Faiten, la app de Guadalupe, Cursillos de Cristiandad (OMCC), Asociación Génesis, El Regreso, DAM Fede, Remoto F10, fedes10.com, CleverFactu y Dolibarr.
+- [Proyectos](https://fedes10.com/#proyectos): Faiten, la App de Guadalupe, Cursillos de Cristiandad (OMCC), Asociación Génesis, El Regreso, DAM Fede, Remoto F10, fedes10.com, CleverFactu y Dolibarr.
 - [Servicios](https://fedes10.com/#servicios): desarrollo de apps multiplataforma (Android, web y Windows con Flutter; en iPhone como app web), webs profesionales, servidores y alojamiento (VPS con Docker y Cloudflare), migraciones de webs y blogs, seguridad y mantenimiento, y soporte técnico. Presupuesto cerrado y por escrito; preguntas frecuentes al final de la sección.
 - [Habilidades](https://fedes10.com/#habilidades): Flutter y Dart (especialidad), Android, Python, JavaScript, PHP, WordPress, PostgreSQL, MariaDB, Docker, Linux, nginx, Cloudflare, ciberseguridad, hardware, ERP (Dolibarr, Odoo) e inteligencia artificial.
 - [Formación](https://fedes10.com/#formacion): DAM (2025–2027, en curso), ASIR (2023–2025) y SMR (2021–2023) en CES Lope de Vega, Córdoba.
