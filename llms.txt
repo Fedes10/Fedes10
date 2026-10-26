@@ -1,8 +1,8 @@
-# Federico Lora · fedes10.com
+# Fedes10 (Federico Lora) · fedes10.com
 
 > Federico Lora («Fedes10»), de Córdoba (España). Desarrollador full stack en CleverByte Consulting y desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows). Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
 
-La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 20/10/2026. Federico Lora también aparece en internet como **Fedes10** y Fede Lora.
+La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 26/10/2026. Federico Lora firma en internet como **Fedes10** (a veces escrito «Fedes 10»), su logo es **F10** y también le conocen como Fede Lora.
 
 ## Secciones
 
