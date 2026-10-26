@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ===== Firma en la consola =====
-  console.log('%c Federico Lora · fedes10.com · © 2024-2026 ', 'background:#1447a0;color:#fff;padding:6px 18px;border-radius:4px;font-family:monospace;');
+  console.log('%c Fedes10 · fedes10.com · © 2024-2026 ', 'background:#1447a0;color:#fff;padding:6px 18px;border-radius:4px;font-family:monospace;');
 
 });
 
