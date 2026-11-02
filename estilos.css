@@ -4987,3 +4987,108 @@ body {
 .footer-legal a:hover {
   color: var(--blue-accent)
 }
+
+/* La sección «Emprender» (#emprender, 02/11/2026): la última y pequeña. Lo que Fede busca y lo que aporta para
+   emprender, con el botón de la cabecera «Emprender juntos» llevando hasta aquí. */
+.emprender .section-header {
+  margin-bottom: 2.4rem
+}
+
+.emprender-rejilla {
+  max-width: 980px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem
+}
+
+.emprender-caja {
+  padding: 1.5rem 1.6rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-base);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition), transform var(--transition)
+}
+
+.emprender-caja:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px)
+}
+
+.emprender-titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.05rem
+}
+
+.emprender-titulo i {
+  width: 2.1rem;
+  height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 0.85rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue-accent), var(--cyan-accent))
+}
+
+.emprender-caja ul {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem
+}
+
+.emprender-caja li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-secondary)
+}
+
+.emprender-caja li i {
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--cyan-accent)
+}
+
+.emprender-caja li strong {
+  color: var(--text-primary)
+}
+
+.emprender-cta {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 2.1rem
+}
+
+.btn-emprender i {
+  font-size: 0.9rem
+}
+
+@media (max-width: 760px) {
+  .emprender-rejilla {
+    grid-template-columns: 1fr
+  }
+}
+
+@media (max-width: 600px) {
+  .emprender-cta {
+    flex-direction: column;
+    align-items: stretch
+  }
+
+  .emprender-cta a {
+    justify-content: center
+  }
+}

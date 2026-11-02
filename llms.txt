@@ -2,7 +2,7 @@
 
 > Federico Lora («Fedes10»), de Córdoba (España). Desarrollador full stack en CleverByte Consulting y desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows). Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
 
-La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 26/10/2026. Federico Lora firma en internet como **Fedes10** (a veces escrito «Fedes 10»), su logo es **F10** y también le conocen como Fede Lora.
+La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 02/11/2026. Federico Lora firma en internet como **Fedes10** (a veces escrito «Fedes 10»), su logo es **F10** y también le conocen como Fede Lora.
 
 ## Secciones
 
@@ -13,6 +13,7 @@ La web es una sola página por idioma: [en español](https://fedes10.com/) y [en
 - [Habilidades](https://fedes10.com/#habilidades): Flutter y Dart (especialidad), Android, Python, JavaScript, PHP, WordPress, PostgreSQL, MariaDB, Docker, Linux, nginx, Cloudflare, ciberseguridad, hardware, ERP (Dolibarr, Odoo) e inteligencia artificial.
 - [Formación](https://fedes10.com/#formacion): DAM (2025–2027, en curso), ASIR (2023–2025) y SMR (2021–2023) en CES Lope de Vega, Córdoba.
 - [Contacto](https://fedes10.com/#contacto): fedestalgat@gmail.com · https://linkedin.com/in/fedes10/ · https://github.com/Fedes10
+- [Emprender](https://fedes10.com/#emprender): además de los proyectos para clientes, quiere emprender (llevar Faiten más lejos o sumarse a otro proyecto con futuro). Busca ventas y crecimiento, perfiles de IA y gente competente y con ganas; aporta apps y webs, servidores, despliegue y ciberseguridad, IA usada con criterio y productos reales.
 
 ## Proyectos en producción
 
