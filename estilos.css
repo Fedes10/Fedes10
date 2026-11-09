@@ -64,6 +64,7 @@
   --tl-year-color: #1d63d4;
   --hero-text: rgba(0, 0, 0, 0.411);
   --nav-hover-bg: rgba(29, 99, 212, 0.15);
+  --verde-frase: #117a56;
 }
 
 /* ===== TEMA OSCURO (Aclarado ligeramente) ===== */
@@ -97,6 +98,7 @@
   --tl-year-color: #93c5fd;
   --hero-text: linear-gradient(90deg, var(--blue-soft), var(--cyan-accent));
   --nav-hover-bg: rgba(59, 130, 246, 0.25);
+  --verde-frase: #6fd8ad;
 }
 
 /* ===== RESET ===== */
@@ -1003,6 +1005,11 @@ ul {
 .about-text strong {
   color: var(--blue-accent);
   font-weight: 700
+}
+
+/* La frase que le define: un verde suave, sin negrita para que no grite */
+.frase-verde {
+  color: var(--verde-frase)
 }
 
 .about-stats {

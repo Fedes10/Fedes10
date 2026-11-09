@@ -1,13 +1,13 @@
 # Fedes10 (Federico Lora) · fedes10.com
 
-> Federico Lora («Fedes10»), de Córdoba (España). Desarrollador full stack en CleverByte Consulting y desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows). Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
+> Federico Lora («Fedes10»), de Córdoba (España). Desarrollador full stack y director de proyectos en CleverByte Consulting, y desarrollador de aplicaciones multiplataforma con Flutter (Android, web y Windows). Técnico Superior en ASIR y estudiante de 2.º de DAM. Ofrece desarrollo de apps multiplataforma, webs y servidores para negocios, asociaciones y particulares, en Córdoba y en remoto.
 
-La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 02/11/2026. Federico Lora firma en internet como **Fedes10** (a veces escrito «Fedes 10»), su logo es **F10** y también le conocen como Fede Lora.
+La web es una sola página por idioma: [en español](https://fedes10.com/) y [en inglés](https://fedes10.com/en/). Actualizada el 09/11/2026. Federico Lora firma en internet como **Fedes10** (a veces escrito «Fedes 10»), su logo es **F10** y también le conocen como Fede Lora.
 
 ## Secciones
 
 - [Sobre mí](https://fedes10.com/#sobre-mi): quién es, qué hace y cómo trabaja.
-- [Experiencia](https://fedes10.com/#experiencia): CleverByte Consulting, Córdoba, desarrollador full stack (desde febrero de 2026); Hospital Cruz Roja de Córdoba (prácticas de ASIR, 2025); Magtel (prácticas de SMR, 2023); Emtoservis, Vilna, Lituania (Erasmus+, 2022).
+- [Experiencia](https://fedes10.com/#experiencia): CleverByte Consulting, Córdoba, desarrollador full stack y director de proyectos (desde febrero de 2026); Hospital Cruz Roja de Córdoba (prácticas de ASIR, 2025); Magtel (prácticas de SMR, 2023); Emtoservis, Vilna, Lituania (Erasmus+, 2022).
 - [Proyectos](https://fedes10.com/#proyectos): Faiten, la App de Guadalupe, Cursillos de Cristiandad (OMCC), Asociación Génesis, El Regreso, DAM Fede, Remoto F10, fedes10.com, CleverFactu y Dolibarr.
 - [Servicios](https://fedes10.com/#servicios): desarrollo de apps multiplataforma (Android, web y Windows con Flutter; en iPhone como app web), webs profesionales, servidores y alojamiento (VPS con Docker y Cloudflare), migraciones de webs y blogs, seguridad y mantenimiento, y soporte técnico. Presupuesto cerrado y por escrito; preguntas frecuentes al final de la sección.
 - [Habilidades](https://fedes10.com/#habilidades): Flutter y Dart (especialidad), Android, Python, JavaScript, PHP, WordPress, PostgreSQL, MariaDB, Docker, Linux, nginx, Cloudflare, ciberseguridad, hardware, ERP (Dolibarr, Odoo) e inteligencia artificial.
@@ -24,4 +24,4 @@ La web es una sola página por idioma: [en español](https://fedes10.com/) y [en
 
 ## English
 
-> Federico Lora (Fedes10) is a full-stack developer at CleverByte Consulting in Córdoba, Spain, and a cross-platform app developer (Flutter: Android, web and Windows). He holds a Higher Technician degree in Network Systems Administration (ASIR) and is in the second year of Multiplatform Application Development (DAM). He offers cross-platform app development, websites and secure servers for businesses, associations and individuals. English version: https://fedes10.com/en/
+> Federico Lora (Fedes10) is a full-stack developer and project manager at CleverByte Consulting in Córdoba, Spain, and a cross-platform app developer (Flutter: Android, web and Windows). He holds a Higher Technician degree in Network Systems Administration (ASIR) and is in the second year of Multiplatform Application Development (DAM). He offers cross-platform app development, websites and secure servers for businesses, associations and individuals. English version: https://fedes10.com/en/
