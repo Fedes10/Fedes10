@@ -19,7 +19,7 @@
 
 ## 👋 Ahora mismo
 
-- 💼 **Desarrollador full stack en CleverByte Consulting**, en Córdoba, desde febrero de 2026.
+- 💼 **Desarrollador full stack y director de proyectos en CleverByte Consulting**, en Córdoba, desde febrero de 2026.
 - 🎓 Terminando el **Grado Superior en DAM** (2.º curso) por las tardes, en CES Lope de Vega. Ya tengo **ASIR** y **SMR**.
 - 🚀 **Apps, webs y servidores para clientes**: la app de la peregrinación a Guadalupe 2026, la del Organismo Mundial de Cursillos de Cristiandad y la web de la Asociación Génesis.
 
