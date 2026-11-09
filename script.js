@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cv = document.getElementById('btnCvNav').getAttribute('href');
     const enlace = document.createElement('a');
     enlace.href = cv;
-    enlace.download = decodeURIComponent(cv.split('/').pop());
+    enlace.download = decodeURIComponent(cv.split('/').pop().split('?')[0]);
     enlace.click();
     document.getElementById('printerAnim').classList.add('show');
   });
