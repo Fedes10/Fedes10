@@ -4187,10 +4187,37 @@ a.lang-toggle {
   }
 }
 
-/* Con el botón de presupuesto, el del CV sobra en la barra del móvil: sigue en «Contacto» */
+/* En el móvil manda el CV, no el presupuesto (Fede, 16/11/2026): en la barra solo cabe un botón, y quien entra desde
+   el móvil viene más a ver quién es que a pedir precio. «Pedir presupuesto» sigue en el menú (Contacto), en la
+   portada y al final de Servicios. En el escritorio no cambia nada: presupuesto delante y CV detrás. */
+.btn-cv-largo {
+  display: none
+}
+
 @media (max-width: 760px) {
-  .btn-cv.btn-cv-secundario {
+  .btn-nav-cta {
     display: none
+  }
+
+  .btn-cv.btn-cv-secundario {
+    background: linear-gradient(135deg, var(--blue-accent), var(--blue-light));
+    color: #fff;
+    border: 0;
+    font-weight: 700
+  }
+
+  .btn-cv.btn-cv-secundario:hover {
+    color: #fff;
+    box-shadow: 0 5px 16px rgba(29, 99, 212, 0.35)
+  }
+
+  /* «Descargar CV» entero, no solo «CV» (la regla vieja de 600 px enseñaba el corto con !important) */
+  .btn-cv.btn-cv-secundario .btn-cv-text {
+    display: none !important
+  }
+
+  .btn-cv-largo {
+    display: inline
   }
 }
 
